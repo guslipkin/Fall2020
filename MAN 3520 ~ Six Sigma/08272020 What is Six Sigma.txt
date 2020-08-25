@@ -1,0 +1,21 @@
+What is Six Sigma
+
+Hello class:
+
+To help you gain a basic understanding of Six Sigma early in our course, prepare a brief summary (3 short paragraphs) of an article related to Six Sigma and how Six Sigma impacts a business. Use an article that is:
+
+- Peer reviewed
+- Full text
+
+Please remember to cite your sources. This is a graded discussion to encourage learning from various articles that have been researched.
+
+John Fico
+
+
+Citation: Albliwi, S., Antony, J., Abdul Halim Lim, S. and van der Wiele, T. (2014), "Critical failure factors of Lean Six Sigma: a systematic literature review", International Journal of Quality & Reliability Management, Vol. 31 No. 9, pp. 1012-1030. https://doi.org/10.1108/IJQRM-09-2013-0147
+
+The goal of Six Sigma is to continuously improve processes and poor quality outputs and to increase value for customers and shareholders. It is noted that Six Sigma is best applied in tandem with Lean Management in order to get the full effect of both systems. However, both systems can be subject to failures and may not produce the desired outcomes.
+
+Failure in Lean Six Sigma can be due to poor strategy from the outset of the project, a failure to properly implement LSS during the project, and others. All told, Albliwi et al identified 34 critical failure factors of LSS deployment. They also identified some critical success factors that ensure a project's success. The authors conclude that a lack of resources, frequently including financial resources, is a significant challenge for many organizations.
+
+The authors believe that as of the article's writing in 2013, LSS has a lot of refinement that needs to be done before it can be implemented in more industries. They also recognize that more research needs to be done into how LSS can be and has been implemented in different environments in order for those imminent improvements to the systems to be made. Recognizing that this study only included four databases, the authors plan on increasing the scope of the study at a later point so that more general trends can be identified.
