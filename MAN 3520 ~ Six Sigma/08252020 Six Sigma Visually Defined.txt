@@ -1,0 +1,43 @@
+Week 2
+
+Executive summary: Research on something and provide a brief synopsis. What are the main points and ideas of the article? What is one key takeaway?
+
+
+Six Sigma Defined Visually
+
+	Smuckers Uncrustables
+
+		Identifying & controlling sources of variation in ingredients & baking processes for each sandwich during production are key process variables
+			y=f(x)
+			y = net sandwich weight
+			x = how much?
+				Jelly
+				Peanaut butter
+				Bread
+				Sandwich dimensions
+
+Sigma Levels
+	- Sigma levels are variation
+	- Example: In a 2 sigma process, 95% of the measured values taken in a process will be within two standard deviations from the process average
+	- The level represents the number of sigmas away from the mean the standard deviation is
+	- Lower and upper limit are determined by the customer
+
+DMAIC vs DMADV
+	DMAIC: Define, Measure, Analyze, Improve, Control
+		- Course focus
+		- Improve existing processes
+	DMADV: Define, Measure, Analyze, Design,  Verify
+		- Part of Design for Six Sigma
+		- Develop new processes
+
+Six Sigma projects are characterized by predefined phases – depending on the type of product or business
+
+DMAIC - Define
+	During Define, primary objectives are to understand whether this is the right project and the best project to do right now
+	- Project scope is clear
+	- Customer/market value is understood
+	- Business value is understood
+	- Process performance measures are agreed upon and baselined
+	- Business support for project in place (project leader and team)
+	- Champions & process owners in place to remove barriers
+	SIPOC: Suppliers, Inputs, Process, Output, Customers
