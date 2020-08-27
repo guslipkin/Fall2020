@@ -32,7 +32,20 @@ DMAIC vs DMADV
 
 Six Sigma projects are characterized by predefined phases – depending on the type of product or business
 
-DMAIC - Define
+DMAIC is a methodology for improvement projects and the backbone for Six Sigma. 
+	Define - 
+		What is the problem? How often does it happen? What is the impact of the problem? Who's in the team? How will it be run?
+	Measure - 
+		How do we measure the problem? How do we measure it? How reliable is the data? What is the current performance?
+	Analyse - 
+		How does the process work? What does our knowledge of the process tell us? What does the data say? Can the data verify that the cause affects the output?
+	Improve - 
+		What are all possible solutions? Which will work best? When, where, and how can this be implemented?
+	Control - 
+		Has the goal been achieved? Are the improvements standardized?
+
+DMAIC 
+- Define
 	During Define, primary objectives are to understand whether this is the right project and the best project to do right now
 	- Project scope is clear
 	- Customer/market value is understood
@@ -41,3 +54,15 @@ DMAIC - Define
 	- Business support for project in place (project leader and team)
 	- Champions & process owners in place to remove barriers
 	SIPOC: Suppliers, Inputs, Process, Output, Customers
+		- Used for understanding the scope and purpose of the process
+		- Takes about an hour
+
+- Measure
+	Team gets much deeper understanding of current process; how it has performed in the past and current performance
+	- Team works to understand current state of process through use of mapping tools
+	- Focus on reliability of primary performance metric
+	- Once baseline is confirmed, if team finds any quick hits, they can be addressed right away
+
+
+Data Worlds
+- Types of data from stats class
