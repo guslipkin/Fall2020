@@ -1,0 +1,15 @@
+Four questions to determine if a system is a system:
+	Does it have clarity of purpose?
+	Are the major elements connected?
+	Can we determine the status at any time?
+	Can it adapt to changes in the environment?
+
+Safety questions:
+	How do we maximize the safety of the transportation system?
+
+Efficiency questions:
+	Where are the bottlenecks and slowdowns in the transportation system?
+	How do I optimize the efficiency of my transportation system?
+	How are transportation assets performing and how can they be managed better?
+
+What impact will connected and autonomous vehicles have on the transportation system?
