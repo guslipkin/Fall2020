@@ -13,3 +13,14 @@ Efficiency questions:
 	How are transportation assets performing and how can they be managed better?
 
 What impact will connected and autonomous vehicles have on the transportation system?
+
+What is current and future demand for transportation?
+
+How do we maximize access to jobs?
+
+
+User Experience Questions:
+	How do we enhance the user experience for travelers in the transportation system?
+	How do customers perceive service levels?
+	How can travelers make best use of the transportation system?
+	How will better information change travel behavior?
