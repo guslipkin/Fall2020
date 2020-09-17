@@ -1,0 +1,9 @@
+09172020HW Article 3 Discussion
+
+"Process Improvements, Measures and Metrics, The Products of Lean Six Sigma" talks largely about how Lean Six Sigma is important for businesses to make sure that they are staying consistent with their product goals. However, they also note that it is important to take into consideration the Voice of the Customer, VOC, because if stakeholders aren't happy, they will lose interest in the Six Sigma process and everything will fall apart.
+
+The author says that the whole point of using Six Sigma is to give the customers what they want and when and where they need it. Rather than focusing on the end product, Lean focuses on the path the product takes throughout the organizatino from its operating system, management system, and organizational behaviors. By speaking with the customer and asking them some basic questions about what they want, it is easier to implement Lean Six Sigma in the business.
+
+Finally, the author ways some pros and cons of discrete measurements which can be used to measure the effectiveness of a Lean Six Sigma implementation. Some of the pros are that discrete measurements can be made quickly and are easy to make, they are free from influence in opinion, Sigma levels are defined by discrete measurements. Some cons are that categorical data can be difficult to measure discretely, some statistics platforms do not do well with discrete values and prefer continuous data.
+
+My key takeaway from this article is that the customer does have a voice in the Six Sigma process and that it's not just something that well-intentioned managers try and implement without paying attention to how it is affecting the final product.
