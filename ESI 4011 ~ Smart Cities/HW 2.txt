@@ -1,0 +1,18 @@
+HW 2
+
+USA:
+https://www.vtpi.org/avip.pdf
+"Autonomous Vehicle Implementation Predictions"
+The report aims to investigate the impacts of autonomous vehicles and their implications for transportation planning. They look into how quickly such vehicles will develop and be deployed based on previous vehicle technology development and rollout cycles. They also do a benefit cost analysis, discuss how autonomous vehicles will affect travel activity and their effects on planning decisions for optimal roads, parking, and public transit availability. They predict that level 5 autonomous vehicles, those vehicles that never need human intervention, may be available and legal to use by the late 2020s but will have high costs and limited performance. They suggest that while the vehicles will be available in the late 2020s, they won't be commonly available and the full benefits won't be seen until the 2050s or 2060s and that some derived benefits could take even longer to reap.
+
+Europe:
+https://doi.org/10.3390/su11020482
+Implementation of Connected and Autonomous Vehicles in Cities Could Have Neutral Effects on the Total Travel Time Costs: Modeling and Analysis for a Circular City
+This study tries to formulate a circular city that is optimized for autonomous vehicles while considering varying degrees of demand for different parts of the city. They predict that autonomous vehicles will allow for less tarmac to be used for a similar amount of traffic, that congestion and travel costs decrease, decrease travel time, increase demand for travel, and increase city size and sprawl. While a city built on purely autonomous vehicles would decrease travel time, considerations still have to be made for pedestrians, cyclists, public transit, and other extraneous vehicles and these obstacles will mean that travel time won't decrease as much as theoretically possible.
+
+China:
+https://civitas.eu/news/ever-growing-intelligent-connected-vehicle-and-autonomous-vehicle-efforts-china
+The ever-growing Intelligent Connected Vehicle and Autonomous Vehicle efforts in China
+Because of strong government and regulatory support in China, autonomous vehicles there are expected to see rapid growth through heavy investment in research and development. Some analysts expect that China will be "the largest and fastest-growing market for future transport technology development." To support autonomous vehicles, China has created the National Intelligent Connected Vehicle (ICV) Innovation Center to lead development under the guidance of the Ministry of Industry and Information Technology (MIIT). The National Development and Reform Commission (NDRC) wrote a "Strategy for Intelligent Vehicle Development" which was made public in 2018. The central government has also designated seven national pilot cities for connected and autonomous vehicles.
+
+I think that China is in the lead simply because they have the backing of the central government which allows them to make sweeping changes with little political interference. The USA is in a very close second because they have the technology for self-driving cars and are mostly waiting for the infrastructure to catch up. I believe Europe is in last place, but mostly because the European automakers haven't been as public with their development and it will be difficult to adapt such old cities to new technology.
