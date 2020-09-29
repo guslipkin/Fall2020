@@ -1,6 +1,6 @@
 capture log close
 log using gus_lipkin_Assignment_3, replace
-import delimited "/Users/guslipkin/Documents/Fall2020/QMB 3200 ~ Advanced Quantitative Methods/FloridaCountyData.csv"
+import delimited "/Users/guslipkin/Documents/Fall2020/QMB 3200 ~ Advanced Quantitative Methods/Assignment 3/FloridaCountyData.csv"
 clear all
 
 * Main assignment
@@ -72,6 +72,7 @@ scatter rw sh65up [w=pop], msymbol(circle_hollow) title("Wage ratio vs Share of 
 scatter rw shlh [w=pop], msymbol(circle_hollow) title("Wage ratio vs Hospitality employment") xscale(log) yscale(log) mlabel(shortCounty)
 
 * Extra Credit e
+graph matrix pop wden, title("Matrix comparing POP and WDEN")
 graph matrix rw shlh, title("Matrix comparing RW and SHLH")
 graph matrix pci wden rw, title("Matrix comparing PCI, WDEN, and RW")
 
