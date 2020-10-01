@@ -1,7 +1,6 @@
 capture log close
 log using gus_lipkin_Assignment_3, replace
 import delimited "/Users/guslipkin/Documents/Fall2020/QMB 3200 ~ Advanced Quantitative Methods/Assignment 3/FloridaCountyData.csv"
-clear all
 
 * Main assignment
 
