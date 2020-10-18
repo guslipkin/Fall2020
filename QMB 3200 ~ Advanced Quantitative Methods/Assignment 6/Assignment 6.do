@@ -1,16 +1,17 @@
 *1
-by supplement, sort : tabulate cold female, summarize(days)
+tabulate female supplement, summarize(days)
+tabulate female supplement, summarize(cold)
 
 *2a
-prtest cold==supplement
+*prtest cold==supplement
 *2b
-prtest cold==supplement if female==0
-prtest cold==supplement if female==1
+*prtest cold==supplement if female==0
+*prtest cold==supplement if female==1
 *2c
-prtest cold==female
+*prtest cold==female
 *2d
-prtest cold==female if supplement==0
-prtest cold==female if supplement==1
+*prtest cold==female if supplement==0
+*prtest cold==female if supplement==1
 
 *2a
 prtest cold, by(supplement)
