@@ -1,0 +1,9 @@
+Team Names: Isabel Zimmerman, Hailey Skoglund, Gus Lipkin
+
+Project Title: The Perfect Brew
+
+Project Description:
+
+We are going to create the perfect cappuccino from beans and oats to mug. We brew up a step by step process of all the activities, requirements, and step durations. We will also estimate dollar and time costs to create the coffee and report the results through Microsoft Project Software and include all team member's contributions.
+
+To aid in making educated decisions in regards to our project subject, we will be taking trips to local coffee shops and consulting with industry experts.
