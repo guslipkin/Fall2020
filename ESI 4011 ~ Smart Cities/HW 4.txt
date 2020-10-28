@@ -1,0 +1,20 @@
+1) Revenue Management and Route Planning
+	Analyzing demand to plan routes and maximize profits. This goes beyond just looking at bookings of current routes, and also looks at current events, personality profiling, and more.
+	Publication: 
+   		KARAOGLAN, Aslan & Gönen Ocaktan, Demet & UCMUS, Emine. (2011). Aircraft Routing and Scheduling: a Case Study in an Airline Company. An International Journal of Optimization and Control: Theories & Applications (IJOCTA). 1. 10.11121/ijocta.01.2011.00041. 
+2) In-flight Sales and Food Supply
+	Using data analytics to find the right amount of food to bring on board so that everyone can get what they want and there's no waste after the flight. By reducing the amount of food brought on board, they also reduce fuel costs.
+	Publication:
+		Balan Sundarakani, Hira Abdul Razzak & Sushmera Manikandan (2018) Creating a competitive advantage in the global flight catering supply chain: a case study using SCOR model, International Journal of Logistics Research and Applications, 21:5, 481-501, DOI: 10.1080/13675567.2018.1448767
+3) Fuel Consumption and Optimization
+	Airlines spend almost a quarter of their budget on jet fuel so it's important to consider fuel costs, takeoff and landing weights, and route distances.
+	Publication:
+		https://financetrainingcourse.com/education/wp-content/uploads/2012/10/fuel_hedge-southwest-case-study.pdf
+4) Boarding and Checking Bags with Facial Recognition
+	They claim that facial recognition is faster and safer for travellers. Faster is important because it reduces check-in and boarding times.
+	Publication:
+		https://www.nec.com/en/global/about/vision/scene/01.html
+5) Preparing a Plane for the Next Flight
+	The time between landing and the next departure is called Turnaround. The average monetary loss per minute of delays is $74.20. There is software that monitors plane turnaround processes so that carriers know where to focus their efforts.
+	Publication:
+		https://hbr.org/2016/01/case-study-can-an-airline-cut-turn-times-without-adding-staff
