@@ -1,0 +1,93 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+```{r}
+library(sf)
+library(dplyr)
+library(spDataLarge)
+library(stplanr)      # geographic transport data package
+library(tmap)         # visualization package (see Chapter 8)
+library(osrm)         # routing package
+```
+
+```{r}
+names(bristol_zones)
+```
+
+```{r}
+nrow(bristol_od)
+nrow(bristol_zones)
+```
+
+```{r}
+zones_attr = bristol_od %>% 
+  group_by(o) %>% 
+  summarize_if(is.numeric, sum) %>% 
+  dplyr::rename(geo_code = o)
+```
+
+```{r}
+summary(zones_attr$geo_code %in% bristol_zones$geo_code)
+#>    Mode    TRUE 
+#> logical     102
+```
+
+```{r}
+zones_joined = left_join(bristol_zones, zones_attr, by = "geo_code")
+sum(zones_joined$all)
+#> [1] 238805
+names(zones_joined)
+#> [1] "geo_code"   "name"       "all"        "bicycle"    "foot"      
+#> [6] "car_driver" "train"      "geometry"
+```
+
+```{r}
+zones_od = bristol_od %>% 
+  group_by(d) %>% 
+  summarize_if(is.numeric, sum) %>% 
+  dplyr::select(geo_code = d, all_dest = all) %>% 
+  inner_join(zones_joined, ., by = "geo_code")
+```
+
+```{r}
+qtm(zones_od, c("all", "all_dest")) +
+  tm_layout(panel.labels = c("Origin", "Destination"))
+```
+
+```{r}
+bristol_region <- osmdata::getbb("Bristol", format_out = "sf_polygon")
+```
+
+```{r}
+names(bristol_zones)
+```
+
+```{r}
+nrow(bristol_od)
+nrow(bristol_zones)
+```
+
+```{r}
+zones_attr = bristol_od %>% 
+  group_by(o) %>% 
+  summarize_if(is.numeric, sum) %>% 
+  dplyr::rename(geo_code = o)
+```
+
+```{r}
+summary(zones_attr$geo_code %in% bristol_zones$geo_code)
+#>    Mode    TRUE 
+#> logical     102
+```
+
+```{r}
+zones_joined = left_join(bristol_zones, zones_attr, by = "geo_code")
+sum(zones_joined$all)
+#> [1] 238805
+names(zones_joined)
+#> [1] "geo_code"   "name"       "all"        "bicycle"    "foot"      
+#> [6] "car_driver" "train"      "geometry"
+```
+
