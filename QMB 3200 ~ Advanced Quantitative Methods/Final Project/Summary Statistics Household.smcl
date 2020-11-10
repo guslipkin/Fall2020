@@ -1,0 +1,35 @@
+{smcl}
+{com}{sf}{ul off}{txt}{.-}
+      name:  {res}<unnamed>
+       {txt}log:  {res}/Users/guslipkin/Documents/Fall2020/QMB 3200 ~ Advanced Quantitative Methods/Final Project/Summary Statistics Household.smcl
+  {txt}log type:  {res}smcl
+ {txt}opened on:  {res}10 Nov 2020, 11:09:40
+
+{com}. 
+. import excel "/Users/guslipkin/Documents/Fall2020/QMB 3200 ~ Advanced Quantitative Methods/Final Project/Hhldtrips.xlsx", sheet("Hhldtrips") firstrow clear
+{res}{text}(10 vars, 297 obs)
+
+{com}. summ
+
+{txt}    Variable {c |}        Obs        Mean    Std. Dev.       Min        Max
+{hline 13}{c +}{hline 57}
+{space 5}houseid {c |}{res}        297    1.25e+07     1689626   1.00e+07   1.56e+07
+{txt}{space 5}homeown {c |}{res}        297    1.205387    .4046661          1          2
+{txt}{space 4}hhvehcnt {c |}{res}        297    1.892256    1.106724          0          7
+{txt}{space 6}hhsize {c |}{res}        297    2.653199    1.434704          1          9
+{txt}{space 5}drvrcnt {c |}{res}        297    1.851852    .7915975          0          5
+{txt}{hline 13}{c +}{hline 57}
+{space 4}wrkcount {c |}{res}        297    1.262626    .9991807          0          5
+{txt}{space 5}numadlt {c |}{res}        297    1.905724    .6559506          1          4
+{txt}{space 4}trpmiles {c |}{res}        297    117.3281     266.391        -64       3164
+{txt}{space 4}hhincttl {c |}{res}        297    9.498316    6.844866         -8         18
+{txt}{space 3}hhldtrips {c |}{res}        297    10.03367     7.36951          1         49
+
+{com}. log close
+      {txt}name:  {res}<unnamed>
+       {txt}log:  {res}/Users/guslipkin/Documents/Fall2020/QMB 3200 ~ Advanced Quantitative Methods/Final Project/Summary Statistics Household.smcl
+  {txt}log type:  {res}smcl
+ {txt}closed on:  {res}10 Nov 2020, 11:10:02
+{txt}{.-}
+{smcl}
+{txt}{sf}{ul off}

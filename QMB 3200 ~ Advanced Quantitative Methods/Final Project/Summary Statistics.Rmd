@@ -1,0 +1,22 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+```{r}
+library(tidyverse)
+library(readxl)
+```
+
+```{r}
+dfPerson <- read_xlsx("/Users/guslipkin/Documents/Fall2020/QMB 3200 ~ Advanced Quantitative Methods/Final Project/persontrips.xlsx")
+dfHousehold <- read_xlsx("/Users/guslipkin/Documents/Fall2020/QMB 3200 ~ Advanced Quantitative Methods/Final Project/Hhldtrips.xlsx")
+dfPerson
+dfHousehold
+```
+
+```{r}
+#worker == 1, not worker == 0
+dfPerson$worker[dfPerson$worker == 2] <- 0
+```
+

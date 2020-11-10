@@ -1,0 +1,42 @@
+{smcl}
+{com}{sf}{ul off}{txt}{.-}
+      name:  {res}<unnamed>
+       {txt}log:  {res}/Users/guslipkin/Documents/Fall2020/QMB 3200 ~ Advanced Quantitative Methods/Final Project/Summary Statistics.smcl
+  {txt}log type:  {res}smcl
+ {txt}opened on:  {res}10 Nov 2020, 11:05:55
+
+{com}. 
+. import excel "/Users/guslipkin/Documents/Fall2020/QMB 3200 ~ Advanced Quantitative Methods/Final Project/persontrips.xlsx", sheet("persontrips") firstrow clear
+{res}{text}(12 vars, 648 obs)
+
+{com}. summ
+
+{txt}    Variable {c |}        Obs        Mean    Std. Dev.       Min        Max
+{hline 13}{c +}{hline 57}
+{space 3}person_id {c |}{res}        648    1.26e+08    1.66e+07   1.00e+08   1.56e+08
+{txt}{space 6}driver {c |}{res}        648    .5972222    .8929355         -1          2
+{txt}{space 6}worker {c |}{res}        648    .8132716    1.145117         -9          2
+{txt}{space 8}educ {c |}{res}        648    2.878086    2.941303         -7          8
+{txt}{space 4}hhincttl {c |}{res}        648    10.31944    6.520788         -8         18
+{txt}{hline 13}{c +}{hline 57}
+{space 5}numadlt {c |}{res}        648    2.087963    .6740797          1          4
+{txt}{space 5}drvrcnt {c |}{res}        648     2.07716    .8378064          0          5
+{txt}{space 7}r_age {c |}{res}        648    37.43981    23.76715         -8         88
+{txt}{space 7}r_sex {c |}{res}        648    1.506173    .5003481          1          2
+{txt}{space 6}hhsize {c |}{res}        648    3.351852    1.656693          1          9
+{txt}{hline 13}{c +}{hline 57}
+{space 5}homeown {c |}{res}        648    1.189815    .3924574          1          2
+{txt}{space 4}pertrips {c |}{res}        648    4.598765    2.395152          1         16
+
+{com}. summ -person_id
+{err}- invalid name
+{txt}{search r(198), local:r(198);}
+
+{com}. log close
+      {txt}name:  {res}<unnamed>
+       {txt}log:  {res}/Users/guslipkin/Documents/Fall2020/QMB 3200 ~ Advanced Quantitative Methods/Final Project/Summary Statistics.smcl
+  {txt}log type:  {res}smcl
+ {txt}closed on:  {res}10 Nov 2020, 11:07:16
+{txt}{.-}
+{smcl}
+{txt}{sf}{ul off}
