@@ -1,0 +1,7 @@
+For categorical, tabulate in stata
+
+log transform aadt
+
+regress lnaadt pop nlanes access1 urbnonint
+rvfplot, yline(0)
+rvpplot pop, yline(0)
