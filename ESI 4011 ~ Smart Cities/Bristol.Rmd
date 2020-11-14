@@ -10,6 +10,7 @@ library(spDataLarge)
 library(stplanr)      # geographic transport data package
 library(tmap)         # visualization package (see Chapter 8)
 library(osrm)         # routing package
+library(mapview)
 ```
 
 ```{r}
@@ -89,5 +90,30 @@ sum(zones_joined$all)
 names(zones_joined)
 #> [1] "geo_code"   "name"       "all"        "bicycle"    "foot"      
 #> [6] "car_driver" "train"      "geometry"
+```
+
+```{r}
+zones_od = bristol_od %>% 
+  group_by(d) %>% 
+  summarize_if(is.numeric, sum) %>% 
+  dplyr::select(geo_code = d, all_dest = all) %>% 
+  inner_join(zones_joined, ., by = "geo_code")
+```
+
+```{r}
+qtm(zones_od, c("all", "all_dest")) +
+  tm_layout(panel.labels = c("Origin", "Destination"))
+```
+
+```{r}
+library(tmap)
+tmap_mode("plot")
+tm_shape(zones_od) + tm_fill(c("all", "all_dest"), 
+                             palette = viridis::plasma(4),
+                             breaks = c(0, 2000, 4000, 10000, 50000),
+                             title = "Trips")  +
+  tm_borders(col = "black", lwd = 0.5) + 
+  tm_facets(free.scales = FALSE, ncol = 2) +
+  tm_layout(panel.labels = c("Zone of origin", "Zone of destination"))
 ```
 
