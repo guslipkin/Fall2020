@@ -57,6 +57,12 @@ dfDummy <- df %>%
   select(aadt, county_pop, lanes, width, access, rural_road, interstate, tonnage, time, no_trucks, rural, small)
 dfDummy
 ```
+```{r}
+#log transforms
+dfDummy <- dfDummy %>%
+  mutate(lnAADT = log(aadt))
+dfDummy
+```
 
 ```{r}
 write_excel_csv(dfDummy, "/Users/guslipkin/Documents/Fall2020/QMB 3200 ~ Advanced Quantitative Methods/Assignment 8/Assignment 8 Data Mod.csv")
@@ -64,12 +70,36 @@ write_excel_csv(dfDummy, "/Users/guslipkin/Documents/Fall2020/QMB 3200 ~ Advance
 
 ```{r}
 #summary statistics for continuous variables
-dfDummy %>%
+df %>%
   select(aadt, county_pop, lanes, width) %>%
   summary()
-#mean of categorical variables
-dfDummy %>%
-  select(access, rural_road, interstate, tonnage, time, no_trucks, rural, small) %>%
-  colMeans()
+#tabulate categorical variables
+df %>%
+  group_by(access) %>%
+  summarise(n = n()) %>%
+  mutate(totalN = (cumsum(n)),
+         percent = round((n / sum(n)), 3),
+         cumpercent = round(cumsum(freq = n / sum(n)), 3))
+
+df %>%
+  group_by(class) %>%
+  summarise(n = n()) %>%
+  mutate(totalN = (cumsum(n)),
+         percent = round((n / sum(n)), 3),
+         cumpercent = round(cumsum(freq = n / sum(n)), 3))
+
+df %>%
+  group_by(restrictions) %>%
+  summarise(n = n()) %>%
+  mutate(totalN = (cumsum(n)),
+         percent = round((n / sum(n)), 3),
+         cumpercent = round(cumsum(freq = n / sum(n)), 3))
+
+df %>%
+  group_by(locale) %>%
+  summarise(n = n()) %>%
+  mutate(totalN = (cumsum(n)),
+         percent = round((n / sum(n)), 3),
+         cumpercent = round(cumsum(freq = n / sum(n)), 3))
 ```
 
