@@ -1,0 +1,24 @@
+Coffee
+Pour oatmilk into pitcher
+		Purge steam wand
+		Aerate oatmilk
+		Steam oatmilk
+		Swirl oatmilk
+	Pour shots into mug
+	Pour milk into mug
+	Smell
+	Slurp
+	Locate
+	Describe
+
+Oatmilk
+	Gather Resources
+		1 cup oats
+		4 cups water
+		1 pinch salt
+		1 date
+		Blender
+		Cheese cloth
+	Blend
+	Strain
+	Refrigerate

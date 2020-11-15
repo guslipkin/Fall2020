@@ -1,42 +1,299 @@
 {smcl}
 {com}{sf}{ul off}{txt}{.-}
       name:  {res}<unnamed>
-       {txt}log:  {res}/Users/guslipkin/Documents/Fall2020/QMB 3200 ~ Advanced Quantitative Methods/Final Project/Summary Statistics.smcl
+       {txt}log:  {res}/Users/guslipkin/Documents/Fall2020/QMB 3200 ~ Advanced Quantitative Methods/Final Project/Summary Statistics Person.smcl
   {txt}log type:  {res}smcl
- {txt}opened on:  {res}10 Nov 2020, 11:05:55
+ {txt}opened on:  {res}14 Nov 2020, 14:18:44
 
 {com}. 
-. import excel "/Users/guslipkin/Documents/Fall2020/QMB 3200 ~ Advanced Quantitative Methods/Final Project/persontrips.xlsx", sheet("persontrips") firstrow clear
+. import delimited "/Users/guslipkin/Documents/Fall2020/QMB 3200 ~ Advanced Quantitative Methods/Final Project/dfPerson.csv", encoding(UTF-8) numericcols(2 4 5) 
 {res}{text}(12 vars, 648 obs)
 
-{com}. summ
+{com}. summ numadlt drvrcnt hhsize pertrips
 
 {txt}    Variable {c |}        Obs        Mean    Std. Dev.       Min        Max
 {hline 13}{c +}{hline 57}
-{space 3}person_id {c |}{res}        648    1.26e+08    1.66e+07   1.00e+08   1.56e+08
-{txt}{space 6}driver {c |}{res}        648    .5972222    .8929355         -1          2
-{txt}{space 6}worker {c |}{res}        648    .8132716    1.145117         -9          2
-{txt}{space 8}educ {c |}{res}        648    2.878086    2.941303         -7          8
-{txt}{space 4}hhincttl {c |}{res}        648    10.31944    6.520788         -8         18
-{txt}{hline 13}{c +}{hline 57}
+{space 5}numadlt {c |}{res}        648    2.087963    .6740797          1          4
+{txt}{space 5}drvrcnt {c |}{res}        648     2.07716    .8378064          0          5
+{txt}{space 6}hhsize {c |}{res}        648    3.351852    1.656693          1          9
+{txt}{space 4}pertrips {c |}{res}        648    4.598765    2.395152          1         16
+
+{com}. table driver
+
+{txt}{hline 10}{c TT}{hline 11}
+   driver {c |}      Freq.
+{hline 10}{c +}{hline 11}
+        1 {c |}        {res}468
+        {txt}2 {c |}         {res}33
+{txt}{hline 10}{c BT}{hline 11}
+
+{com}. 
+. import delimited "/Users/guslipkin/Documents/Fall2020/QMB 3200 ~ Advanced Quantitative Methods/Final Project/dfPerson.csv", encoding(UTF-8) numericcols(2 4 5) clear 
+{res}{text}(12 vars, 648 obs)
+
+{com}. table driver
+
+{txt}{hline 10}{c TT}{hline 11}
+   driver {c |}      Freq.
+{hline 10}{c +}{hline 11}
+        0 {c |}         {res}33
+        {txt}1 {c |}        {res}468
+{txt}{hline 10}{c BT}{hline 11}
+
+{com}. tabulate driver
+
+     {txt}driver {c |}      Freq.     Percent        Cum.
+{hline 12}{c +}{hline 35}
+          0 {c |}{res}         33        6.59        6.59
+{txt}          1 {c |}{res}        468       93.41      100.00
+{txt}{hline 12}{c +}{hline 35}
+      Total {c |}{res}        501      100.00
+
+{com}. tabulate driver worker
+
+           {txt}{c |}              worker
+    driver {c |}        -9          0          1 {c |}     Total
+{hline 11}{c +}{hline 33}{c +}{hline 10}
+         0 {c |}{res}         0         25          8 {txt}{c |}{res}        33 
+{txt}         1 {c |}{res}         1        158        309 {txt}{c |}{res}       468 
+{txt}{hline 11}{c +}{hline 33}{c +}{hline 10}
+     Total {c |}{res}         1        183        317 {txt}{c |}{res}       501 
+
+{com}. tabulate driver
+
+     {txt}driver {c |}      Freq.     Percent        Cum.
+{hline 12}{c +}{hline 35}
+          0 {c |}{res}         33        6.59        6.59
+{txt}          1 {c |}{res}        468       93.41      100.00
+{txt}{hline 12}{c +}{hline 35}
+      Total {c |}{res}        501      100.00
+
+{com}. summ numadlt drvrcnt hhsize pertrips r_age
+
+{txt}    Variable {c |}        Obs        Mean    Std. Dev.       Min        Max
+{hline 13}{c +}{hline 57}
+{space 5}numadlt {c |}{res}        648    2.087963    .6740797          1          4
+{txt}{space 5}drvrcnt {c |}{res}        648     2.07716    .8378064          0          5
+{txt}{space 6}hhsize {c |}{res}        648    3.351852    1.656693          1          9
+{txt}{space 4}pertrips {c |}{res}        648    4.598765    2.395152          1         16
+{txt}{space 7}r_age {c |}{res}        648    37.43981    23.76715         -8         88
+
+{com}. summ numadlt drvrcnt hhsize pertrips r_age
+
+{txt}    Variable {c |}        Obs        Mean    Std. Dev.       Min        Max
+{hline 13}{c +}{hline 57}
+{space 5}numadlt {c |}{res}        648    2.087963    .6740797          1          4
+{txt}{space 5}drvrcnt {c |}{res}        648     2.07716    .8378064          0          5
+{txt}{space 6}hhsize {c |}{res}        648    3.351852    1.656693          1          9
+{txt}{space 4}pertrips {c |}{res}        648    4.598765    2.395152          1         16
+{txt}{space 7}r_age {c |}{res}        648    37.43981    23.76715         -8         88
+
+{com}. summ numadlt drvrcnt r_age hhsize pertrips
+
+{txt}    Variable {c |}        Obs        Mean    Std. Dev.       Min        Max
+{hline 13}{c +}{hline 57}
 {space 5}numadlt {c |}{res}        648    2.087963    .6740797          1          4
 {txt}{space 5}drvrcnt {c |}{res}        648     2.07716    .8378064          0          5
 {txt}{space 7}r_age {c |}{res}        648    37.43981    23.76715         -8         88
-{txt}{space 7}r_sex {c |}{res}        648    1.506173    .5003481          1          2
 {txt}{space 6}hhsize {c |}{res}        648    3.351852    1.656693          1          9
-{txt}{hline 13}{c +}{hline 57}
-{space 5}homeown {c |}{res}        648    1.189815    .3924574          1          2
 {txt}{space 4}pertrips {c |}{res}        648    4.598765    2.395152          1         16
 
-{com}. summ -person_id
-{err}- invalid name
-{txt}{search r(198), local:r(198);}
+{com}. 
+. import delimited "/Users/guslipkin/Documents/Fall2020/QMB 3200 ~ Advanced Quantitative Methods/Final Project/dfPerson.csv", encoding(UTF-8) numericcols(2 4 5 8) clear 
+{res}{text}(12 vars, 648 obs)
 
-{com}. log close
-      {txt}name:  {res}<unnamed>
-       {txt}log:  {res}/Users/guslipkin/Documents/Fall2020/QMB 3200 ~ Advanced Quantitative Methods/Final Project/Summary Statistics.smcl
-  {txt}log type:  {res}smcl
- {txt}closed on:  {res}10 Nov 2020, 11:07:16
-{txt}{.-}
-{smcl}
-{txt}{sf}{ul off}
+{com}. summ numadlt drvrcnt r_age hhsize pertrips
+
+{txt}    Variable {c |}        Obs        Mean    Std. Dev.       Min        Max
+{hline 13}{c +}{hline 57}
+{space 5}numadlt {c |}{res}        648    2.087963    .6740797          1          4
+{txt}{space 5}drvrcnt {c |}{res}        648     2.07716    .8378064          0          5
+{txt}{space 7}r_age {c |}{res}        642    37.86293     23.4691          0         88
+{txt}{space 6}hhsize {c |}{res}        648    3.351852    1.656693          1          9
+{txt}{space 4}pertrips {c |}{res}        648    4.598765    2.395152          1         16
+
+{com}. tabulate driver
+
+     {txt}driver {c |}      Freq.     Percent        Cum.
+{hline 12}{c +}{hline 35}
+          0 {c |}{res}         33        6.59        6.59
+{txt}          1 {c |}{res}        468       93.41      100.00
+{txt}{hline 12}{c +}{hline 35}
+      Total {c |}{res}        501      100.00
+
+{com}. tabulate worker
+
+     {txt}worker {c |}      Freq.     Percent        Cum.
+{hline 12}{c +}{hline 35}
+         -9 {c |}{res}          1        0.15        0.15
+{txt}         -1 {c |}{res}        147       22.69       22.84
+{txt}          0 {c |}{res}        183       28.24       51.08
+{txt}          1 {c |}{res}        317       48.92      100.00
+{txt}{hline 12}{c +}{hline 35}
+      Total {c |}{res}        648      100.00
+
+{com}. 
+. import delimited "/Users/guslipkin/Documents/Fall2020/QMB 3200 ~ Advanced Quantitative Methods/Final Project/dfPerson.csv", encoding(UTF-8) numericcols(2 3 4 5 8) clear 
+{res}{text}(12 vars, 648 obs)
+
+{com}. tabulate worker
+
+     {txt}worker {c |}      Freq.     Percent        Cum.
+{hline 12}{c +}{hline 35}
+          0 {c |}{res}        183       36.60       36.60
+{txt}          1 {c |}{res}        317       63.40      100.00
+{txt}{hline 12}{c +}{hline 35}
+      Total {c |}{res}        500      100.00
+
+{com}. tabulate educ
+
+       {txt}educ {c |}      Freq.     Percent        Cum.
+{hline 12}{c +}{hline 35}
+         -7 {c |}{res}          1        0.20        0.20
+{txt}          1 {c |}{res}         52       10.53       10.73
+{txt}          2 {c |}{res}        127       25.71       36.44
+{txt}          3 {c |}{res}         11        2.23       38.66
+{txt}          4 {c |}{res}        118       23.89       62.55
+{txt}          5 {c |}{res}         30        6.07       68.62
+{txt}          6 {c |}{res}         85       17.21       85.83
+{txt}          7 {c |}{res}          5        1.01       86.84
+{txt}          8 {c |}{res}         65       13.16      100.00
+{txt}{hline 12}{c +}{hline 35}
+      Total {c |}{res}        494      100.00
+
+{com}. 
+. import delimited "/Users/guslipkin/Documents/Fall2020/QMB 3200 ~ Advanced Quantitative Methods/Final Project/dfPerson.csv", encoding(UTF-8) numericcols(2 3 4 5 8) clear 
+{res}{text}(12 vars, 648 obs)
+
+{com}. tabulate educ
+
+       {txt}educ {c |}      Freq.     Percent        Cum.
+{hline 12}{c +}{hline 35}
+          1 {c |}{res}         52       10.55       10.55
+{txt}          2 {c |}{res}        127       25.76       36.31
+{txt}          3 {c |}{res}         11        2.23       38.54
+{txt}          4 {c |}{res}        118       23.94       62.47
+{txt}          5 {c |}{res}         30        6.09       68.56
+{txt}          6 {c |}{res}         85       17.24       85.80
+{txt}          7 {c |}{res}          5        1.01       86.82
+{txt}          8 {c |}{res}         65       13.18      100.00
+{txt}{hline 12}{c +}{hline 35}
+      Total {c |}{res}        493      100.00
+
+{com}. tabulate hhincttl
+
+   {txt}hhincttl {c |}      Freq.     Percent        Cum.
+{hline 12}{c +}{hline 35}
+          1 {c |}{res}          9        1.47        1.47
+{txt}          2 {c |}{res}         18        2.94        4.40
+{txt}          3 {c |}{res}         13        2.12        6.53
+{txt}          4 {c |}{res}         28        4.57       11.09
+{txt}          5 {c |}{res}         16        2.61       13.70
+{txt}          6 {c |}{res}         63       10.28       23.98
+{txt}          7 {c |}{res}         27        4.40       28.38
+{txt}          8 {c |}{res}         46        7.50       35.89
+{txt}          9 {c |}{res}          9        1.47       37.36
+{txt}         10 {c |}{res}         38        6.20       43.56
+{txt}         11 {c |}{res}         24        3.92       47.47
+{txt}         12 {c |}{res}         59        9.62       57.10
+{txt}         13 {c |}{res}         30        4.89       61.99
+{txt}         14 {c |}{res}         30        4.89       66.88
+{txt}         15 {c |}{res}         20        3.26       70.15
+{txt}         16 {c |}{res}         30        4.89       75.04
+{txt}         17 {c |}{res}         45        7.34       82.38
+{txt}         18 {c |}{res}        108       17.62      100.00
+{txt}{hline 12}{c +}{hline 35}
+      Total {c |}{res}        613      100.00
+
+{com}. tabulate r_sex
+
+      {txt}r_sex {c |}      Freq.     Percent        Cum.
+{hline 12}{c +}{hline 35}
+          0 {c |}{res}        328       50.62       50.62
+{txt}          1 {c |}{res}        320       49.38      100.00
+{txt}{hline 12}{c +}{hline 35}
+      Total {c |}{res}        648      100.00
+
+{com}. tabulate homeown
+
+    {txt}homeown {c |}      Freq.     Percent        Cum.
+{hline 12}{c +}{hline 35}
+          0 {c |}{res}        123       18.98       18.98
+{txt}          1 {c |}{res}        525       81.02      100.00
+{txt}{hline 12}{c +}{hline 35}
+      Total {c |}{res}        648      100.00
+
+{com}. 
+. import delimited "/Users/guslipkin/Documents/Fall2020/QMB 3200 ~ Advanced Quantitative Methods/Final Project/dfHousehold.csv", encoding(UTF-8) numericcols(9) clear 
+{res}{text}(10 vars, 297 obs)
+
+{com}. tabulate hhvehcnt hhsize drvrcnt wrkcount numadlt trpmiles
+{err}too many variables specified
+{txt}{search r(103), local:r(103);}
+
+{com}. summ hhvehcnt hhsize drvrcnt wrkcount numadlt trpmiles
+
+{txt}    Variable {c |}        Obs        Mean    Std. Dev.       Min        Max
+{hline 13}{c +}{hline 57}
+{space 4}hhvehcnt {c |}{res}        297    1.892256    1.106724          0          7
+{txt}{space 6}hhsize {c |}{res}        297    2.653199    1.434704          1          9
+{txt}{space 5}drvrcnt {c |}{res}        297    1.851852    .7915975          0          5
+{txt}{space 4}wrkcount {c |}{res}        297    1.262626    .9991807          0          5
+{txt}{space 5}numadlt {c |}{res}        297    1.905724    .6559506          1          4
+{txt}{hline 13}{c +}{hline 57}
+{space 4}trpmiles {c |}{res}        297    117.3281     266.391        -64       3164
+
+{com}. 
+. import delimited "/Users/guslipkin/Documents/Fall2020/QMB 3200 ~ Advanced Quantitative Methods/Final Project/dfHousehold.csv", encoding(UTF-8) numericcols(8 9) clear 
+{res}{text}(10 vars, 297 obs)
+
+{com}. summ hhvehcnt hhsize drvrcnt wrkcount numadlt trpmiles
+
+{txt}    Variable {c |}        Obs        Mean    Std. Dev.       Min        Max
+{hline 13}{c +}{hline 57}
+{space 4}hhvehcnt {c |}{res}        297    1.892256    1.106724          0          7
+{txt}{space 6}hhsize {c |}{res}        297    2.653199    1.434704          1          9
+{txt}{space 5}drvrcnt {c |}{res}        297    1.851852    .7915975          0          5
+{txt}{space 4}wrkcount {c |}{res}        297    1.262626    .9991807          0          5
+{txt}{space 5}numadlt {c |}{res}        297    1.905724    .6559506          1          4
+{txt}{hline 13}{c +}{hline 57}
+{space 4}trpmiles {c |}{res}        295    118.3676    266.9843      .3333       3164
+
+{com}. tabulate homeown
+
+    {txt}homeown {c |}      Freq.     Percent        Cum.
+{hline 12}{c +}{hline 35}
+          0 {c |}{res}         61       20.54       20.54
+{txt}          1 {c |}{res}        236       79.46      100.00
+{txt}{hline 12}{c +}{hline 35}
+      Total {c |}{res}        297      100.00
+
+{com}. tabulate hhincttl
+
+   {txt}hhincttl {c |}      Freq.     Percent        Cum.
+{hline 12}{c +}{hline 35}
+          1 {c |}{res}          4        1.45        1.45
+{txt}          2 {c |}{res}         10        3.62        5.07
+{txt}          3 {c |}{res}          9        3.26        8.33
+{txt}          4 {c |}{res}         16        5.80       14.13
+{txt}          5 {c |}{res}         11        3.99       18.12
+{txt}          6 {c |}{res}         27        9.78       27.90
+{txt}          7 {c |}{res}         12        4.35       32.25
+{txt}          8 {c |}{res}         21        7.61       39.86
+{txt}          9 {c |}{res}          5        1.81       41.67
+{txt}         10 {c |}{res}         22        7.97       49.64
+{txt}         11 {c |}{res}         11        3.99       53.62
+{txt}         12 {c |}{res}         21        7.61       61.23
+{txt}         13 {c |}{res}         12        4.35       65.58
+{txt}         14 {c |}{res}         11        3.99       69.57
+{txt}         15 {c |}{res}          8        2.90       72.46
+{txt}         16 {c |}{res}         13        4.71       77.17
+{txt}         17 {c |}{res}         20        7.25       84.42
+{txt}         18 {c |}{res}         43       15.58      100.00
+{txt}{hline 12}{c +}{hline 35}
+      Total {c |}{res}        276      100.00
+
+{com}. save "/Users/guslipkin/Documents/Fall2020/QMB 3200 ~ Advanced Quantitative Methods/Final Project/Untitled.dta"
+{txt}file /Users/guslipkin/Documents/Fall2020/QMB 3200 ~ Advanced Quantitative Methods/Final Project/Untitled.dta saved
+
+{com}. exit

@@ -9,15 +9,13 @@ library(readxl)
 ```
 
 ```{r}
-df <- read_xlsx("/Users/guslipkin/Documents/Fall2020/QMB 3200 ~ Advanced Quantitative Methods/Assignment 8/Assignment 8 Data.xlsx")
-df
+df <- read_xlsx("../Assignment 8/Assignment 8 Data.xlsx")
 ```
 
 
 ```{r}
 #re-code access so no access is 0 instead of 2
 df$access[df$access == 2] <- 0
-df
 ```
 
 ```{r}
@@ -26,7 +24,6 @@ df
 #interstate == 0, no interstate == 0
 df$rural_road <- ifelse(df$class == 1 | df$class == 2, 1, 0)
 df$interstate <- ifelse(df$class == 1 | df$class == 3, 1, 0)
-df
 ```
 
 ```{r}
@@ -37,7 +34,6 @@ df
 df$tonnage <- ifelse(df$restrictions == 2 | df$restrictions == 4, 1, 0)
 df$time <- ifelse(df$restrictions == 3 | df$restrictions == 4, 1, 0)
 df$no_trucks <- ifelse(df$restrictions == 5, 1, 0)
-df
 ```
 
 ```{r}
@@ -49,57 +45,19 @@ df %>%
 #small == 1, >50,000 == 0
 df$rural <- ifelse(df$locale == 1, 1, 0)
 df$small <- ifelse(df$locale == 1 | df$locale == 2, 1, 0)
-df
 ```
 
 ```{r}
 dfDummy <- df %>%
   select(aadt, county_pop, lanes, width, access, rural_road, interstate, tonnage, time, no_trucks, rural, small)
-dfDummy
 ```
 ```{r}
 #log transforms
 dfDummy <- dfDummy %>%
   mutate(lnAADT = log(aadt))
-dfDummy
 ```
 
 ```{r}
-write_excel_csv(dfDummy, "/Users/guslipkin/Documents/Fall2020/QMB 3200 ~ Advanced Quantitative Methods/Assignment 8/Assignment 8 Data Mod.csv")
-```
-
-```{r}
-#summary statistics for continuous variables
-df %>%
-  select(aadt, county_pop, lanes, width) %>%
-  summary()
-#tabulate categorical variables
-df %>%
-  group_by(access) %>%
-  summarise(n = n()) %>%
-  mutate(totalN = (cumsum(n)),
-         percent = round((n / sum(n)), 3),
-         cumpercent = round(cumsum(freq = n / sum(n)), 3))
-
-df %>%
-  group_by(class) %>%
-  summarise(n = n()) %>%
-  mutate(totalN = (cumsum(n)),
-         percent = round((n / sum(n)), 3),
-         cumpercent = round(cumsum(freq = n / sum(n)), 3))
-
-df %>%
-  group_by(restrictions) %>%
-  summarise(n = n()) %>%
-  mutate(totalN = (cumsum(n)),
-         percent = round((n / sum(n)), 3),
-         cumpercent = round(cumsum(freq = n / sum(n)), 3))
-
-df %>%
-  group_by(locale) %>%
-  summarise(n = n()) %>%
-  mutate(totalN = (cumsum(n)),
-         percent = round((n / sum(n)), 3),
-         cumpercent = round(cumsum(freq = n / sum(n)), 3))
+write_excel_csv(dfDummy, "../Assignment 8/Assignment 8 Data Mod.csv")
 ```
 
