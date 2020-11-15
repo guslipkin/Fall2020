@@ -51,11 +51,18 @@ df$small <- ifelse(df$locale == 1 | df$locale == 2, 1, 0)
 dfDummy <- df %>%
   select(aadt, county_pop, lanes, width, access, rural_road, interstate, tonnage, time, no_trucks, rural, small)
 ```
+
 ```{r}
 #log transforms
-dfDummy <- dfDummy %>%
-  mutate(lnAADT = log(aadt))
+dfDummy$lnAADT <-  log(dfDummy$aadt)
+dfDummy$lnPop <- log(dfDummy$county_pop)
 ```
+
+```{r}
+dfDummy$laneWidth <- dfDummy$width / dfDummy$lanes
+dfDummy
+```
+
 
 ```{r}
 write_excel_csv(dfDummy, "../Assignment 8/Assignment 8 Data Mod.csv")
