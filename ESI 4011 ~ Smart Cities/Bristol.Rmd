@@ -1,6 +1,7 @@
 ---
-title: "R Notebook"
-output: html_notebook
+output:
+  pdf_document: default
+  html_document: default
 ---
 
 ```{r}
@@ -10,16 +11,23 @@ library(spDataLarge)
 library(stplanr)      # geographic transport data package
 library(tmap)         # visualization package (see Chapter 8)
 library(osrm)         # routing package
-library(mapview)
+```
+
+#12.3 Transport Zones
+```{r}
+bristol_region = osmdata::getbb("Bristol", format_out = "sf_polygon")
 ```
 
 ```{r}
 names(bristol_zones)
+#> [1] "geo_code" "name"     "geometry"
 ```
 
 ```{r}
 nrow(bristol_od)
+#> [1] 2910
 nrow(bristol_zones)
+#> [1] 102
 ```
 
 ```{r}
@@ -57,63 +65,115 @@ qtm(zones_od, c("all", "all_dest")) +
   tm_layout(panel.labels = c("Origin", "Destination"))
 ```
 
+#12.4 Desire Lines
 ```{r}
-bristol_region <- osmdata::getbb("Bristol", format_out = "sf_polygon")
+od_top5 = bristol_od %>% 
+  arrange(desc(all)) %>% 
+  top_n(5, wt = all)
 ```
 
 ```{r}
-names(bristol_zones)
+bristol_od$Active = (bristol_od$bicycle + bristol_od$foot) /
+  bristol_od$all * 100
 ```
 
 ```{r}
-nrow(bristol_od)
-nrow(bristol_zones)
+od_intra = filter(bristol_od, o == d)
+od_inter = filter(bristol_od, o != d)
 ```
 
 ```{r}
-zones_attr = bristol_od %>% 
-  group_by(o) %>% 
-  summarize_if(is.numeric, sum) %>% 
-  dplyr::rename(geo_code = o)
+desire_lines = od2line(od_inter, zones_od)
+#> Creating centroids representing desire line start and end points.
 ```
 
 ```{r}
-summary(zones_attr$geo_code %in% bristol_zones$geo_code)
-#>    Mode    TRUE 
-#> logical     102
+qtm(desire_lines, lines.lwd = "all")
+```
+
+#12.5 Routes
+```{r}
+desire_lines$distance = as.numeric(st_length(desire_lines))
+desire_carshort = dplyr::filter(desire_lines, car_driver > 300 & distance < 5000)
 ```
 
 ```{r}
-zones_joined = left_join(bristol_zones, zones_attr, by = "geo_code")
-sum(zones_joined$all)
-#> [1] 238805
-names(zones_joined)
-#> [1] "geo_code"   "name"       "all"        "bicycle"    "foot"      
-#> [6] "car_driver" "train"      "geometry"
+route_carshort = route(
+  l = desire_carshort,
+  route_fun = osrmRoute,
+  returnclass = "sf" # argument passed to route_fun
+  )
 ```
 
 ```{r}
-zones_od = bristol_od %>% 
-  group_by(d) %>% 
-  summarize_if(is.numeric, sum) %>% 
-  dplyr::select(geo_code = d, all_dest = all) %>% 
-  inner_join(zones_joined, ., by = "geo_code")
+desire_carshort$geom_car = st_geometry(route_carshort)
 ```
 
 ```{r}
-qtm(zones_od, c("all", "all_dest")) +
-  tm_layout(panel.labels = c("Origin", "Destination"))
+mapview::mapview(desire_carshort$geom_car)
+```
+
+#12.6 Nodes
+```{r}
+desire_rail = top_n(desire_lines, n = 3, wt = train)
 ```
 
 ```{r}
-library(tmap)
-tmap_mode("plot")
-tm_shape(zones_od) + tm_fill(c("all", "all_dest"), 
-                             palette = viridis::plasma(4),
-                             breaks = c(0, 2000, 4000, 10000, 50000),
-                             title = "Trips")  +
-  tm_borders(col = "black", lwd = 0.5) + 
-  tm_facets(free.scales = FALSE, ncol = 2) +
-  tm_layout(panel.labels = c("Zone of origin", "Zone of destination"))
+ncol(desire_rail)
+#> [1] 10
+desire_rail = line_via(desire_rail, bristol_stations)
+ncol(desire_rail)
+#> [1] 13
+```
+
+#12.7 Route Networks
+```{r}
+summary(bristol_ways)
+#>      highway        maxspeed         ref                geometry   
+#>  cycleway:1317   30 mph : 925   A38    : 214   LINESTRING   :4915  
+#>  rail    : 832   20 mph : 556   A432   : 146   epsg:4326    :   0  
+#>  road    :2766   40 mph : 397   M5     : 144   +proj=long...:   0  
+#>                  70 mph : 328   A4018  : 124                       
+#>                  50 mph : 158   A420   : 115                       
+#>                  (Other): 490   (Other):1877                       
+#>                  NA's   :2061   NA's   :2295
+```
+
+```{r}
+ways_freeway = bristol_ways %>% filter(maxspeed == "50 mph") 
+#ways_freeway = bristol_ways %>% filter(ref == "A4018") 
+ways_sln = SpatialLinesNetwork(ways_freeway)
+#> Warning in SpatialLinesNetwork.sf(ways_freeway): Graph composed of multiple
+#> subgraphs, consider cleaning it with sln_clean_graph().
+slotNames(ways_sln)
+#> [1] "sl"          "g"           "nb"          "weightfield"
+weightfield(ways_sln)
+#> [1] "length"
+class(ways_sln@g)
+#> [1] "igraph"
+```
+
+```{r}
+e = igraph::edge_betweenness(ways_sln@g)
+plot(ways_sln@sl$geometry, lwd = e / 500)
+```
+
+#12.8 Prioritizing New Infrastructure
+```{r}
+route_rail = desire_rail %>%
+  st_set_geometry("leg_dest") %>% 
+  route(l = ., route_fun = osrmRoute, returnclass = "sf") %>% 
+  select(names(route_carshort))
+route_rail
+```
+
+```{r}
+route_cycleway = rbind(route_rail, route_carshort)
+route_cycleway$all = c(desire_rail$all, desire_carshort$all)
+mapview::mapview(route_cycleway)
+```
+
+```{r}
+qtm(route_cycleway, lines.lwd = "all")
 ```
 
