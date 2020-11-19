@@ -1,0 +1,47 @@
+{smcl}
+{com}{sf}{ul off}{txt}{.-}
+      name:  {res}<unnamed>
+       {txt}log:  {res}/Users/guslipkin/Documents/Fall2020/QMB 3200 ~ Advanced Quantitative Methods/CEOSAL1.smcl
+  {txt}log type:  {res}smcl
+ {txt}opened on:  {res}13 Oct 2020, 11:25:26
+
+{com}. regress salary roe
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}       209
+{txt}{hline 13}{c +}{hline 34}   F(1, 207)       = {res}     2.77
+{txt}       Model {c |} {res} 5166419.04         1  5166419.04   {txt}Prob > F        ={res}    0.0978
+{txt}    Residual {c |} {res}  386566563       207  1867471.32   {txt}R-squared       ={res}    0.0132
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.0084
+{txt}       Total {c |} {res}  391732982       208  1883331.64   {txt}Root MSE        =   {res} 1366.6
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}      salary{col 14}{c |}      Coef.{col 26}   Std. Err.{col 38}      t{col 46}   P>|t|{col 54}     [95% Con{col 67}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 9}roe {c |}{col 14}{res}{space 2} 18.50119{col 26}{space 2} 11.12325{col 37}{space 1}    1.66{col 46}{space 3}0.098{col 54}{space 4}-3.428196{col 67}{space 3} 40.43057
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2} 963.1913{col 26}{space 2} 213.2403{col 37}{space 1}    4.52{col 46}{space 3}0.000{col 54}{space 4} 542.7902{col 67}{space 3} 1383.592
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}
+{com}. scatter salary roe
+{res}
+{com}. gen sal = salary * 1000
+
+. regress sal roe
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}       209
+{txt}{hline 13}{c +}{hline 34}   F(1, 207)       = {res}     2.77
+{txt}       Model {c |} {res} 5.1664e+12         1  5.1664e+12   {txt}Prob > F        ={res}    0.0978
+{txt}    Residual {c |} {res} 3.8657e+14       207  1.8675e+12   {txt}R-squared       ={res}    0.0132
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.0084
+{txt}       Total {c |} {res} 3.9173e+14       208  1.8833e+12   {txt}Root MSE        =   {res} 1.4e+06
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}         sal{col 14}{c |}      Coef.{col 26}   Std. Err.{col 38}      t{col 46}   P>|t|{col 54}     [95% Con{col 67}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 9}roe {c |}{col 14}{res}{space 2} 18501.19{col 26}{space 2} 11123.25{col 37}{space 1}    1.66{col 46}{space 3}0.098{col 54}{space 4}-3428.196{col 67}{space 3} 40430.57
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2} 963191.3{col 26}{space 2} 213240.3{col 37}{space 1}    4.52{col 46}{space 3}0.000{col 54}{space 4} 542790.2{col 67}{space 3}  1383592
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}
+{com}. save "/Users/guslipkin/Documents/Fall2020/QMB 3200 ~ Advanced Quantitative Methods/CEOSAL1.dta", replace
+{txt}file /Users/guslipkin/Documents/Fall2020/QMB 3200 ~ Advanced Quantitative Methods/CEOSAL1.dta saved
+
+{com}. exit, clear

@@ -1,0 +1,473 @@
+{smcl}
+{com}{sf}{ul off}{txt}{.-}
+      name:  {res}<unnamed>
+       {txt}log:  {res}/Users/guslipkin/Documents/Fall2020/QMB 3200 ~ Advanced Quantitative Methods/Assignment 8/Assignment 8.smcl
+  {txt}log type:  {res}smcl
+ {txt}opened on:  {res}14 Nov 2020, 17:44:32
+
+{com}. 
+. import delimited "/Users/guslipkin/Documents/Fall2020/QMB 3200 ~ Advanced Quantitative Methods/Assignment 8/Assignment 8 Data Mod.csv", encoding(UTF-8) 
+{res}{text}(13 vars, 121 obs)
+
+{com}. summ aadt county_pop lanes width
+
+{txt}    Variable {c |}        Obs        Mean    Std. Dev.       Min        Max
+{hline 13}{c +}{hline 57}
+{space 8}aadt {c |}{res}        121    19437.69    30237.37        201     155547
+{txt}{space 2}county_pop {c |}{res}        121    263427.7      329470       7716     941411
+{txt}{space 7}lanes {c |}{res}        121    3.099174    1.300032          2          8
+{txt}{space 7}width {c |}{res}        121    31.12397    11.53514         19         68
+
+{com}. summ lnaadt county_pop lanes width
+
+{txt}    Variable {c |}        Obs        Mean    Std. Dev.       Min        Max
+{hline 13}{c +}{hline 57}
+{space 6}lnaadt {c |}{res}        121    8.815231    1.589556   5.303305    11.9547
+{txt}{space 2}county_pop {c |}{res}        121    263427.7      329470       7716     941411
+{txt}{space 7}lanes {c |}{res}        121    3.099174    1.300032          2          8
+{txt}{space 7}width {c |}{res}        121    31.12397    11.53514         19         68
+
+{com}. tabulate access
+
+     {txt}access {c |}      Freq.     Percent        Cum.
+{hline 12}{c +}{hline 35}
+          0 {c |}{res}         94       77.69       77.69
+{txt}          1 {c |}{res}         27       22.31      100.00
+{txt}{hline 12}{c +}{hline 35}
+      Total {c |}{res}        121      100.00
+
+{com}. tabulate class
+{err}variable {bf}class{sf} not found
+{txt}{search r(111), local:r(111);}
+
+{com}. 
+. import excel "/Users/guslipkin/Documents/Fall2020/QMB 3200 ~ Advanced Quantitative Methods/Assignment 8/Assignment 8 Data.xlsx", sheet("Sheet1") clear
+{res}{text}(8 vars, 122 obs)
+
+{com}. summ aadt county_pop lanes width
+{err}variable {bf}aadt{sf} not found
+{txt}{search r(111), local:r(111);}
+
+{com}. 
+. import excel "/Users/guslipkin/Documents/Fall2020/QMB 3200 ~ Advanced Quantitative Methods/Assignment 8/Assignment 8 Data.xlsx", sheet("Sheet1") firstrow clear
+{res}{text}(8 vars, 121 obs)
+
+{com}. summ aadt county_pop lanes width
+
+{txt}    Variable {c |}        Obs        Mean    Std. Dev.       Min        Max
+{hline 13}{c +}{hline 57}
+{space 8}aadt {c |}{res}        121    19437.69    30237.37        201     155547
+{txt}{space 2}county_pop {c |}{res}        121    263427.7      329470       7716     941411
+{txt}{space 7}lanes {c |}{res}        121    3.099174    1.300032          2          8
+{txt}{space 7}width {c |}{res}        121    31.12397    11.53514         19         68
+
+{com}. tabulate access
+
+     {txt}access {c |}      Freq.     Percent        Cum.
+{hline 12}{c +}{hline 35}
+          1 {c |}{res}         27       22.31       22.31
+{txt}          2 {c |}{res}         94       77.69      100.00
+{txt}{hline 12}{c +}{hline 35}
+      Total {c |}{res}        121      100.00
+
+{com}. tabulate class
+
+      {txt}class {c |}      Freq.     Percent        Cum.
+{hline 12}{c +}{hline 35}
+          1 {c |}{res}          8        6.61        6.61
+{txt}          2 {c |}{res}         56       46.28       52.89
+{txt}          3 {c |}{res}         18       14.88       67.77
+{txt}          4 {c |}{res}         39       32.23      100.00
+{txt}{hline 12}{c +}{hline 35}
+      Total {c |}{res}        121      100.00
+
+{com}. tabulate restrictions
+
+{txt}restriction {c |}
+          s {c |}      Freq.     Percent        Cum.
+{hline 12}{c +}{hline 35}
+          1 {c |}{res}         32       26.45       26.45
+{txt}          2 {c |}{res}         20       16.53       42.98
+{txt}          3 {c |}{res}          1        0.83       43.80
+{txt}          4 {c |}{res}          7        5.79       49.59
+{txt}          5 {c |}{res}         61       50.41      100.00
+{txt}{hline 12}{c +}{hline 35}
+      Total {c |}{res}        121      100.00
+
+{com}. tabulate locale
+
+     {txt}locale {c |}      Freq.     Percent        Cum.
+{hline 12}{c +}{hline 35}
+          1 {c |}{res}         64       52.89       52.89
+{txt}          2 {c |}{res}         39       32.23       85.12
+{txt}          3 {c |}{res}         18       14.88      100.00
+{txt}{hline 12}{c +}{hline 35}
+      Total {c |}{res}        121      100.00
+
+{com}. hist locale
+{txt}(bin={res}11{txt}, start={res}1{txt}, width={res}.18181818{txt})
+{res}
+{com}. hist locale, width=1
+{txt}(bin={res}11{txt}, start={res}1{txt}, width={res}.18181818{txt})
+{err}option {bf:width} not allowed
+{txt}{search r(198), local:r(198);}
+
+{com}. 
+. 
+. import delimited "/Users/guslipkin/Documents/Fall2020/QMB 3200 ~ Advanced Quantitative Methods/Assignment 8/Assignment 8 Data Mod.csv", encoding(UTF-8) clear 
+{res}{text}(13 vars, 121 obs)
+
+{com}. regress lnaadt county_pop lanes width access rural_road interstate tonnage time no_trucks rural small
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}       121
+{txt}{hline 13}{c +}{hline 34}   F(11, 109)      = {res}    50.65
+{txt}       Model {c |} {res}  253.59144        11  23.0537673   {txt}Prob > F        ={res}    0.0000
+{txt}    Residual {c |} {res} 49.6111654       109  .455148306   {txt}R-squared       ={res}    0.8364
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.8199
+{txt}       Total {c |} {res} 303.202606       120  2.52668838   {txt}Root MSE        =   {res} .67465
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}      lnaadt{col 14}{c |}      Coef.{col 26}   Std. Err.{col 38}      t{col 46}   P>|t|{col 54}     [95% Con{col 67}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 2}county_pop {c |}{col 14}{res}{space 2} 9.68e-07{col 26}{space 2} 2.47e-07{col 37}{space 1}    3.91{col 46}{space 3}0.000{col 54}{space 4} 4.78e-07{col 67}{space 3} 1.46e-06
+{txt}{space 7}lanes {c |}{col 14}{res}{space 2} .4408622{col 26}{space 2} .0781754{col 37}{space 1}    5.64{col 46}{space 3}0.000{col 54}{space 4} .2859211{col 67}{space 3} .5958033
+{txt}{space 7}width {c |}{col 14}{res}{space 2} -.003386{col 26}{space 2}  .006238{col 37}{space 1}   -0.54{col 46}{space 3}0.588{col 54}{space 4}-.0157496{col 67}{space 3} .0089775
+{txt}{space 6}access {c |}{col 14}{res}{space 2} .9947788{col 26}{space 2}  .725086{col 37}{space 1}    1.37{col 46}{space 3}0.173{col 54}{space 4} -.442318{col 67}{space 3} 2.431876
+{txt}{space 2}rural_road {c |}{col 14}{res}{space 2}-1.426293{col 26}{space 2} .5063603{col 37}{space 1}   -2.82{col 46}{space 3}0.006{col 54}{space 4}-2.429883{col 67}{space 3}-.4227036
+{txt}{space 2}interstate {c |}{col 14}{res}{space 2}-.5577894{col 26}{space 2} .7619838{col 37}{space 1}   -0.73{col 46}{space 3}0.466{col 54}{space 4}-2.068017{col 67}{space 3} .9524378
+{txt}{space 5}tonnage {c |}{col 14}{res}{space 2}-.0991548{col 26}{space 2} .3017993{col 37}{space 1}   -0.33{col 46}{space 3}0.743{col 54}{space 4}-.6973111{col 67}{space 3} .4990015
+{txt}{space 8}time {c |}{col 14}{res}{space 2} .1236463{col 26}{space 2} .2809957{col 37}{space 1}    0.44{col 46}{space 3}0.661{col 54}{space 4}-.4332781{col 67}{space 3} .6805707
+{txt}{space 3}no_trucks {c |}{col 14}{res}{space 2}-.7890444{col 26}{space 2} .3092861{col 37}{space 1}   -2.55{col 46}{space 3}0.012{col 54}{space 4}-1.402039{col 67}{space 3}-.1760494
+{txt}{space 7}rural {c |}{col 14}{res}{space 2} .1981828{col 26}{space 2} .5064176{col 37}{space 1}    0.39{col 46}{space 3}0.696{col 54}{space 4}-.8055205{col 67}{space 3} 1.201886
+{txt}{space 7}small {c |}{col 14}{res}{space 2} .2219535{col 26}{space 2} .2173738{col 37}{space 1}    1.02{col 46}{space 3}0.309{col 54}{space 4}-.2088744{col 67}{space 3} .6527814
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2} 8.069626{col 26}{space 2} .5214976{col 37}{space 1}   15.47{col 46}{space 3}0.000{col 54}{space 4} 7.036035{col 67}{space 3} 9.103217
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}
+{com}. regress county_pop lanes rural_road no_trucks
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}       121
+{txt}{hline 13}{c +}{hline 34}   F(3, 117)       = {res}    23.80
+{txt}       Model {c |} {res} 4.9365e+12         3  1.6455e+12   {txt}Prob > F        ={res}    0.0000
+{txt}    Residual {c |} {res} 8.0895e+12       117  6.9141e+10   {txt}R-squared       ={res}    0.3790
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.3631
+{txt}       Total {c |} {res} 1.3026e+13       120  1.0855e+11   {txt}Root MSE        =   {res} 2.6e+05
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}  county_pop{col 14}{c |}      Coef.{col 26}   Std. Err.{col 38}      t{col 46}   P>|t|{col 54}     [95% Con{col 67}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 7}lanes {c |}{col 14}{res}{space 2} 63664.08{col 26}{space 2} 25459.44{col 37}{space 1}    2.50{col 46}{space 3}0.014{col 54}{space 4} 13242.99{col 67}{space 3} 114085.2
+{txt}{space 2}rural_road {c |}{col 14}{res}{space 2}-310247.7{col 26}{space 2} 56797.04{col 37}{space 1}   -5.46{col 46}{space 3}0.000{col 54}{space 4}-422731.3{col 67}{space 3}-197764.1
+{txt}{space 3}no_trucks {c |}{col 14}{res}{space 2} 53459.44{col 26}{space 2}  59276.1{col 37}{space 1}    0.90{col 46}{space 3}0.369{col 54}{space 4}-63933.77{col 67}{space 3} 170852.6
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2}   203269{col 26}{space 2} 120577.2{col 37}{space 1}    1.69{col 46}{space 3}0.094{col 54}{space 4}-35527.88{col 67}{space 3} 442065.8
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}
+{com}. regress lanes rural_road
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}       121
+{txt}{hline 13}{c +}{hline 34}   F(1, 119)       = {res}    28.45
+{txt}       Model {c |} {res} 39.1300928         1  39.1300928   {txt}Prob > F        ={res}    0.0000
+{txt}    Residual {c |} {res} 163.679825       119  1.37546071   {txt}R-squared       ={res}    0.1929
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.1862
+{txt}       Total {c |} {res} 202.809917       120  1.69008264   {txt}Root MSE        =   {res} 1.1728
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}       lanes{col 14}{c |}      Coef.{col 26}   Std. Err.{col 38}      t{col 46}   P>|t|{col 54}     [95% Con{col 67}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 2}rural_road {c |}{col 14}{res}{space 2}-1.139254{col 26}{space 2} .2135942{col 37}{space 1}   -5.33{col 46}{space 3}0.000{col 54}{space 4}-1.562192{col 67}{space 3}-.7163166
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2} 3.701754{col 26}{space 2} .1553412{col 37}{space 1}   23.83{col 46}{space 3}0.000{col 54}{space 4} 3.394163{col 67}{space 3} 4.009345
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}
+{com}. regress lnaadt county_pop lanes rural_road no_trucks
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}       121
+{txt}{hline 13}{c +}{hline 34}   F(4, 116)       = {res}   137.37
+{txt}       Model {c |} {res} 250.350417         4  62.5876043   {txt}Prob > F        ={res}    0.0000
+{txt}    Residual {c |} {res} 52.8521886       116  .455622315   {txt}R-squared       ={res}    0.8257
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.8197
+{txt}       Total {c |} {res} 303.202606       120  2.52668838   {txt}Root MSE        =   {res}   .675
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}      lnaadt{col 14}{c |}      Coef.{col 26}   Std. Err.{col 38}      t{col 46}   P>|t|{col 54}     [95% Con{col 67}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 2}county_pop {c |}{col 14}{res}{space 2} 9.56e-07{col 26}{space 2} 2.37e-07{col 37}{space 1}    4.03{col 46}{space 3}0.000{col 54}{space 4} 4.86e-07{col 67}{space 3} 1.43e-06
+{txt}{space 7}lanes {c |}{col 14}{res}{space 2} .5131733{col 26}{space 2} .0670794{col 37}{space 1}    7.65{col 46}{space 3}0.000{col 54}{space 4} .3803141{col 67}{space 3} .6460324
+{txt}{space 2}rural_road {c |}{col 14}{res}{space 2}-1.178075{col 26}{space 2} .1633375{col 37}{space 1}   -7.21{col 46}{space 3}0.000{col 54}{space 4}-1.501585{col 67}{space 3}-.8545643
+{txt}{space 3}no_trucks {c |}{col 14}{res}{space 2} -.842769{col 26}{space 2} .1526927{col 37}{space 1}   -5.52{col 46}{space 3}0.000{col 54}{space 4}-1.145196{col 67}{space 3}-.5403419
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2} 8.020932{col 26}{space 2} .3132643{col 37}{space 1}   25.60{col 46}{space 3}0.000{col 54}{space 4} 7.400473{col 67}{space 3} 8.641392
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}
+{com}. regress lnaadt county_pop lanes
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}       121
+{txt}{hline 13}{c +}{hline 34}   F(2, 118)       = {res}   156.96
+{txt}       Model {c |} {res} 220.369143         2  110.184572   {txt}Prob > F        ={res}    0.0000
+{txt}    Residual {c |} {res} 82.8334622       118  .701978493   {txt}R-squared       ={res}    0.7268
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.7222
+{txt}       Total {c |} {res} 303.202606       120  2.52668838   {txt}Root MSE        =   {res} .83784
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}      lnaadt{col 14}{c |}      Coef.{col 26}   Std. Err.{col 38}      t{col 46}   P>|t|{col 54}     [95% Con{col 67}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 2}county_pop {c |}{col 14}{res}{space 2} 1.54e-06{col 26}{space 2} 2.55e-07{col 37}{space 1}    6.03{col 46}{space 3}0.000{col 54}{space 4} 1.03e-06{col 67}{space 3} 2.05e-06
+{txt}{space 7}lanes {c |}{col 14}{res}{space 2} .8173709{col 26}{space 2} .0647248{col 37}{space 1}   12.63{col 46}{space 3}0.000{col 54}{space 4} .6891981{col 67}{space 3} .9455436
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2} 5.876244{col 26}{space 2} .1982767{col 37}{space 1}   29.64{col 46}{space 3}0.000{col 54}{space 4} 5.483603{col 67}{space 3} 6.268886
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}
+{com}. regress lnaadt county_pop
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}       121
+{txt}{hline 13}{c +}{hline 34}   F(1, 119)       = {res}    66.24
+{txt}       Model {c |} {res} 108.420045         1  108.420045   {txt}Prob > F        ={res}    0.0000
+{txt}    Residual {c |} {res}  194.78256       119  1.63682824   {txt}R-squared       ={res}    0.3576
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.3522
+{txt}       Total {c |} {res} 303.202606       120  2.52668838   {txt}Root MSE        =   {res} 1.2794
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}      lnaadt{col 14}{c |}      Coef.{col 26}   Std. Err.{col 38}      t{col 46}   P>|t|{col 54}     [95% Con{col 67}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 2}county_pop {c |}{col 14}{res}{space 2} 2.89e-06{col 26}{space 2} 3.54e-07{col 37}{space 1}    8.14{col 46}{space 3}0.000{col 54}{space 4} 2.18e-06{col 67}{space 3} 3.59e-06
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2} 8.055238{col 26}{space 2} .1491557{col 37}{space 1}   54.01{col 46}{space 3}0.000{col 54}{space 4} 7.759895{col 67}{space 3} 8.350581
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}
+{com}. regress lnaadt lanes rural_road
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}       121
+{txt}{hline 13}{c +}{hline 34}   F(2, 118)       = {res}   187.47
+{txt}       Model {c |} {res} 230.622892         2  115.311446   {txt}Prob > F        ={res}    0.0000
+{txt}    Residual {c |} {res} 72.5797132       118  .615082315   {txt}R-squared       ={res}    0.7606
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.7566
+{txt}       Total {c |} {res} 303.202606       120  2.52668838   {txt}Root MSE        =   {res} .78427
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}      lnaadt{col 14}{c |}      Coef.{col 26}   Std. Err.{col 38}      t{col 46}   P>|t|{col 54}     [95% Con{col 67}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 7}lanes {c |}{col 14}{res}{space 2}  .774715{col 26}{space 2} .0613012{col 37}{space 1}   12.64{col 46}{space 3}0.000{col 54}{space 4} .6533219{col 67}{space 3} .8961081
+{txt}{space 2}rural_road {c |}{col 14}{res}{space 2}-1.212888{col 26}{space 2} .1589933{col 37}{space 1}   -7.63{col 46}{space 3}0.000{col 54}{space 4}-1.527738{col 67}{space 3} -.898038
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2} 7.055783{col 26}{space 2} .2495687{col 37}{space 1}   28.27{col 46}{space 3}0.000{col 54}{space 4} 6.561569{col 67}{space 3} 7.549996
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}
+{com}. regress lnaadt county_pop
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}       121
+{txt}{hline 13}{c +}{hline 34}   F(1, 119)       = {res}    66.24
+{txt}       Model {c |} {res} 108.420045         1  108.420045   {txt}Prob > F        ={res}    0.0000
+{txt}    Residual {c |} {res}  194.78256       119  1.63682824   {txt}R-squared       ={res}    0.3576
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.3522
+{txt}       Total {c |} {res} 303.202606       120  2.52668838   {txt}Root MSE        =   {res} 1.2794
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}      lnaadt{col 14}{c |}      Coef.{col 26}   Std. Err.{col 38}      t{col 46}   P>|t|{col 54}     [95% Con{col 67}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 2}county_pop {c |}{col 14}{res}{space 2} 2.89e-06{col 26}{space 2} 3.54e-07{col 37}{space 1}    8.14{col 46}{space 3}0.000{col 54}{space 4} 2.18e-06{col 67}{space 3} 3.59e-06
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2} 8.055238{col 26}{space 2} .1491557{col 37}{space 1}   54.01{col 46}{space 3}0.000{col 54}{space 4} 7.759895{col 67}{space 3} 8.350581
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}
+{com}. regress lnaadt lanes
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}       121
+{txt}{hline 13}{c +}{hline 34}   F(1, 119)       = {res}   213.93
+{txt}       Model {c |} {res} 194.828347         1  194.828347   {txt}Prob > F        ={res}    0.0000
+{txt}    Residual {c |} {res} 108.374258       119  .910708054   {txt}R-squared       ={res}    0.6426
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.6396
+{txt}       Total {c |} {res} 303.202606       120  2.52668838   {txt}Root MSE        =   {res} .95431
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}      lnaadt{col 14}{c |}      Coef.{col 26}   Std. Err.{col 38}      t{col 46}   P>|t|{col 54}     [95% Con{col 67}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 7}lanes {c |}{col 14}{res}{space 2}  .980125{col 26}{space 2} .0670108{col 37}{space 1}   14.63{col 46}{space 3}0.000{col 54}{space 4} .8474369{col 67}{space 3} 1.112813
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2} 5.777654{col 26}{space 2} .2250705{col 37}{space 1}   25.67{col 46}{space 3}0.000{col 54}{space 4} 5.331991{col 67}{space 3} 6.223316
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}
+{com}. regress width
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}       121
+{txt}{hline 13}{c +}{hline 34}   F(0, 120)       = {res}     0.00
+{txt}       Model {c |} {res}          0         0           .   {txt}Prob > F        ={res}         .
+{txt}    Residual {c |} {res} 15967.1405       120  133.059504   {txt}R-squared       ={res}    0.0000
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.0000
+{txt}       Total {c |} {res} 15967.1405       120  133.059504   {txt}Root MSE        =   {res} 11.535
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}       width{col 14}{c |}      Coef.{col 26}   Std. Err.{col 38}      t{col 46}   P>|t|{col 54}     [95% Con{col 67}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 7}_cons {c |}{col 14}{res}{space 2} 31.12397{col 26}{space 2} 1.048649{col 37}{space 1}   29.68{col 46}{space 3}0.000{col 54}{space 4} 29.04771{col 67}{space 3} 33.20022
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}
+{com}. regress lnaadt width
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}       121
+{txt}{hline 13}{c +}{hline 34}   F(1, 119)       = {res}     1.70
+{txt}       Model {c |} {res} 4.28203729         1  4.28203729   {txt}Prob > F        ={res}    0.1942
+{txt}    Residual {c |} {res} 298.920568       119  2.51193755   {txt}R-squared       ={res}    0.0141
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.0058
+{txt}       Total {c |} {res} 303.202606       120  2.52668838   {txt}Root MSE        =   {res} 1.5849
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}      lnaadt{col 14}{c |}      Coef.{col 26}   Std. Err.{col 38}      t{col 46}   P>|t|{col 54}     [95% Con{col 67}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 7}width {c |}{col 14}{res}{space 2} .0163761{col 26}{space 2} .0125427{col 37}{space 1}    1.31{col 46}{space 3}0.194{col 54}{space 4}-.0084596{col 67}{space 3} .0412119
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2} 8.305541{col 26}{space 2} .4161191{col 37}{space 1}   19.96{col 46}{space 3}0.000{col 54}{space 4} 7.481583{col 67}{space 3} 9.129498
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}
+{com}. regress lnaadt access
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}       121
+{txt}{hline 13}{c +}{hline 34}   F(1, 119)       = {res}    74.45
+{txt}       Model {c |} {res} 116.690728         1  116.690728   {txt}Prob > F        ={res}    0.0000
+{txt}    Residual {c |} {res} 186.511878       119  1.56732671   {txt}R-squared       ={res}    0.3849
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.3797
+{txt}       Total {c |} {res} 303.202606       120  2.52668838   {txt}Root MSE        =   {res} 1.2519
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}      lnaadt{col 14}{c |}      Coef.{col 26}   Std. Err.{col 38}      t{col 46}   P>|t|{col 54}     [95% Con{col 67}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 6}access {c |}{col 14}{res}{space 2} 2.358658{col 26}{space 2} .2733548{col 37}{space 1}    8.63{col 46}{space 3}0.000{col 54}{space 4} 1.817389{col 67}{space 3} 2.899928
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2} 8.288919{col 26}{space 2} .1291266{col 37}{space 1}   64.19{col 46}{space 3}0.000{col 54}{space 4} 8.033235{col 67}{space 3} 8.544603
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}
+{com}. regress lnaadt rural_road
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}       121
+{txt}{hline 13}{c +}{hline 34}   F(1, 119)       = {res}    92.23
+{txt}       Model {c |} {res} 132.384997         1  132.384997   {txt}Prob > F        ={res}    0.0000
+{txt}    Residual {c |} {res} 170.817609       119  1.43544209   {txt}R-squared       ={res}    0.4366
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.4319
+{txt}       Total {c |} {res} 303.202606       120  2.52668838   {txt}Root MSE        =   {res} 1.1981
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}      lnaadt{col 14}{c |}      Coef.{col 26}   Std. Err.{col 38}      t{col 46}   P>|t|{col 54}     [95% Con{col 67}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 2}rural_road {c |}{col 14}{res}{space 2}-2.095485{col 26}{space 2} .2182017{col 37}{space 1}   -9.60{col 46}{space 3}0.000{col 54}{space 4}-2.527547{col 67}{space 3}-1.663424
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2} 9.923587{col 26}{space 2} .1586921{col 37}{space 1}   62.53{col 46}{space 3}0.000{col 54}{space 4} 9.609361{col 67}{space 3} 10.23781
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}
+{com}. regress lnaadt interstate
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}       121
+{txt}{hline 13}{c +}{hline 34}   F(1, 119)       = {res}    66.13
+{txt}       Model {c |} {res} 108.305027         1  108.305027   {txt}Prob > F        ={res}    0.0000
+{txt}    Residual {c |} {res} 194.897579       119  1.63779478   {txt}R-squared       ={res}    0.3572
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.3518
+{txt}       Total {c |} {res} 303.202606       120  2.52668838   {txt}Root MSE        =   {res} 1.2798
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}      lnaadt{col 14}{c |}      Coef.{col 26}   Std. Err.{col 38}      t{col 46}   P>|t|{col 54}     [95% Con{col 67}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 2}interstate {c |}{col 14}{res}{space 2} 2.303396{col 26}{space 2} .2832526{col 37}{space 1}    8.13{col 46}{space 3}0.000{col 54}{space 4} 1.742527{col 67}{space 3} 2.864264
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2} 8.320287{col 26}{space 2}  .131301{col 37}{space 1}   63.37{col 46}{space 3}0.000{col 54}{space 4} 8.060298{col 67}{space 3} 8.580276
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}
+{com}. regress lnaadt tonnage
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}       121
+{txt}{hline 13}{c +}{hline 34}   F(1, 119)       = {res}     0.64
+{txt}       Model {c |} {res} 1.61577957         1  1.61577957   {txt}Prob > F        ={res}    0.4262
+{txt}    Residual {c |} {res} 301.586826       119  2.53434308   {txt}R-squared       ={res}    0.0053
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}   -0.0030
+{txt}       Total {c |} {res} 303.202606       120  2.52668838   {txt}Root MSE        =   {res}  1.592
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}      lnaadt{col 14}{c |}      Coef.{col 26}   Std. Err.{col 38}      t{col 46}   P>|t|{col 54}     [95% Con{col 67}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 5}tonnage {c |}{col 14}{res}{space 2}-.2775479{col 26}{space 2} .3475998{col 37}{space 1}   -0.80{col 46}{space 3}0.426{col 54}{space 4}-.9658303{col 67}{space 3} .4107345
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2} 8.877163{col 26}{space 2} .1641983{col 37}{space 1}   54.06{col 46}{space 3}0.000{col 54}{space 4} 8.552034{col 67}{space 3} 9.202292
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}
+{com}. regress lnaadt time
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}       121
+{txt}{hline 13}{c +}{hline 34}   F(1, 119)       = {res}     0.00
+{txt}       Model {c |} {res} .002060126         1  .002060126   {txt}Prob > F        ={res}    0.9774
+{txt}    Residual {c |} {res} 303.200546       119  2.54790374   {txt}R-squared       ={res}    0.0000
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}   -0.0084
+{txt}       Total {c |} {res} 303.202606       120  2.52668838   {txt}Root MSE        =   {res} 1.5962
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}      lnaadt{col 14}{c |}      Coef.{col 26}   Std. Err.{col 38}      t{col 46}   P>|t|{col 54}     [95% Con{col 67}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 8}time {c |}{col 14}{res}{space 2}-.0166056{col 26}{space 2} .5839827{col 37}{space 1}   -0.03{col 46}{space 3}0.977{col 54}{space 4} -1.17295{col 67}{space 3} 1.139738
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2} 8.816329{col 26}{space 2} .1501593{col 37}{space 1}   58.71{col 46}{space 3}0.000{col 54}{space 4} 8.518999{col 67}{space 3}  9.11366
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}
+{com}. regress lnaadt no_trucks
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}       121
+{txt}{hline 13}{c +}{hline 34}   F(1, 119)       = {res}    33.86
+{txt}       Model {c |} {res} 67.1594403         1  67.1594403   {txt}Prob > F        ={res}    0.0000
+{txt}    Residual {c |} {res} 236.043165       119  1.98355601   {txt}R-squared       ={res}    0.2215
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.2150
+{txt}       Total {c |} {res} 303.202606       120  2.52668838   {txt}Root MSE        =   {res} 1.4084
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}      lnaadt{col 14}{c |}      Coef.{col 26}   Std. Err.{col 38}      t{col 46}   P>|t|{col 54}     [95% Con{col 67}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 3}no_trucks {c |}{col 14}{res}{space 2}-1.490067{col 26}{space 2} .2560792{col 37}{space 1}   -5.82{col 46}{space 3}0.000{col 54}{space 4}-1.997129{col 67}{space 3}-.9830041
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2} 9.566422{col 26}{space 2} .1818221{col 37}{space 1}   52.61{col 46}{space 3}0.000{col 54}{space 4} 9.206396{col 67}{space 3} 9.926448
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}
+{com}. regress lnaadt rural
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}       121
+{txt}{hline 13}{c +}{hline 34}   F(1, 119)       = {res}    76.81
+{txt}       Model {c |} {res}  118.93489         1   118.93489   {txt}Prob > F        ={res}    0.0000
+{txt}    Residual {c |} {res} 184.267715       119   1.5484682   {txt}R-squared       ={res}    0.3923
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.3872
+{txt}       Total {c |} {res} 303.202606       120  2.52668838   {txt}Root MSE        =   {res} 1.2444
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}      lnaadt{col 14}{c |}      Coef.{col 26}   Std. Err.{col 38}      t{col 46}   P>|t|{col 54}     [95% Con{col 67}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 7}rural {c |}{col 14}{res}{space 2}-1.986186{col 26}{space 2} .2266295{col 37}{space 1}   -8.76{col 46}{space 3}0.000{col 54}{space 4}-2.434935{col 67}{space 3}-1.537437
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2} 9.865776{col 26}{space 2} .1648214{col 37}{space 1}   59.86{col 46}{space 3}0.000{col 54}{space 4} 9.539413{col 67}{space 3} 10.19214
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}
+{com}. regress lnaadt small
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}       121
+{txt}{hline 13}{c +}{hline 34}   F(1, 119)       = {res}    31.04
+{txt}       Model {c |} {res} 62.7191118         1  62.7191118   {txt}Prob > F        ={res}    0.0000
+{txt}    Residual {c |} {res} 240.483494       119   2.0208697   {txt}R-squared       ={res}    0.2069
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.2002
+{txt}       Total {c |} {res} 303.202606       120  2.52668838   {txt}Root MSE        =   {res} 1.4216
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}      lnaadt{col 14}{c |}      Coef.{col 26}   Std. Err.{col 38}      t{col 46}   P>|t|{col 54}     [95% Con{col 67}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 7}small {c |}{col 14}{res}{space 2}-2.023195{col 26}{space 2} .3631675{col 37}{space 1}   -5.57{col 46}{space 3}0.000{col 54}{space 4}-2.742303{col 67}{space 3}-1.304087
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2} 10.53746{col 26}{space 2}  .335068{col 37}{space 1}   31.45{col 46}{space 3}0.000{col 54}{space 4} 9.873987{col 67}{space 3} 11.20092
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}
+{com}. regress lnaadt lanes
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}       121
+{txt}{hline 13}{c +}{hline 34}   F(1, 119)       = {res}   213.93
+{txt}       Model {c |} {res} 194.828347         1  194.828347   {txt}Prob > F        ={res}    0.0000
+{txt}    Residual {c |} {res} 108.374258       119  .910708054   {txt}R-squared       ={res}    0.6426
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.6396
+{txt}       Total {c |} {res} 303.202606       120  2.52668838   {txt}Root MSE        =   {res} .95431
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}      lnaadt{col 14}{c |}      Coef.{col 26}   Std. Err.{col 38}      t{col 46}   P>|t|{col 54}     [95% Con{col 67}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 7}lanes {c |}{col 14}{res}{space 2}  .980125{col 26}{space 2} .0670108{col 37}{space 1}   14.63{col 46}{space 3}0.000{col 54}{space 4} .8474369{col 67}{space 3} 1.112813
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2} 5.777654{col 26}{space 2} .2250705{col 37}{space 1}   25.67{col 46}{space 3}0.000{col 54}{space 4} 5.331991{col 67}{space 3} 6.223316
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}
+{com}. graph twoway (lfitci lnaadt lanes) (scatter lnaadt lanes)
+{res}
+{com}. graph twoway (lfitci aadt lanes) (scatter aadt lanes)
+{res}
+{com}. graph matrix lnaadt lanes
+{res}
+{com}.  graph twoway (lfitci lnaadt lanes) (scatter lnaadt lanes)
+{res}
+{com}.  graph twoway (scatter lnaadt lanes) (lfit lnaadt lanes) (lfitci lnaadt lanes)
+{res}
+{com}. log close
+      {txt}name:  {res}<unnamed>
+       {txt}log:  {res}/Users/guslipkin/Documents/Fall2020/QMB 3200 ~ Advanced Quantitative Methods/Assignment 8/Assignment 8.smcl
+  {txt}log type:  {res}smcl
+ {txt}closed on:  {res}14 Nov 2020, 18:25:56
+{txt}{.-}
+{smcl}
+{txt}{sf}{ul off}
