@@ -39,6 +39,65 @@ dfHousehold$trpmiles[dfHousehold$trpmiles < 0] <- NA
 ```
 
 ```{r}
+dfHousehold$incBin <- case_when(
+  dfHousehold$hhincttl <= 6 ~ 1,
+  dfHousehold$hhincttl >= 7 & dfHousehold$hhincttl <= 11 ~ 2,
+  dfHousehold$hhincttl >= 12 & dfHousehold$hhincttl <= 16 ~ 3,
+  dfHousehold$hhincttl >= 17 ~ 4
+)
+
+dfPerson$incBin <- case_when(
+  dfPerson$hhincttl <= 6 ~ 1,
+  dfPerson$hhincttl >= 7 & dfPerson$hhincttl <= 11 ~ 2,
+  dfPerson$hhincttl >= 12 & dfPerson$hhincttl <= 16 ~ 3,
+  dfPerson$hhincttl >= 17 ~ 4
+)
+```
+
+```{r}
+dfHousehold$sizeBin <- case_when(
+  dfHousehold$hhsize == 1 ~ 1,
+  dfHousehold$hhsize == 2 ~ 2,
+  dfHousehold$hhsize == 3 ~ 3,
+  dfHousehold$hhsize > 3 ~ 4
+)
+
+dfHousehold$vehBin <- case_when(
+  dfHousehold$hhvehcnt == 0 ~ 0,
+  dfHousehold$hhvehcnt == 1 ~ 1,
+  dfHousehold$hhvehcnt == 2 ~ 2,
+  dfHousehold$hhvehcnt == 3 ~ 3,
+  dfHousehold$hhvehcnt > 3 ~ 4
+)
+
+dfHousehold$wrkBin <- case_when(
+  dfHousehold$wrkcount == 0 ~ 0,
+  dfHousehold$wrkcount == 1 ~ 1,
+  dfHousehold$wrkcount > 2 ~ 2
+)
+```
+
+```{r}
+dfHousehold$vehRatio <- dfHousehold$hhvehcnt / dfHousehold$drvrcnt
+dfHousehold$driverRatio <- dfHousehold$drvrcnt / dfHousehold$hhvehcnt
+dfHousehold$distanceRatio <- dfHousehold$trpmiles / dfHousehold$drvrcnt
+dfHousehold$sizeRatio <- dfHousehold$trpmiles / dfHousehold$hhsize
+dfHousehold$adultRatio <- dfHousehold$numadlt / dfHousehold$hhsize
+```
+
+```{r}
+dfPerson$educBin <- 0
+dfPerson$educBin[dfPerson$educ > 1] <- 1
+
+dfPerson$incRatio <- (dfPerson$hhincttl * 5000) / dfPerson$hhsize
+dfPerson$adultRatio <- dfPerson$numadlt / dfPerson$hhsize
+
+dfPerson$adult <- 0
+dfPerson$adult[dfPerson$r_age >= 18] <- 1
+```
+
+
+```{r}
 dfPerson
 dfHousehold
 ```
@@ -47,4 +106,3 @@ dfHousehold
 write_excel_csv(dfPerson, "../Final Project/dfPerson.csv")
 write_excel_csv(dfHousehold, "../Final Project/dfHousehold.csv")
 ```
-

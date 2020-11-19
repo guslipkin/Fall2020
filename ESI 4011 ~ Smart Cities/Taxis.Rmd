@@ -1,0 +1,28 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+```{r}
+library(tidyverse)
+```
+
+```{r}
+df <- read.csv("../ESI 4011 ~ Smart Cities/yellow_tripdata_2020-01.csv")
+head(df)
+```
+
+```{r}
+summary(df)
+```
+
+```{r}
+dfNew <- df %>%
+  filter(tip_amount > 0 & tip_amount < 10) %>%
+  filter(trip_distance >= 0) %>%
+  filter(fare_amount >= 0) %>%
+  filter(extra >= 0) %>%
+  filter(improvement_surcharge >= 0) %>%
+  filter(congestion_surcharge >= 0)
+```
+
