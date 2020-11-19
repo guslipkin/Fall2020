@@ -1,0 +1,73 @@
+{smcl}
+{com}{sf}{ul off}{txt}{.-}
+      name:  {res}<unnamed>
+       {txt}log:  {res}/Users/guslipkin/Documents/Fall2020/QMB 3200 ~ Advanced Quantitative Methods/Binary Logistic Example.smcl
+  {txt}log type:  {res}smcl
+ {txt}opened on:  {res}17 Nov 2020, 11:48:30
+
+{com}. 
+. import delimited "/Users/guslipkin/Documents/Fall2020/QMB 3200 ~ Advanced Quantitative Methods/Example_Data.csv", varnames(1) 
+{res}{text}(4 vars, 400 obs)
+
+{com}. summarize gpa gre
+
+{txt}    Variable {c |}        Obs        Mean    Std. Dev.       Min        Max
+{hline 13}{c +}{hline 57}
+{space 9}gpa {c |}{res}        400      3.3899    .3805668       2.26          4
+{txt}{space 9}gre {c |}{res}        400       587.7    115.5165        220        800
+
+{com}. tabulate admit
+
+      {txt}admit {c |}      Freq.     Percent        Cum.
+{hline 12}{c +}{hline 35}
+          0 {c |}{res}        273       68.25       68.25
+{txt}          1 {c |}{res}        127       31.75      100.00
+{txt}{hline 12}{c +}{hline 35}
+      Total {c |}{res}        400      100.00
+
+{com}. tab rank
+
+       {txt}rank {c |}      Freq.     Percent        Cum.
+{hline 12}{c +}{hline 35}
+          1 {c |}{res}         61       15.25       15.25
+{txt}          2 {c |}{res}        151       37.75       53.00
+{txt}          3 {c |}{res}        121       30.25       83.25
+{txt}          4 {c |}{res}         67       16.75      100.00
+{txt}{hline 12}{c +}{hline 35}
+      Total {c |}{res}        400      100.00
+
+{com}. logit admit gre gpa i.rank
+
+{res}{txt}Iteration 0:{space 3}log likelihood = {res:-249.98826}  
+Iteration 1:{space 3}log likelihood = {res:-229.66446}  
+Iteration 2:{space 3}log likelihood = {res:-229.25955}  
+Iteration 3:{space 3}log likelihood = {res:-229.25875}  
+Iteration 4:{space 3}log likelihood = {res:-229.25875}  
+{res}
+{txt}Logistic regression{col 49}Number of obs{col 67}= {res}       400
+{txt}{col 49}LR chi2({res}5{txt}){col 67}= {res}     41.46
+{txt}{col 49}Prob > chi2{col 67}= {res}    0.0000
+{txt}Log likelihood = {res}-229.25875{txt}{col 49}Pseudo R2{col 67}= {res}    0.0829
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}       admit{col 14}{c |}      Coef.{col 26}   Std. Err.{col 38}      z{col 46}   P>|z|{col 54}     [95% Con{col 67}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 9}gre {c |}{col 14}{res}{space 2} .0022644{col 26}{space 2}  .001094{col 37}{space 1}    2.07{col 46}{space 3}0.038{col 54}{space 4} .0001202{col 67}{space 3} .0044086
+{txt}{space 9}gpa {c |}{col 14}{res}{space 2} .8040377{col 26}{space 2} .3318193{col 37}{space 1}    2.42{col 46}{space 3}0.015{col 54}{space 4} .1536838{col 67}{space 3} 1.454392
+{txt}{space 12} {c |}
+{space 8}rank {c |}
+{space 10}2  {c |}{col 14}{res}{space 2}-.6754429{col 26}{space 2} .3164897{col 37}{space 1}   -2.13{col 46}{space 3}0.033{col 54}{space 4}-1.295751{col 67}{space 3}-.0551346
+{txt}{space 10}3  {c |}{col 14}{res}{space 2}-1.340204{col 26}{space 2} .3453064{col 37}{space 1}   -3.88{col 46}{space 3}0.000{col 54}{space 4}-2.016992{col 67}{space 3}-.6634158
+{txt}{space 10}4  {c |}{col 14}{res}{space 2}-1.551464{col 26}{space 2} .4178316{col 37}{space 1}   -3.71{col 46}{space 3}0.000{col 54}{space 4}-2.370399{col 67}{space 3}-.7325287
+{txt}{space 12} {c |}
+{space 7}_cons {c |}{col 14}{res}{space 2}-3.989979{col 26}{space 2} 1.139951{col 37}{space 1}   -3.50{col 46}{space 3}0.000{col 54}{space 4}-6.224242{col 67}{space 3}-1.755717
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+
+{com}. log close
+      {txt}name:  {res}<unnamed>
+       {txt}log:  {res}/Users/guslipkin/Documents/Fall2020/QMB 3200 ~ Advanced Quantitative Methods/Binary Logistic Example.smcl
+  {txt}log type:  {res}smcl
+ {txt}closed on:  {res}17 Nov 2020, 12:09:20
+{txt}{.-}
+{smcl}
+{txt}{sf}{ul off}
