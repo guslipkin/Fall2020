@@ -1,0 +1,249 @@
+{smcl}
+{com}{sf}{ul off}{txt}{.-}
+      name:  {res}<unnamed>
+       {txt}log:  {res}/Users/guslipkin/Documents/Fall2020/QMB 3200 ~ Advanced Quantitative Methods/Final Project/per_trips.smcl
+  {txt}log type:  {res}smcl
+ {txt}opened on:  {res}19 Nov 2020, 18:08:59
+
+{com}. 
+. import delimited "/Users/guslipkin/Documents/Fall2020/QMB 3200 ~ Advanced Quantitative Methods/Final Project/dfPerson.csv", encoding(UTF-8) numericcols(_all) 
+{res}{text}(17 vars, 648 obs)
+
+{com}. regress pertrips driver worker educ hhincttl numadlt drvrcnt r_age r_sex hhsize homeown incbin educbin incratio adultratio adult
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}       458
+{txt}{hline 13}{c +}{hline 34}   F(15, 442)      = {res}     1.82
+{txt}       Model {c |} {res} 163.564238        15  10.9042825   {txt}Prob > F        ={res}    0.0300
+{txt}    Residual {c |} {res} 2651.52747       442  5.99893092   {txt}R-squared       ={res}    0.0581
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.0261
+{txt}       Total {c |} {res}  2815.0917       457  6.15993808   {txt}Root MSE        =   {res} 2.4493
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}    pertrips{col 14}{c |}      Coef.{col 26}   Std. Err.{col 38}      t{col 46}   P>|t|{col 54}     [95% Con{col 67}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 6}driver {c |}{col 14}{res}{space 2} .9167163{col 26}{space 2} .6035221{col 37}{space 1}    1.52{col 46}{space 3}0.129{col 54}{space 4}-.2694131{col 67}{space 3} 2.102846
+{txt}{space 6}worker {c |}{col 14}{res}{space 2}-.2020908{col 26}{space 2} .3025714{col 37}{space 1}   -0.67{col 46}{space 3}0.505{col 54}{space 4}-.7967482{col 67}{space 3} .3925665
+{txt}{space 8}educ {c |}{col 14}{res}{space 2} .1284953{col 26}{space 2} .0672046{col 37}{space 1}    1.91{col 46}{space 3}0.057{col 54}{space 4} -.003585{col 67}{space 3} .2605755
+{txt}{space 4}hhincttl {c |}{col 14}{res}{space 2}  .062189{col 26}{space 2} .0936344{col 37}{space 1}    0.66{col 46}{space 3}0.507{col 54}{space 4}-.1218349{col 67}{space 3} .2462129
+{txt}{space 5}numadlt {c |}{col 14}{res}{space 2}-.0405678{col 26}{space 2}  .562781{col 37}{space 1}   -0.07{col 46}{space 3}0.943{col 54}{space 4}-1.146627{col 67}{space 3} 1.065491
+{txt}{space 5}drvrcnt {c |}{col 14}{res}{space 2}-.0935246{col 26}{space 2} .2886605{col 37}{space 1}   -0.32{col 46}{space 3}0.746{col 54}{space 4}-.6608423{col 67}{space 3} .4737932
+{txt}{space 7}r_age {c |}{col 14}{res}{space 2}-.0053804{col 26}{space 2} .0090805{col 37}{space 1}   -0.59{col 46}{space 3}0.554{col 54}{space 4}-.0232268{col 67}{space 3}  .012466
+{txt}{space 7}r_sex {c |}{col 14}{res}{space 2}-.2748093{col 26}{space 2} .2391464{col 37}{space 1}   -1.15{col 46}{space 3}0.251{col 54}{space 4}-.7448147{col 67}{space 3} .1951961
+{txt}{space 6}hhsize {c |}{col 14}{res}{space 2}-.2288134{col 26}{space 2} .2970025{col 37}{space 1}   -0.77{col 46}{space 3}0.441{col 54}{space 4}-.8125259{col 67}{space 3} .3548991
+{txt}{space 5}homeown {c |}{col 14}{res}{space 2}-.4996277{col 26}{space 2} .3442138{col 37}{space 1}   -1.45{col 46}{space 3}0.147{col 54}{space 4}-1.176127{col 67}{space 3} .1768715
+{txt}{space 6}incbin {c |}{col 14}{res}{space 2} .0915497{col 26}{space 2} .3968463{col 37}{space 1}    0.23{col 46}{space 3}0.818{col 54}{space 4}-.6883905{col 67}{space 3} .8714898
+{txt}{space 5}educbin {c |}{col 14}{res}{space 2} .7134032{col 26}{space 2} .5183292{col 37}{space 1}    1.38{col 46}{space 3}0.169{col 54}{space 4}-.3052928{col 67}{space 3} 1.732099
+{txt}{space 4}incratio {c |}{col 14}{res}{space 2}-.0000287{col 26}{space 2} .0000184{col 37}{space 1}   -1.56{col 46}{space 3}0.119{col 54}{space 4}-.0000648{col 67}{space 3} 7.44e-06
+{txt}{space 2}adultratio {c |}{col 14}{res}{space 2} -.553728{col 26}{space 2} 1.736504{col 37}{space 1}   -0.32{col 46}{space 3}0.750{col 54}{space 4}-3.966558{col 67}{space 3} 2.859102
+{txt}{space 7}adult {c |}{col 14}{res}{space 2} -1.10953{col 26}{space 2} .8990091{col 37}{space 1}   -1.23{col 46}{space 3}0.218{col 54}{space 4}-2.876393{col 67}{space 3} .6573339
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2} 5.914776{col 26}{space 2} 1.629668{col 37}{space 1}    3.63{col 46}{space 3}0.000{col 54}{space 4} 2.711915{col 67}{space 3} 9.117636
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}
+{com}. regress pertrips educ driver homeown educbin incratio
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}       461
+{txt}{hline 13}{c +}{hline 34}   F(5, 455)       = {res}     3.37
+{txt}       Model {c |} {res} 100.843083         5  20.1686165   {txt}Prob > F        ={res}    0.0053
+{txt}    Residual {c |} {res} 2722.19379       455   5.9828435   {txt}R-squared       ={res}    0.0357
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.0251
+{txt}       Total {c |} {res} 2823.03688       460  6.13703669   {txt}Root MSE        =   {res}  2.446
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}    pertrips{col 14}{c |}      Coef.{col 26}   Std. Err.{col 38}      t{col 46}   P>|t|{col 54}     [95% Con{col 67}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 8}educ {c |}{col 14}{res}{space 2} .1457606{col 26}{space 2} .0655147{col 37}{space 1}    2.22{col 46}{space 3}0.027{col 54}{space 4} .0170117{col 67}{space 3} .2745096
+{txt}{space 6}driver {c |}{col 14}{res}{space 2} .8617433{col 26}{space 2} .5288059{col 37}{space 1}    1.63{col 46}{space 3}0.104{col 54}{space 4}-.1774615{col 67}{space 3} 1.900948
+{txt}{space 5}homeown {c |}{col 14}{res}{space 2}-.4637683{col 26}{space 2} .3162811{col 37}{space 1}   -1.47{col 46}{space 3}0.143{col 54}{space 4}-1.085321{col 67}{space 3} .1577847
+{txt}{space 5}educbin {c |}{col 14}{res}{space 2} .4587026{col 26}{space 2} .4309458{col 37}{space 1}    1.06{col 46}{space 3}0.288{col 54}{space 4}-.3881884{col 67}{space 3} 1.305594
+{txt}{space 4}incratio {c |}{col 14}{res}{space 2}-4.77e-06{col 26}{space 2} 9.00e-06{col 37}{space 1}   -0.53{col 46}{space 3}0.596{col 54}{space 4}-.0000224{col 67}{space 3} .0000129
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2} 3.476597{col 26}{space 2} .5910148{col 37}{space 1}    5.88{col 46}{space 3}0.000{col 54}{space 4}  2.31514{col 67}{space 3} 4.638055
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}
+{com}. regress pertrips educ driver homeown
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}       493
+{txt}{hline 13}{c +}{hline 34}   F(3, 489)       = {res}     5.76
+{txt}       Model {c |} {res} 102.784415         3  34.2614718   {txt}Prob > F        ={res}    0.0007
+{txt}    Residual {c |} {res}  2909.2237       489  5.94933272   {txt}R-squared       ={res}    0.0341
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.0282
+{txt}       Total {c |} {res} 3012.00811       492  6.12196771   {txt}Root MSE        =   {res} 2.4391
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}    pertrips{col 14}{c |}      Coef.{col 26}   Std. Err.{col 38}      t{col 46}   P>|t|{col 54}     [95% Con{col 67}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 8}educ {c |}{col 14}{res}{space 2} .1477941{col 26}{space 2} .0499986{col 37}{space 1}    2.96{col 46}{space 3}0.003{col 54}{space 4} .0495555{col 67}{space 3} .2460327
+{txt}{space 6}driver {c |}{col 14}{res}{space 2} 1.154339{col 26}{space 2}  .484415{col 37}{space 1}    2.38{col 46}{space 3}0.018{col 54}{space 4} .2025476{col 67}{space 3} 2.106131
+{txt}{space 5}homeown {c |}{col 14}{res}{space 2}-.4564189{col 26}{space 2} .3037706{col 37}{space 1}   -1.50{col 46}{space 3}0.134{col 54}{space 4}-1.053276{col 67}{space 3} .1404379
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2} 3.461985{col 26}{space 2} .5133696{col 37}{space 1}    6.74{col 46}{space 3}0.000{col 54}{space 4} 2.453303{col 67}{space 3} 4.470668
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}
+{com}. regress pertrips educ driver
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}       493
+{txt}{hline 13}{c +}{hline 34}   F(2, 490)       = {res}     7.49
+{txt}       Model {c |} {res} 89.3535545         2  44.6767773   {txt}Prob > F        ={res}    0.0006
+{txt}    Residual {c |} {res} 2922.65456       490  5.96460114   {txt}R-squared       ={res}    0.0297
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.0257
+{txt}       Total {c |} {res} 3012.00811       492  6.12196771   {txt}Root MSE        =   {res} 2.4423
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}    pertrips{col 14}{c |}      Coef.{col 26}   Std. Err.{col 38}      t{col 46}   P>|t|{col 54}     [95% Con{col 67}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 8}educ {c |}{col 14}{res}{space 2} .1430179{col 26}{space 2} .0499615{col 37}{space 1}    2.86{col 46}{space 3}0.004{col 54}{space 4} .0448528{col 67}{space 3} .2411831
+{txt}{space 6}driver {c |}{col 14}{res}{space 2} 1.048119{col 26}{space 2} .4798431{col 37}{space 1}    2.18{col 46}{space 3}0.029{col 54}{space 4} .1053147{col 67}{space 3} 1.990923
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2}  3.19852{col 26}{space 2}  .483113{col 37}{space 1}    6.62{col 46}{space 3}0.000{col 54}{space 4} 2.249291{col 67}{space 3} 4.147749
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}
+{com}. regress pertrips educ if r_sex==0 & adult==1
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}       251
+{txt}{hline 13}{c +}{hline 34}   F(1, 249)       = {res}     4.64
+{txt}       Model {c |} {res} 32.5922055         1  32.5922055   {txt}Prob > F        ={res}    0.0321
+{txt}    Residual {c |} {res} 1747.91775       249  7.01975002   {txt}R-squared       ={res}    0.0183
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.0144
+{txt}       Total {c |} {res} 1780.50996       250  7.12203984   {txt}Root MSE        =   {res} 2.6495
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}    pertrips{col 14}{c |}      Coef.{col 26}   Std. Err.{col 38}      t{col 46}   P>|t|{col 54}     [95% Con{col 67}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 8}educ {c |}{col 14}{res}{space 2} .1772352{col 26}{space 2} .0822534{col 37}{space 1}    2.15{col 46}{space 3}0.032{col 54}{space 4} .0152341{col 67}{space 3} .3392363
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2} 4.178042{col 26}{space 2} .3746371{col 37}{space 1}   11.15{col 46}{space 3}0.000{col 54}{space 4}  3.44018{col 67}{space 3} 4.915903
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}
+{com}. regress pertrips driver worker educ hhincttl numadlt drvrcnt r_age hhsize homeown incbin educbin incratio adultratio if r_sex==0 & adult==1
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}       233
+{txt}{hline 13}{c +}{hline 34}   F(13, 219)      = {res}     1.38
+{txt}       Model {c |} {res} 123.491084        13  9.49931418   {txt}Prob > F        ={res}    0.1713
+{txt}    Residual {c |} {res}  1509.4102       219  6.89228403   {txt}R-squared       ={res}    0.0756
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.0208
+{txt}       Total {c |} {res} 1632.90129       232  7.03836762   {txt}Root MSE        =   {res} 2.6253
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}    pertrips{col 14}{c |}      Coef.{col 26}   Std. Err.{col 38}      t{col 46}   P>|t|{col 54}     [95% Con{col 67}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 6}driver {c |}{col 14}{res}{space 2} 1.621194{col 26}{space 2} .8811688{col 37}{space 1}    1.84{col 46}{space 3}0.067{col 54}{space 4}-.1154622{col 67}{space 3}  3.35785
+{txt}{space 6}worker {c |}{col 14}{res}{space 2}  .401821{col 26}{space 2} .4249265{col 37}{space 1}    0.95{col 46}{space 3}0.345{col 54}{space 4}-.4356478{col 67}{space 3}  1.23929
+{txt}{space 8}educ {c |}{col 14}{res}{space 2} .1009263{col 26}{space 2} .1071396{col 37}{space 1}    0.94{col 46}{space 3}0.347{col 54}{space 4}-.1102304{col 67}{space 3}  .312083
+{txt}{space 4}hhincttl {c |}{col 14}{res}{space 2} .1623913{col 26}{space 2} .1411298{col 37}{space 1}    1.15{col 46}{space 3}0.251{col 54}{space 4}-.1157551{col 67}{space 3} .4405377
+{txt}{space 5}numadlt {c |}{col 14}{res}{space 2} -.321411{col 26}{space 2} .8862409{col 37}{space 1}   -0.36{col 46}{space 3}0.717{col 54}{space 4}-2.068063{col 67}{space 3} 1.425242
+{txt}{space 5}drvrcnt {c |}{col 14}{res}{space 2}-.6670721{col 26}{space 2}  .515369{col 37}{space 1}   -1.29{col 46}{space 3}0.197{col 54}{space 4} -1.68279{col 67}{space 3} .3486456
+{txt}{space 7}r_age {c |}{col 14}{res}{space 2}-.0073783{col 26}{space 2} .0143216{col 37}{space 1}   -0.52{col 46}{space 3}0.607{col 54}{space 4} -.035604{col 67}{space 3} .0208475
+{txt}{space 6}hhsize {c |}{col 14}{res}{space 2} .0251125{col 26}{space 2}   .46621{col 37}{space 1}    0.05{col 46}{space 3}0.957{col 54}{space 4}  -.89372{col 67}{space 3}  .943945
+{txt}{space 5}homeown {c |}{col 14}{res}{space 2}-.4390412{col 26}{space 2} .5204947{col 37}{space 1}   -0.84{col 46}{space 3}0.400{col 54}{space 4}-1.464861{col 67}{space 3} .5867785
+{txt}{space 6}incbin {c |}{col 14}{res}{space 2}-.0676919{col 26}{space 2} .5877462{col 37}{space 1}   -0.12{col 46}{space 3}0.908{col 54}{space 4}-1.226055{col 67}{space 3} 1.090671
+{txt}{space 5}educbin {c |}{col 14}{res}{space 2} .3203761{col 26}{space 2} .8854243{col 37}{space 1}    0.36{col 46}{space 3}0.718{col 54}{space 4}-1.424667{col 67}{space 3} 2.065419
+{txt}{space 4}incratio {c |}{col 14}{res}{space 2}-.0000632{col 26}{space 2} .0000299{col 37}{space 1}   -2.11{col 46}{space 3}0.036{col 54}{space 4}-.0001221{col 67}{space 3}-4.29e-06
+{txt}{space 2}adultratio {c |}{col 14}{res}{space 2} 2.062919{col 26}{space 2}  2.63621{col 37}{space 1}    0.78{col 46}{space 3}0.435{col 54}{space 4}-3.132669{col 67}{space 3} 7.258506
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2} 3.277011{col 26}{space 2} 2.343822{col 37}{space 1}    1.40{col 46}{space 3}0.163{col 54}{space 4}-1.342324{col 67}{space 3} 7.896346
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}
+{com}. regress pertrips driver incratio drvrcnt if r_sex==0 & adult==1
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}       233
+{txt}{hline 13}{c +}{hline 34}   F(3, 229)       = {res}     2.35
+{txt}       Model {c |} {res} 48.8446783         3  16.2815594   {txt}Prob > F        ={res}    0.0729
+{txt}    Residual {c |} {res} 1584.05661       229  6.91727777   {txt}R-squared       ={res}    0.0299
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.0172
+{txt}       Total {c |} {res} 1632.90129       232  7.03836762   {txt}Root MSE        =   {res} 2.6301
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}    pertrips{col 14}{c |}      Coef.{col 26}   Std. Err.{col 38}      t{col 46}   P>|t|{col 54}     [95% Con{col 67}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 6}driver {c |}{col 14}{res}{space 2} 1.907374{col 26}{space 2} .7373227{col 37}{space 1}    2.59{col 46}{space 3}0.010{col 54}{space 4} .4545699{col 67}{space 3} 3.360178
+{txt}{space 4}incratio {c |}{col 14}{res}{space 2}-5.61e-06{col 26}{space 2} .0000135{col 37}{space 1}   -0.42{col 46}{space 3}0.678{col 54}{space 4}-.0000322{col 67}{space 3}  .000021
+{txt}{space 5}drvrcnt {c |}{col 14}{res}{space 2}-.3500931{col 26}{space 2} .2389844{col 37}{space 1}   -1.46{col 46}{space 3}0.144{col 54}{space 4}-.8209825{col 67}{space 3} .1207963
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2} 3.990102{col 26}{space 2} .6897416{col 37}{space 1}    5.78{col 46}{space 3}0.000{col 54}{space 4} 2.631051{col 67}{space 3} 5.349153
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}
+{com}. regress pertrips driver drvrcnt if r_sex==0 & adult==1
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}       251
+{txt}{hline 13}{c +}{hline 34}   F(2, 248)       = {res}     4.06
+{txt}       Model {c |} {res} 56.4462227         2  28.2231113   {txt}Prob > F        ={res}    0.0184
+{txt}    Residual {c |} {res} 1724.06374       248  6.95186991   {txt}R-squared       ={res}    0.0317
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.0239
+{txt}       Total {c |} {res} 1780.50996       250  7.12203984   {txt}Root MSE        =   {res} 2.6366
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}    pertrips{col 14}{c |}      Coef.{col 26}   Std. Err.{col 38}      t{col 46}   P>|t|{col 54}     [95% Con{col 67}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 6}driver {c |}{col 14}{res}{space 2} 1.881463{col 26}{space 2}  .662354{col 37}{space 1}    2.84{col 46}{space 3}0.005{col 54}{space 4} .5769067{col 67}{space 3} 3.186019
+{txt}{space 5}drvrcnt {c |}{col 14}{res}{space 2}-.2215039{col 26}{space 2} .2239497{col 37}{space 1}   -0.99{col 46}{space 3}0.324{col 54}{space 4}-.6625897{col 67}{space 3} .2195818
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2} 3.607884{col 26}{space 2} .6032482{col 37}{space 1}    5.98{col 46}{space 3}0.000{col 54}{space 4} 2.419741{col 67}{space 3} 4.796027
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}
+{com}. regress pertrips driver worker educ hhincttl numadlt drvrcnt r_age hhsize homeown incbin educbin incratio adultratio if r_sex==1 & adult==1
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}       212
+{txt}{hline 13}{c +}{hline 34}   F(13, 198)      = {res}     2.12
+{txt}       Model {c |} {res} 139.480607        13  10.7292774   {txt}Prob > F        ={res}    0.0147
+{txt}    Residual {c |} {res} 1004.06656       198  5.07104325   {txt}R-squared       ={res}    0.1220
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.0643
+{txt}       Total {c |} {res} 1143.54717       211  5.41965483   {txt}Root MSE        =   {res} 2.2519
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}    pertrips{col 14}{c |}      Coef.{col 26}   Std. Err.{col 38}      t{col 46}   P>|t|{col 54}     [95% Con{col 67}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 6}driver {c |}{col 14}{res}{space 2}-.2547378{col 26}{space 2} 1.095224{col 37}{space 1}   -0.23{col 46}{space 3}0.816{col 54}{space 4}-2.414539{col 67}{space 3} 1.905063
+{txt}{space 6}worker {c |}{col 14}{res}{space 2}-1.506243{col 26}{space 2} .4789983{col 37}{space 1}   -3.14{col 46}{space 3}0.002{col 54}{space 4}-2.450836{col 67}{space 3}-.5616504
+{txt}{space 8}educ {c |}{col 14}{res}{space 2} .1301706{col 26}{space 2} .0882926{col 37}{space 1}    1.47{col 46}{space 3}0.142{col 54}{space 4} -.043944{col 67}{space 3} .3042851
+{txt}{space 4}hhincttl {c |}{col 14}{res}{space 2}-.1106065{col 26}{space 2} .1334219{col 37}{space 1}   -0.83{col 46}{space 3}0.408{col 54}{space 4}-.3737169{col 67}{space 3} .1525038
+{txt}{space 5}numadlt {c |}{col 14}{res}{space 2} .4948324{col 26}{space 2}  .780981{col 37}{space 1}    0.63{col 46}{space 3}0.527{col 54}{space 4}-1.045276{col 67}{space 3} 2.034941
+{txt}{space 5}drvrcnt {c |}{col 14}{res}{space 2} .3276113{col 26}{space 2} .3475255{col 37}{space 1}    0.94{col 46}{space 3}0.347{col 54}{space 4}-.3577151{col 67}{space 3} 1.012938
+{txt}{space 7}r_age {c |}{col 14}{res}{space 2}-.0172744{col 26}{space 2} .0122861{col 37}{space 1}   -1.41{col 46}{space 3}0.161{col 54}{space 4}-.0415027{col 67}{space 3}  .006954
+{txt}{space 6}hhsize {c |}{col 14}{res}{space 2}-.5846907{col 26}{space 2}  .432614{col 37}{space 1}   -1.35{col 46}{space 3}0.178{col 54}{space 4}-1.437813{col 67}{space 3} .2684317
+{txt}{space 5}homeown {c |}{col 14}{res}{space 2}-.3488513{col 26}{space 2} .4671862{col 37}{space 1}   -0.75{col 46}{space 3}0.456{col 54}{space 4}-1.270151{col 67}{space 3} .5724481
+{txt}{space 6}incbin {c |}{col 14}{res}{space 2} .5847001{col 26}{space 2} .5576519{col 37}{space 1}    1.05{col 46}{space 3}0.296{col 54}{space 4}-.5149992{col 67}{space 3} 1.684399
+{txt}{space 5}educbin {c |}{col 14}{res}{space 2}  1.04348{col 26}{space 2} .6315675{col 37}{space 1}    1.65{col 46}{space 3}0.100{col 54}{space 4}-.2019821{col 67}{space 3} 2.288942
+{txt}{space 4}incratio {c |}{col 14}{res}{space 2}  .000011{col 26}{space 2} .0000239{col 37}{space 1}    0.46{col 46}{space 3}0.645{col 54}{space 4}-.0000361{col 67}{space 3} .0000581
+{txt}{space 2}adultratio {c |}{col 14}{res}{space 2}-4.145573{col 26}{space 2} 2.533526{col 37}{space 1}   -1.64{col 46}{space 3}0.103{col 54}{space 4}-9.141729{col 67}{space 3} .8505842
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2} 8.516291{col 26}{space 2}  2.47349{col 37}{space 1}    3.44{col 46}{space 3}0.001{col 54}{space 4} 3.638526{col 67}{space 3} 13.39406
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}
+{com}. regress pertrips worker educ r_age hhsize educbin adultratio if r_sex==1 & adult==1
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}       224
+{txt}{hline 13}{c +}{hline 34}   F(6, 217)       = {res}     3.67
+{txt}       Model {c |} {res} 108.448529         6  18.0747548   {txt}Prob > F        ={res}    0.0017
+{txt}    Residual {c |} {res} 1068.68986       217  4.92483808   {txt}R-squared       ={res}    0.0921
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.0670
+{txt}       Total {c |} {res} 1177.13839       223   5.2786475   {txt}Root MSE        =   {res} 2.2192
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}    pertrips{col 14}{c |}      Coef.{col 26}   Std. Err.{col 38}      t{col 46}   P>|t|{col 54}     [95% Con{col 67}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 6}worker {c |}{col 14}{res}{space 2}-1.360652{col 26}{space 2} .4417894{col 37}{space 1}   -3.08{col 46}{space 3}0.002{col 54}{space 4}  -2.2314{col 67}{space 3}-.4899048
+{txt}{space 8}educ {c |}{col 14}{res}{space 2} .1460299{col 26}{space 2}  .075162{col 37}{space 1}    1.94{col 46}{space 3}0.053{col 54}{space 4}-.0021112{col 67}{space 3}  .294171
+{txt}{space 7}r_age {c |}{col 14}{res}{space 2}-.0173505{col 26}{space 2} .0112243{col 37}{space 1}   -1.55{col 46}{space 3}0.124{col 54}{space 4}-.0394731{col 67}{space 3}  .004772
+{txt}{space 6}hhsize {c |}{col 14}{res}{space 2}-.1443451{col 26}{space 2} .1675456{col 37}{space 1}   -0.86{col 46}{space 3}0.390{col 54}{space 4}-.4745703{col 67}{space 3}   .18588
+{txt}{space 5}educbin {c |}{col 14}{res}{space 2} 1.114416{col 26}{space 2}  .562968{col 37}{space 1}    1.98{col 46}{space 3}0.049{col 54}{space 4}  .004831{col 67}{space 3} 2.224002
+{txt}{space 2}adultratio {c |}{col 14}{res}{space 2}-1.949365{col 26}{space 2} 1.067929{col 37}{space 1}   -1.83{col 46}{space 3}0.069{col 54}{space 4}-4.054207{col 67}{space 3} .1554765
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2} 6.874072{col 26}{space 2}  1.55982{col 37}{space 1}    4.41{col 46}{space 3}0.000{col 54}{space 4} 3.799735{col 67}{space 3} 9.948409
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}
+{com}. regress pertrips worker educbin if r_sex==1 & adult==1
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}       225
+{txt}{hline 13}{c +}{hline 34}   F(2, 222)       = {res}     6.78
+{txt}       Model {c |} {res} 68.5110244         2  34.2555122   {txt}Prob > F        ={res}    0.0014
+{txt}    Residual {c |} {res}  1121.8712       222  5.05347386   {txt}R-squared       ={res}    0.0576
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.0491
+{txt}       Total {c |} {res} 1190.38222       224  5.31420635   {txt}Root MSE        =   {res}  2.248
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}    pertrips{col 14}{c |}      Coef.{col 26}   Std. Err.{col 38}      t{col 46}   P>|t|{col 54}     [95% Con{col 67}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 6}worker {c |}{col 14}{res}{space 2}-.7339333{col 26}{space 2}  .342072{col 37}{space 1}   -2.15{col 46}{space 3}0.033{col 54}{space 4}-1.408057{col 67}{space 3}-.0598095
+{txt}{space 5}educbin {c |}{col 14}{res}{space 2} 1.545391{col 26}{space 2} .4874094{col 37}{space 1}    3.17{col 46}{space 3}0.002{col 54}{space 4} .5848494{col 67}{space 3} 2.505932
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2} 3.792042{col 26}{space 2} .5062309{col 37}{space 1}    7.49{col 46}{space 3}0.000{col 54}{space 4} 2.794409{col 67}{space 3} 4.789675
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}
+{com}. log close
+      {txt}name:  {res}<unnamed>
+       {txt}log:  {res}/Users/guslipkin/Documents/Fall2020/QMB 3200 ~ Advanced Quantitative Methods/Final Project/per_trips.smcl
+  {txt}log type:  {res}smcl
+ {txt}closed on:  {res}19 Nov 2020, 18:38:32
+{txt}{.-}
+{smcl}
+{txt}{sf}{ul off}
