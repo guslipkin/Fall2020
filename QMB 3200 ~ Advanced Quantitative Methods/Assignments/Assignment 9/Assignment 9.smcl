@@ -1,0 +1,305 @@
+{smcl}
+{com}{sf}{ul off}{txt}{.-}
+      name:  {res}<unnamed>
+       {txt}log:  {res}/Users/guslipkin/Documents/Fall2020/QMB 3200 ~ Advanced Quantitative Methods/Assignments/Assignment 9/Assignment 9.smcl
+  {txt}log type:  {res}smcl
+ {txt}opened on:  {res}25 Nov 2020, 10:52:02
+
+{com}. 
+. import excel "/Users/guslipkin/Documents/Fall2020/QMB 3200 ~ Advanced Quantitative Methods/Assignments/Assignment 9/Assignment9Data.xlsx", sheet("Sheet1") firstrow case(lower)
+{res}{text}(11 vars, 189 obs)
+
+{com}. summ age wgt ptl ftv bwt
+
+{txt}    Variable {c |}        Obs        Mean    Std. Dev.       Min        Max
+{hline 13}{c +}{hline 57}
+{space 9}age {c |}{res}        189     23.2381    5.298678         14         45
+{txt}{space 9}wgt {c |}{res}        189    129.8148    30.57938         80        250
+{txt}{space 9}ptl {c |}{res}        189    .1957672    .4933419          0          3
+{txt}{space 9}ftv {c |}{res}        189    .7936508    1.059286          0          6
+{txt}{space 9}bwt {c |}{res}        189    2944.656    729.0224        709       4990
+
+{com}. table low
+
+{txt}{hline 10}{c TT}{hline 11}
+      low {c |}      Freq.
+{hline 10}{c +}{hline 11}
+        0 {c |}        {res}130
+        {txt}1 {c |}         {res}59
+{txt}{hline 10}{c BT}{hline 11}
+
+{com}. tabulate low
+
+        {txt}low {c |}      Freq.     Percent        Cum.
+{hline 12}{c +}{hline 35}
+          0 {c |}{res}        130       68.78       68.78
+{txt}          1 {c |}{res}         59       31.22      100.00
+{txt}{hline 12}{c +}{hline 35}
+      Total {c |}{res}        189      100.00
+
+{com}. tabulate low race
+
+           {txt}{c |}               race
+       low {c |}         1          2          3 {c |}     Total
+{hline 11}{c +}{hline 33}{c +}{hline 10}
+         0 {c |}{res}        73         15         42 {txt}{c |}{res}       130 
+{txt}         1 {c |}{res}        23         11         25 {txt}{c |}{res}        59 
+{txt}{hline 11}{c +}{hline 33}{c +}{hline 10}
+     Total {c |}{res}        96         26         67 {txt}{c |}{res}       189 
+
+{com}. tabulate race
+
+       {txt}race {c |}      Freq.     Percent        Cum.
+{hline 12}{c +}{hline 35}
+          1 {c |}{res}         96       50.79       50.79
+{txt}          2 {c |}{res}         26       13.76       64.55
+{txt}          3 {c |}{res}         67       35.45      100.00
+{txt}{hline 12}{c +}{hline 35}
+      Total {c |}{res}        189      100.00
+
+{com}. tabulate smoke
+
+      {txt}smoke {c |}      Freq.     Percent        Cum.
+{hline 12}{c +}{hline 35}
+          0 {c |}{res}        115       60.85       60.85
+{txt}          1 {c |}{res}         74       39.15      100.00
+{txt}{hline 12}{c +}{hline 35}
+      Total {c |}{res}        189      100.00
+
+{com}. tabulate  ht
+
+         {txt}HT {c |}      Freq.     Percent        Cum.
+{hline 12}{c +}{hline 35}
+          0 {c |}{res}        177       93.65       93.65
+{txt}          1 {c |}{res}         12        6.35      100.00
+{txt}{hline 12}{c +}{hline 35}
+      Total {c |}{res}        189      100.00
+
+{com}. tabulate ut
+
+         {txt}UT {c |}      Freq.     Percent        Cum.
+{hline 12}{c +}{hline 35}
+          0 {c |}{res}        161       85.19       85.19
+{txt}          1 {c |}{res}         28       14.81      100.00
+{txt}{hline 12}{c +}{hline 35}
+      Total {c |}{res}        189      100.00
+
+{com}. logit low age wgt i.race i.smoke ptl i.ht i.ut ftv bwt
+
+{txt}outcome = bwt <= 2495 predicts data perfectly
+{search r(2000), local:r(2000);}
+
+{com}. logit low age wgt i.race i.smoke ptl i.ht i.ut ftv
+
+{res}{txt}Iteration 0:{space 3}log likelihood = {res:  -117.336}  
+Iteration 1:{space 3}log likelihood = {res:-101.23217}  
+Iteration 2:{space 3}log likelihood = {res:-100.64496}  
+Iteration 3:{space 3}log likelihood = {res: -100.6424}  
+Iteration 4:{space 3}log likelihood = {res: -100.6424}  
+{res}
+{txt}Logistic regression{col 49}Number of obs{col 67}= {res}       189
+{txt}{col 49}LR chi2({res}9{txt}){col 67}= {res}     33.39
+{txt}{col 49}Prob > chi2{col 67}= {res}    0.0001
+{txt}Log likelihood = {res} -100.6424{txt}{col 49}Pseudo R2{col 67}= {res}    0.1423
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}         low{col 14}{c |}      Coef.{col 26}   Std. Err.{col 38}      z{col 46}   P>|z|{col 54}     [95% Con{col 67}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 9}age {c |}{col 14}{res}{space 2} -.029549{col 26}{space 2} .0370314{col 37}{space 1}   -0.80{col 46}{space 3}0.425{col 54}{space 4}-.1021293{col 67}{space 3} .0430312
+{txt}{space 9}wgt {c |}{col 14}{res}{space 2}-.0154243{col 26}{space 2} .0069194{col 37}{space 1}   -2.23{col 46}{space 3}0.026{col 54}{space 4} -.028986{col 67}{space 3}-.0018625
+{txt}{space 12} {c |}
+{space 8}race {c |}
+{space 10}2  {c |}{col 14}{res}{space 2}  1.27226{col 26}{space 2} .5273637{col 37}{space 1}    2.41{col 46}{space 3}0.016{col 54}{space 4} .2386459{col 67}{space 3} 2.305874
+{txt}{space 10}3  {c |}{col 14}{res}{space 2} .8804959{col 26}{space 2} .4407857{col 37}{space 1}    2.00{col 46}{space 3}0.046{col 54}{space 4} .0165719{col 67}{space 3}  1.74442
+{txt}{space 12} {c |}
+{space 5}1.smoke {c |}{col 14}{res}{space 2} .9388457{col 26}{space 2} .4021541{col 37}{space 1}    2.33{col 46}{space 3}0.020{col 54}{space 4} .1506382{col 67}{space 3} 1.727053
+{txt}{space 9}ptl {c |}{col 14}{res}{space 2}  .543337{col 26}{space 2} .3454054{col 37}{space 1}    1.57{col 46}{space 3}0.116{col 54}{space 4}-.1336452{col 67}{space 3} 1.220319
+{txt}{space 8}1.ht {c |}{col 14}{res}{space 2} 1.863303{col 26}{space 2} .6975401{col 37}{space 1}    2.67{col 46}{space 3}0.008{col 54}{space 4} .4961495{col 67}{space 3} 3.230456
+{txt}{space 8}1.ut {c |}{col 14}{res}{space 2} .7676481{col 26}{space 2} .4593215{col 37}{space 1}    1.67{col 46}{space 3}0.095{col 54}{space 4}-.1326054{col 67}{space 3} 1.667902
+{txt}{space 9}ftv {c |}{col 14}{res}{space 2} .0653018{col 26}{space 2} .1723958{col 37}{space 1}    0.38{col 46}{space 3}0.705{col 54}{space 4}-.2725878{col 67}{space 3} .4031914
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2} .4806232{col 26}{space 2} 1.196904{col 37}{space 1}    0.40{col 46}{space 3}0.688{col 54}{space 4}-1.865266{col 67}{space 3} 2.826512
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+
+{com}. logit i.low age wgt i.race i.smoke ptl i.ht i.ut ftv
+{err}depvar may not be a factor variable
+{txt}{search r(198), local:r(198);}
+
+{com}. logit low age wgt i.race smoke ptl ht ut ftv
+
+{res}{txt}Iteration 0:{space 3}log likelihood = {res:  -117.336}  
+Iteration 1:{space 3}log likelihood = {res:-101.23217}  
+Iteration 2:{space 3}log likelihood = {res:-100.64496}  
+Iteration 3:{space 3}log likelihood = {res: -100.6424}  
+Iteration 4:{space 3}log likelihood = {res: -100.6424}  
+{res}
+{txt}Logistic regression{col 49}Number of obs{col 67}= {res}       189
+{txt}{col 49}LR chi2({res}9{txt}){col 67}= {res}     33.39
+{txt}{col 49}Prob > chi2{col 67}= {res}    0.0001
+{txt}Log likelihood = {res} -100.6424{txt}{col 49}Pseudo R2{col 67}= {res}    0.1423
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}         low{col 14}{c |}      Coef.{col 26}   Std. Err.{col 38}      z{col 46}   P>|z|{col 54}     [95% Con{col 67}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 9}age {c |}{col 14}{res}{space 2} -.029549{col 26}{space 2} .0370314{col 37}{space 1}   -0.80{col 46}{space 3}0.425{col 54}{space 4}-.1021293{col 67}{space 3} .0430312
+{txt}{space 9}wgt {c |}{col 14}{res}{space 2}-.0154243{col 26}{space 2} .0069194{col 37}{space 1}   -2.23{col 46}{space 3}0.026{col 54}{space 4} -.028986{col 67}{space 3}-.0018625
+{txt}{space 12} {c |}
+{space 8}race {c |}
+{space 10}2  {c |}{col 14}{res}{space 2}  1.27226{col 26}{space 2} .5273637{col 37}{space 1}    2.41{col 46}{space 3}0.016{col 54}{space 4} .2386459{col 67}{space 3} 2.305874
+{txt}{space 10}3  {c |}{col 14}{res}{space 2} .8804959{col 26}{space 2} .4407857{col 37}{space 1}    2.00{col 46}{space 3}0.046{col 54}{space 4} .0165719{col 67}{space 3}  1.74442
+{txt}{space 12} {c |}
+{space 7}smoke {c |}{col 14}{res}{space 2} .9388457{col 26}{space 2} .4021541{col 37}{space 1}    2.33{col 46}{space 3}0.020{col 54}{space 4} .1506382{col 67}{space 3} 1.727053
+{txt}{space 9}ptl {c |}{col 14}{res}{space 2}  .543337{col 26}{space 2} .3454054{col 37}{space 1}    1.57{col 46}{space 3}0.116{col 54}{space 4}-.1336452{col 67}{space 3} 1.220319
+{txt}{space 10}ht {c |}{col 14}{res}{space 2} 1.863303{col 26}{space 2} .6975401{col 37}{space 1}    2.67{col 46}{space 3}0.008{col 54}{space 4} .4961495{col 67}{space 3} 3.230456
+{txt}{space 10}ut {c |}{col 14}{res}{space 2} .7676481{col 26}{space 2} .4593215{col 37}{space 1}    1.67{col 46}{space 3}0.095{col 54}{space 4}-.1326054{col 67}{space 3} 1.667902
+{txt}{space 9}ftv {c |}{col 14}{res}{space 2} .0653018{col 26}{space 2} .1723958{col 37}{space 1}    0.38{col 46}{space 3}0.705{col 54}{space 4}-.2725878{col 67}{space 3} .4031914
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2} .4806232{col 26}{space 2} 1.196904{col 37}{space 1}    0.40{col 46}{space 3}0.688{col 54}{space 4}-1.865266{col 67}{space 3} 2.826512
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+
+{com}. logit low wgt i.race smoke ht
+
+{res}{txt}Iteration 0:{space 3}log likelihood = {res:  -117.336}  
+Iteration 1:{space 3}log likelihood = {res: -104.4935}  
+Iteration 2:{space 3}log likelihood = {res: -104.1246}  
+Iteration 3:{space 3}log likelihood = {res:-104.12371}  
+Iteration 4:{space 3}log likelihood = {res:-104.12371}  
+{res}
+{txt}Logistic regression{col 49}Number of obs{col 67}= {res}       189
+{txt}{col 49}LR chi2({res}5{txt}){col 67}= {res}     26.42
+{txt}{col 49}Prob > chi2{col 67}= {res}    0.0001
+{txt}Log likelihood = {res}-104.12371{txt}{col 49}Pseudo R2{col 67}= {res}    0.1126
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}         low{col 14}{c |}      Coef.{col 26}   Std. Err.{col 38}      z{col 46}   P>|z|{col 54}     [95% Con{col 67}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 9}wgt {c |}{col 14}{res}{space 2}-.0179066{col 26}{space 2} .0067989{col 37}{space 1}   -2.63{col 46}{space 3}0.008{col 54}{space 4}-.0312322{col 67}{space 3}-.0045809
+{txt}{space 12} {c |}
+{space 8}race {c |}
+{space 10}2  {c |}{col 14}{res}{space 2} 1.287662{col 26}{space 2} .5216502{col 37}{space 1}    2.47{col 46}{space 3}0.014{col 54}{space 4} .2652467{col 67}{space 3} 2.310078
+{txt}{space 10}3  {c |}{col 14}{res}{space 2} .9436448{col 26}{space 2} .4233834{col 37}{space 1}    2.23{col 46}{space 3}0.026{col 54}{space 4} .1138287{col 67}{space 3} 1.773461
+{txt}{space 12} {c |}
+{space 7}smoke {c |}{col 14}{res}{space 2} 1.071566{col 26}{space 2}  .387519{col 37}{space 1}    2.77{col 46}{space 3}0.006{col 54}{space 4} .3120431{col 67}{space 3}  1.83109
+{txt}{space 10}ht {c |}{col 14}{res}{space 2} 1.749163{col 26}{space 2} .6908222{col 37}{space 1}    2.53{col 46}{space 3}0.011{col 54}{space 4}  .395176{col 67}{space 3} 3.103149
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2} .3520493{col 26}{space 2} .9244435{col 37}{space 1}    0.38{col 46}{space 3}0.703{col 54}{space 4}-1.459827{col 67}{space 3} 2.163925
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+
+{com}. logit , or
+
+{txt}Logistic regression{col 49}Number of obs{col 67}= {res}       189
+{txt}{col 49}LR chi2({res}5{txt}){col 67}= {res}     26.42
+{txt}{col 49}Prob > chi2{col 67}= {res}    0.0001
+{txt}Log likelihood = {res}-104.12371{txt}{col 49}Pseudo R2{col 67}= {res}    0.1126
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}         low{col 14}{c |} Odds Ratio{col 26}   Std. Err.{col 38}      z{col 46}   P>|z|{col 54}     [95% Con{col 67}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 9}wgt {c |}{col 14}{res}{space 2} .9822528{col 26}{space 2} .0066783{col 37}{space 1}   -2.63{col 46}{space 3}0.008{col 54}{space 4} .9692505{col 67}{space 3} .9954296
+{txt}{space 12} {c |}
+{space 8}race {c |}
+{space 10}2  {c |}{col 14}{res}{space 2} 3.624304{col 26}{space 2} 1.890619{col 37}{space 1}    2.47{col 46}{space 3}0.014{col 54}{space 4} 1.303753{col 67}{space 3} 10.07521
+{txt}{space 10}3  {c |}{col 14}{res}{space 2} 2.569329{col 26}{space 2} 1.087811{col 37}{space 1}    2.23{col 46}{space 3}0.026{col 54}{space 4}  1.12056{col 67}{space 3} 5.891208
+{txt}{space 12} {c |}
+{space 7}smoke {c |}{col 14}{res}{space 2}  2.91995{col 26}{space 2} 1.131536{col 37}{space 1}    2.77{col 46}{space 3}0.006{col 54}{space 4} 1.366214{col 67}{space 3} 6.240683
+{txt}{space 10}ht {c |}{col 14}{res}{space 2} 5.749786{col 26}{space 2}  3.97208{col 37}{space 1}    2.53{col 46}{space 3}0.011{col 54}{space 4} 1.484645{col 67}{space 3} 22.26797
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2} 1.421979{col 26}{space 2} 1.314539{col 37}{space 1}    0.38{col 46}{space 3}0.703{col 54}{space 4} .2322765{col 67}{space 3} 8.705241
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{p 0 6 2}Note: {res:_cons} estimates baseline odds{txt}.{p_end}
+
+{com}. logit low age wgt i.race smoke ptl ht ut ftv
+
+{res}{txt}Iteration 0:{space 3}log likelihood = {res:  -117.336}  
+Iteration 1:{space 3}log likelihood = {res:-101.23217}  
+Iteration 2:{space 3}log likelihood = {res:-100.64496}  
+Iteration 3:{space 3}log likelihood = {res: -100.6424}  
+Iteration 4:{space 3}log likelihood = {res: -100.6424}  
+{res}
+{txt}Logistic regression{col 49}Number of obs{col 67}= {res}       189
+{txt}{col 49}LR chi2({res}9{txt}){col 67}= {res}     33.39
+{txt}{col 49}Prob > chi2{col 67}= {res}    0.0001
+{txt}Log likelihood = {res} -100.6424{txt}{col 49}Pseudo R2{col 67}= {res}    0.1423
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}         low{col 14}{c |}      Coef.{col 26}   Std. Err.{col 38}      z{col 46}   P>|z|{col 54}     [95% Con{col 67}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 9}age {c |}{col 14}{res}{space 2} -.029549{col 26}{space 2} .0370314{col 37}{space 1}   -0.80{col 46}{space 3}0.425{col 54}{space 4}-.1021293{col 67}{space 3} .0430312
+{txt}{space 9}wgt {c |}{col 14}{res}{space 2}-.0154243{col 26}{space 2} .0069194{col 37}{space 1}   -2.23{col 46}{space 3}0.026{col 54}{space 4} -.028986{col 67}{space 3}-.0018625
+{txt}{space 12} {c |}
+{space 8}race {c |}
+{space 10}2  {c |}{col 14}{res}{space 2}  1.27226{col 26}{space 2} .5273637{col 37}{space 1}    2.41{col 46}{space 3}0.016{col 54}{space 4} .2386459{col 67}{space 3} 2.305874
+{txt}{space 10}3  {c |}{col 14}{res}{space 2} .8804959{col 26}{space 2} .4407857{col 37}{space 1}    2.00{col 46}{space 3}0.046{col 54}{space 4} .0165719{col 67}{space 3}  1.74442
+{txt}{space 12} {c |}
+{space 7}smoke {c |}{col 14}{res}{space 2} .9388457{col 26}{space 2} .4021541{col 37}{space 1}    2.33{col 46}{space 3}0.020{col 54}{space 4} .1506382{col 67}{space 3} 1.727053
+{txt}{space 9}ptl {c |}{col 14}{res}{space 2}  .543337{col 26}{space 2} .3454054{col 37}{space 1}    1.57{col 46}{space 3}0.116{col 54}{space 4}-.1336452{col 67}{space 3} 1.220319
+{txt}{space 10}ht {c |}{col 14}{res}{space 2} 1.863303{col 26}{space 2} .6975401{col 37}{space 1}    2.67{col 46}{space 3}0.008{col 54}{space 4} .4961495{col 67}{space 3} 3.230456
+{txt}{space 10}ut {c |}{col 14}{res}{space 2} .7676481{col 26}{space 2} .4593215{col 37}{space 1}    1.67{col 46}{space 3}0.095{col 54}{space 4}-.1326054{col 67}{space 3} 1.667902
+{txt}{space 9}ftv {c |}{col 14}{res}{space 2} .0653018{col 26}{space 2} .1723958{col 37}{space 1}    0.38{col 46}{space 3}0.705{col 54}{space 4}-.2725878{col 67}{space 3} .4031914
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2} .4806232{col 26}{space 2} 1.196904{col 37}{space 1}    0.40{col 46}{space 3}0.688{col 54}{space 4}-1.865266{col 67}{space 3} 2.826512
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+
+{com}. 
+. logit low age wgt i.race smoke ptl ht ut ftv
+
+{res}{txt}Iteration 0:{space 3}log likelihood = {res:  -117.336}  
+Iteration 1:{space 3}log likelihood = {res:-101.23217}  
+Iteration 2:{space 3}log likelihood = {res:-100.64496}  
+Iteration 3:{space 3}log likelihood = {res: -100.6424}  
+Iteration 4:{space 3}log likelihood = {res: -100.6424}  
+{res}
+{txt}Logistic regression{col 49}Number of obs{col 67}= {res}       189
+{txt}{col 49}LR chi2({res}9{txt}){col 67}= {res}     33.39
+{txt}{col 49}Prob > chi2{col 67}= {res}    0.0001
+{txt}Log likelihood = {res} -100.6424{txt}{col 49}Pseudo R2{col 67}= {res}    0.1423
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}         low{col 14}{c |}      Coef.{col 26}   Std. Err.{col 38}      z{col 46}   P>|z|{col 54}     [95% Con{col 67}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 9}age {c |}{col 14}{res}{space 2} -.029549{col 26}{space 2} .0370314{col 37}{space 1}   -0.80{col 46}{space 3}0.425{col 54}{space 4}-.1021293{col 67}{space 3} .0430312
+{txt}{space 9}wgt {c |}{col 14}{res}{space 2}-.0154243{col 26}{space 2} .0069194{col 37}{space 1}   -2.23{col 46}{space 3}0.026{col 54}{space 4} -.028986{col 67}{space 3}-.0018625
+{txt}{space 12} {c |}
+{space 8}race {c |}
+{space 10}2  {c |}{col 14}{res}{space 2}  1.27226{col 26}{space 2} .5273637{col 37}{space 1}    2.41{col 46}{space 3}0.016{col 54}{space 4} .2386459{col 67}{space 3} 2.305874
+{txt}{space 10}3  {c |}{col 14}{res}{space 2} .8804959{col 26}{space 2} .4407857{col 37}{space 1}    2.00{col 46}{space 3}0.046{col 54}{space 4} .0165719{col 67}{space 3}  1.74442
+{txt}{space 12} {c |}
+{space 7}smoke {c |}{col 14}{res}{space 2} .9388457{col 26}{space 2} .4021541{col 37}{space 1}    2.33{col 46}{space 3}0.020{col 54}{space 4} .1506382{col 67}{space 3} 1.727053
+{txt}{space 9}ptl {c |}{col 14}{res}{space 2}  .543337{col 26}{space 2} .3454054{col 37}{space 1}    1.57{col 46}{space 3}0.116{col 54}{space 4}-.1336452{col 67}{space 3} 1.220319
+{txt}{space 10}ht {c |}{col 14}{res}{space 2} 1.863303{col 26}{space 2} .6975401{col 37}{space 1}    2.67{col 46}{space 3}0.008{col 54}{space 4} .4961495{col 67}{space 3} 3.230456
+{txt}{space 10}ut {c |}{col 14}{res}{space 2} .7676481{col 26}{space 2} .4593215{col 37}{space 1}    1.67{col 46}{space 3}0.095{col 54}{space 4}-.1326054{col 67}{space 3} 1.667902
+{txt}{space 9}ftv {c |}{col 14}{res}{space 2} .0653018{col 26}{space 2} .1723958{col 37}{space 1}    0.38{col 46}{space 3}0.705{col 54}{space 4}-.2725878{col 67}{space 3} .4031914
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2} .4806232{col 26}{space 2} 1.196904{col 37}{space 1}    0.40{col 46}{space 3}0.688{col 54}{space 4}-1.865266{col 67}{space 3} 2.826512
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+
+{com}. 
+. 
+. logit , or
+
+{txt}Logistic regression{col 49}Number of obs{col 67}= {res}       189
+{txt}{col 49}LR chi2({res}9{txt}){col 67}= {res}     33.39
+{txt}{col 49}Prob > chi2{col 67}= {res}    0.0001
+{txt}Log likelihood = {res} -100.6424{txt}{col 49}Pseudo R2{col 67}= {res}    0.1423
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}         low{col 14}{c |} Odds Ratio{col 26}   Std. Err.{col 38}      z{col 46}   P>|z|{col 54}     [95% Con{col 67}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 9}age {c |}{col 14}{res}{space 2} .9708833{col 26}{space 2} .0359532{col 37}{space 1}   -0.80{col 46}{space 3}0.425{col 54}{space 4} .9029128{col 67}{space 3}  1.04397
+{txt}{space 9}wgt {c |}{col 14}{res}{space 2} .9846941{col 26}{space 2} .0068135{col 37}{space 1}   -2.23{col 46}{space 3}0.026{col 54}{space 4}   .97143{col 67}{space 3} .9981392
+{txt}{space 12} {c |}
+{space 8}race {c |}
+{space 10}2  {c |}{col 14}{res}{space 2} 3.568908{col 26}{space 2} 1.882113{col 37}{space 1}    2.41{col 46}{space 3}0.016{col 54}{space 4} 1.269529{col 67}{space 3} 10.03294
+{txt}{space 10}3  {c |}{col 14}{res}{space 2} 2.412096{col 26}{space 2} 1.063217{col 37}{space 1}    2.00{col 46}{space 3}0.046{col 54}{space 4}  1.01671{col 67}{space 3} 5.722581
+{txt}{space 12} {c |}
+{space 7}smoke {c |}{col 14}{res}{space 2} 2.557028{col 26}{space 2} 1.028319{col 37}{space 1}    2.33{col 46}{space 3}0.020{col 54}{space 4} 1.162576{col 67}{space 3} 5.624056
+{txt}{space 9}ptl {c |}{col 14}{res}{space 2} 1.721743{col 26}{space 2} .5946993{col 37}{space 1}    1.57{col 46}{space 3}0.116{col 54}{space 4} .8749004{col 67}{space 3} 3.388269
+{txt}{space 10}ht {c |}{col 14}{res}{space 2} 6.444989{col 26}{space 2} 4.495638{col 37}{space 1}    2.67{col 46}{space 3}0.008{col 54}{space 4} 1.642385{col 67}{space 3} 25.29119
+{txt}{space 10}ut {c |}{col 14}{res}{space 2} 2.154693{col 26}{space 2} .9896967{col 37}{space 1}    1.67{col 46}{space 3}0.095{col 54}{space 4} .8758106{col 67}{space 3} 5.301033
+{txt}{space 9}ftv {c |}{col 14}{res}{space 2} 1.067481{col 26}{space 2} .1840293{col 37}{space 1}    0.38{col 46}{space 3}0.705{col 54}{space 4} .7614066{col 67}{space 3} 1.496593
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2} 1.617082{col 26}{space 2} 1.935492{col 37}{space 1}    0.40{col 46}{space 3}0.688{col 54}{space 4} .1548551{col 67}{space 3} 16.88646
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{p 0 6 2}Note: {res:_cons} estimates baseline odds{txt}.{p_end}
+
+{com}. log close
+      {txt}name:  {res}<unnamed>
+       {txt}log:  {res}/Users/guslipkin/Documents/Fall2020/QMB 3200 ~ Advanced Quantitative Methods/Assignments/Assignment 9/Assignment 9.smcl
+  {txt}log type:  {res}smcl
+ {txt}closed on:  {res}25 Nov 2020, 11:26:14
+{txt}{.-}
+{smcl}
+{txt}{sf}{ul off}
