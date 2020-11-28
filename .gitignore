@@ -3,3 +3,5 @@
 Videos/
 Books/
 .DS_Store
+**/Data
+Data/

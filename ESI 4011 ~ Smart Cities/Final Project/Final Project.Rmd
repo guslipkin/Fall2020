@@ -1,0 +1,43 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+```{r}
+library(tidyverse)
+library(lubridate)
+```
+
+```{r}
+df <- read.csv("../Final Project/Data/merged.csv", nrows = 100)
+head(df)
+nrow(df)
+summary(df)
+```
+
+```{r}
+df$tripduration <- as.integer(df$tripduration)
+#df <- df %>% filter(tripduration > 60)
+
+df$starttime <- as.POSIXct(ymd_hms(df$starttime), format = '%Y-%m-%d %H:%M:%S')
+df$stoptime <- as.POSIXct(ymd_hms(df$stoptime), format = '%Y-%m-%d %H:%M:%S')
+
+df$start.station.latitude <- as.numeric(df$start.station.latitude)
+df$start.station.longitude <- as.numeric(df$start.station.longitude)
+
+df$end.station.latitude <- as.numeric(df$end.station.latitude)
+df$end.station.longitude <- as.numeric(df$end.station.longitude)
+
+df$birth.year <- as.integer(levels(df$birth.year))[df$birth.year]
+```
+
+```{r}
+head(df)
+```
+
+```{r}
+bad_rows <- which(is.na(df$starttime))
+if(nrow(df) > 7841)
+  df <- df[-c(bad_rows),]
+```
+
