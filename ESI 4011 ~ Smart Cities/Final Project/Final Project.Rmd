@@ -9,7 +9,7 @@ library(lubridate)
 ```
 
 ```{r}
-df <- read.csv("../Final Project/Data/merged.csv", nrows = 100)
+df <- read.csv("../Final Project/Data/merged.csv")
 head(df)
 nrow(df)
 summary(df)
