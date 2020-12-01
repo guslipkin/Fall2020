@@ -96,7 +96,6 @@ dfPerson$adult <- 0
 dfPerson$adult[dfPerson$r_age >= 18] <- 1
 ```
 
-
 ```{r}
 dfPerson
 dfHousehold
