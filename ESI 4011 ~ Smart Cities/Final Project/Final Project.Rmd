@@ -6,27 +6,35 @@ output: html_notebook
 ```{r}
 library(tidyverse)
 library(lubridate)
+library(leaflet)
+library(sf)
+library(maps)
 ```
 
 ```{r}
-df <- read.csv("../Final Project/Data/merged.csv")
+df <- read.csv("../Final Project/Data/merged.csv", nrows = 10000)
 head(df)
 nrow(df)
 summary(df)
 ```
 
 ```{r}
+bad_rows <- which(df$tripduration == "tripduration")
+df <- df[-c(bad_rows),]
+```
+
+```{r}
 df$tripduration <- as.integer(df$tripduration)
-#df <- df %>% filter(tripduration > 60)
+df <- df %>% filter(tripduration > 60)
 
 df$starttime <- as.POSIXct(ymd_hms(df$starttime), format = '%Y-%m-%d %H:%M:%S')
 df$stoptime <- as.POSIXct(ymd_hms(df$stoptime), format = '%Y-%m-%d %H:%M:%S')
 
-df$start.station.latitude <- as.numeric(df$start.station.latitude)
-df$start.station.longitude <- as.numeric(df$start.station.longitude)
+df$start.station.latitude <- as.numeric(levels(df$start.station.latitude))[df$start.station.latitude]
+df$start.station.longitude <- as.numeric(levels(df$start.station.longitude))[df$start.station.longitude]
 
-df$end.station.latitude <- as.numeric(df$end.station.latitude)
-df$end.station.longitude <- as.numeric(df$end.station.longitude)
+df$end.station.latitude <- as.numeric(levels(df$end.station.latitude))[df$end.station.latitude]
+df$end.station.longitude <- as.numeric(levels(df$end.station.longitude))[df$end.station.longitude]
 
 df$birth.year <- as.integer(levels(df$birth.year))[df$birth.year]
 ```
@@ -36,8 +44,59 @@ head(df)
 ```
 
 ```{r}
-bad_rows <- which(is.na(df$starttime))
-if(nrow(df) > 7841)
-  df <- df[-c(bad_rows),]
+df %>%
+  ggplot(aes(x = tripduration, fill = gender)) +
+  geom_histogram(binwidth = 60) +
+  scale_fill_discrete(name = "Gender", labels = c("Unknown", "Male", "Female"))
+```
+
+```{r}
+starts <- df %>%
+  group_by(start.station.id, end.station.id, start.station.longitude, start.station.latitude) %>%
+  summarise(mean_trip = mean(tripduration)) %>%
+  mutate(type = "start") %>%
+  rename(longitude = start.station.longitude, latitude = start.station.latitude)
+starts
+ends <- df %>%
+  group_by(start.station.id, end.station.id, end.station.longitude, end.station.latitude) %>%
+  summarise(mean_trip = mean(tripduration)) %>%
+  mutate(type = "end") %>%
+  rename(longitude = end.station.longitude, latitude = end.station.latitude)
+ends
+
+combined <- rbind(starts, ends)
+```
+
+```{r}
+
+combined %>%
+  ggplot() +
+  geom_point(aes(x = latitude, y = longitude)) +
+  geom_line(aes(x = latitude, y = longitude, group = start.station.id, color = as.numeric(mean_trip))) +
+  #coord_quickmap() +
+  #coord_map("albers", at0 = 42.36, lat1 = 71.05) +
+  scale_color_continuous(name = "Trip Time")
+```
+
+```{r}
+map('county', 'massachusetts', fill = TRUE, col = palette())
+combined %>%
+  ggplot() +
+  geom_point(aes(x = latitude, y = longitude)) +
+  geom_line(aes(x = latitude, y = longitude, group = start.station.id, color = as.numeric(mean_trip))) +
+  scale_color_continuous(name = "Trip Time")
+```
+
+```{r}
+df <- df %>%
+  mutate(station_combo = paste(start.station.name, "->", end.station.name))
+head(df)
+
+df %>%
+  group_by(start.station.id, end.station.id) %>%
+  summarise() %>%
+  ggplot() +
+  geom_histogram(aes(x = start.station.id), stat = "count") +
+  theme(axis.text.x = element_text(angle = 90))
 ```
 
