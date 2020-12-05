@@ -1,0 +1,22 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+```{r}
+library(readxl)
+library(tidyverse)
+
+df <- read_xlsx("../TakeHome Final/Data_FinalTakeHome.xlsx")
+df
+```
+
+```{r}
+df$route[df$route == 2] <- 0
+df$income <- df$income - 1
+```
+
+```{r}
+write.csv(df, "../TakeHome Final/cleaned.csv")
+```
+

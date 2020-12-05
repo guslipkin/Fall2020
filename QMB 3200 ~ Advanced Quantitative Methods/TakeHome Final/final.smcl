@@ -1,0 +1,1833 @@
+{smcl}
+{com}{sf}{ul off}{txt}{.-}
+      name:  {res}<unnamed>
+       {txt}log:  {res}/Users/guslipkin/Documents/Fall2020/QMB 3200 ~ Advanced Quantitative Methods/TakeHome Final/final.smcl
+  {txt}log type:  {res}smcl
+ {txt}opened on:  {res} 4 Dec 2020, 17:50:17
+
+{com}. 
+. import excel "/Users/guslipkin/Documents/Fall2020/QMB 3200 ~ Advanced Quantitative Methods/TakeHome Final/Data_FinalTakeHome.xlsx", sheet("Sheet1") firstrow
+{res}{text}(14 vars, 151 obs)
+
+{com}. import excel "/Users/guslipkin/Documents/Fall2020/QMB 3200 ~ Advanced Quantitative Methods/TakeHome Final/Data_FinalTakeHome.xlsx", sheet("Sheet1") firstrow
+{res}{err}no; data in memory would be lost
+{res}{txt}{search r(4), local:r(4);}
+
+{com}. 
+. 
+. import excel "/Users/guslipkin/Documents/Fall2020/QMB 3200 ~ Advanced Quantitative Methods/TakeHome Final/Data_FinalTakeHome.xlsx", sheet("Sheet1") firstrow clear
+{res}{text}(14 vars, 151 obs)
+
+{com}. summ time flow signals distance passengers children year
+
+{txt}    Variable {c |}        Obs        Mean    Std. Dev.       Min        Max
+{hline 13}{c +}{hline 57}
+{space 8}time {c |}{res}        151    11.66225    3.257581          6         21
+{txt}{space 8}flow {c |}{res}        151    493.5762    186.7685        120        985
+{txt}{space 5}signals {c |}{res}        151    8.900662    3.526575          2         23
+{txt}{space 4}distance {c |}{res}        151    48.09934    11.19866         29         90
+{txt}{space 2}passengers {c |}{res}        151    .1986755    .5035854          0          3
+{txt}{hline 13}{c +}{hline 57}
+{space 4}children {c |}{res}        151    .2980132    .7098798          0          4
+{txt}{space 8}year {c |}{res}        151    81.90728    3.988903         65         86
+
+{com}. tabulate route
+
+      {txt}route {c |}      Freq.     Percent        Cum.
+{hline 12}{c +}{hline 35}
+          1 {c |}{res}        136       90.07       90.07
+{txt}          2 {c |}{res}         15        9.93      100.00
+{txt}{hline 12}{c +}{hline 35}
+      Total {c |}{res}        151      100.00
+
+{com}. tabulate seatbelts
+
+  {txt}seatbelts {c |}      Freq.     Percent        Cum.
+{hline 12}{c +}{hline 35}
+          0 {c |}{res}         44       29.14       29.14
+{txt}          1 {c |}{res}        107       70.86      100.00
+{txt}{hline 12}{c +}{hline 35}
+      Total {c |}{res}        151      100.00
+
+{com}. tabulate age
+
+        {txt}age {c |}      Freq.     Percent        Cum.
+{hline 12}{c +}{hline 35}
+          1 {c |}{res}         11        7.28        7.28
+{txt}          2 {c |}{res}         63       41.72       49.01
+{txt}          3 {c |}{res}         54       35.76       84.77
+{txt}          4 {c |}{res}         10        6.62       91.39
+{txt}          5 {c |}{res}         13        8.61      100.00
+{txt}{hline 12}{c +}{hline 35}
+      Total {c |}{res}        151      100.00
+
+{com}. tabulate gender
+
+     {txt}gender {c |}      Freq.     Percent        Cum.
+{hline 12}{c +}{hline 35}
+          0 {c |}{res}         66       43.71       43.71
+{txt}          1 {c |}{res}         85       56.29      100.00
+{txt}{hline 12}{c +}{hline 35}
+      Total {c |}{res}        151      100.00
+
+{com}. tabulate marital
+
+    {txt}marital {c |}      Freq.     Percent        Cum.
+{hline 12}{c +}{hline 35}
+          0 {c |}{res}         64       42.38       42.38
+{txt}          1 {c |}{res}         87       57.62      100.00
+{txt}{hline 12}{c +}{hline 35}
+      Total {c |}{res}        151      100.00
+
+{com}. tabulate income
+
+     {txt}income {c |}      Freq.     Percent        Cum.
+{hline 12}{c +}{hline 35}
+          1 {c |}{res}         55       36.42       36.42
+{txt}          2 {c |}{res}         52       34.44       70.86
+{txt}          3 {c |}{res}         28       18.54       89.40
+{txt}          4 {c |}{res}          8        5.30       94.70
+{txt}          5 {c |}{res}          8        5.30      100.00
+{txt}{hline 12}{c +}{hline 35}
+      Total {c |}{res}        151      100.00
+
+{com}. tabulate origin
+
+     {txt}origin {c |}      Freq.     Percent        Cum.
+{hline 12}{c +}{hline 35}
+          0 {c |}{res}         75       49.67       49.67
+{txt}          1 {c |}{res}         76       50.33      100.00
+{txt}{hline 12}{c +}{hline 35}
+      Total {c |}{res}        151      100.00
+
+{com}. logit route time flow signals distance i.seatbelts passengers age i.age i.gender i.marital children income year i.origin
+
+{txt}outcome does not vary; remember:
+                                  0 = negative outcome,
+        all other nonmissing values = positive outcome
+{search r(2000), local:r(2000);}
+
+{com}. logit route time
+
+{txt}outcome does not vary; remember:
+                                  0 = negative outcome,
+        all other nonmissing values = positive outcome
+{search r(2000), local:r(2000);}
+
+{com}. logit i.route time
+{err}depvar may not be a factor variable
+{txt}{search r(198), local:r(198);}
+
+{com}. logit route year
+
+{txt}outcome does not vary; remember:
+                                  0 = negative outcome,
+        all other nonmissing values = positive outcome
+{search r(2000), local:r(2000);}
+
+{com}. logit route flow
+
+{txt}outcome does not vary; remember:
+                                  0 = negative outcome,
+        all other nonmissing values = positive outcome
+{search r(2000), local:r(2000);}
+
+{com}. 
+. import delimited "/Users/guslipkin/Documents/Fall2020/QMB 3200 ~ Advanced Quantitative Methods/TakeHome Final/cleaned.csv", clear 
+{res}{text}(15 vars, 151 obs)
+
+{com}. logit route time flow signals distance i.seatbelts passengers age i.age i.gender i.marital children income year i.origin
+
+{txt}note: 5.age omitted because of collinearity
+{res}{txt}Iteration 0:{space 3}log likelihood = {res:-48.867438}  
+Iteration 1:{space 3}log likelihood = {res:-20.003414}  
+Iteration 2:{space 3}log likelihood = {res: -8.500906}  
+Iteration 3:{space 3}log likelihood = {res:-.72082324}  
+Iteration 4:{space 3}log likelihood = {res:-.00958562}  
+Iteration 5:{space 3}log likelihood = {res:         0}  
+Iteration 6:{space 3}log likelihood = {res:         0}  
+{res}
+{txt}Logistic regression{col 49}Number of obs{col 67}= {res}       151
+{txt}{col 49}LR chi2({res}-1{txt}){col 67}= {res}     97.73
+{txt}{col 49}Prob > chi2{col 67}= {res}         .
+{txt}Log likelihood = {res}         0{txt}{col 49}Pseudo R2{col 67}= {res}    1.0000
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}       route{col 14}{c |}      Coef.{col 26}   Std. Err.{col 38}      z{col 46}   P>|z|{col 54}     [95% Con{col 67}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 8}time {c |}{col 14}{res}{space 2} .5725979{col 26}{space 2}        .{col 37}{space 1}       .{col 46}{space 3}    .{col 54}{space 4}        .{col 67}{space 3}        .
+{txt}{space 8}flow {c |}{col 14}{res}{space 2} .2288409{col 26}{space 2}        .{col 37}{space 1}       .{col 46}{space 3}    .{col 54}{space 4}        .{col 67}{space 3}        .
+{txt}{space 5}signals {c |}{col 14}{res}{space 2} 5.197601{col 26}{space 2}        .{col 37}{space 1}       .{col 46}{space 3}    .{col 54}{space 4}        .{col 67}{space 3}        .
+{txt}{space 4}distance {c |}{col 14}{res}{space 2}-1.473151{col 26}{space 2}        .{col 37}{space 1}       .{col 46}{space 3}    .{col 54}{space 4}        .{col 67}{space 3}        .
+{txt}{space 1}1.seatbelts {c |}{col 14}{res}{space 2} -6.00507{col 26}{space 2}        .{col 37}{space 1}       .{col 46}{space 3}    .{col 54}{space 4}        .{col 67}{space 3}        .
+{txt}{space 2}passengers {c |}{col 14}{res}{space 2}  1.75326{col 26}{space 2}        .{col 37}{space 1}       .{col 46}{space 3}    .{col 54}{space 4}        .{col 67}{space 3}        .
+{txt}{space 9}age {c |}{col 14}{res}{space 2} 5.963902{col 26}{space 2}        .{col 37}{space 1}       .{col 46}{space 3}    .{col 54}{space 4}        .{col 67}{space 3}        .
+{txt}{space 12} {c |}
+{space 9}age {c |}
+{space 10}2  {c |}{col 14}{res}{space 2} 18.38744{col 26}{space 2}        .{col 37}{space 1}       .{col 46}{space 3}    .{col 54}{space 4}        .{col 67}{space 3}        .
+{txt}{space 10}3  {c |}{col 14}{res}{space 2}-5.946728{col 26}{space 2}        .{col 37}{space 1}       .{col 46}{space 3}    .{col 54}{space 4}        .{col 67}{space 3}        .
+{txt}{space 10}4  {c |}{col 14}{res}{space 2} 17.48495{col 26}{space 2}        .{col 37}{space 1}       .{col 46}{space 3}    .{col 54}{space 4}        .{col 67}{space 3}        .
+{txt}{space 10}5  {c |}{col 14}{res}{space 2}        0{col 26}{txt}  (omitted)
+{space 12} {c |}
+{space 4}1.gender {c |}{col 14}{res}{space 2} 3.288859{col 26}{space 2}        .{col 37}{space 1}       .{col 46}{space 3}    .{col 54}{space 4}        .{col 67}{space 3}        .
+{txt}{space 3}1.marital {c |}{col 14}{res}{space 2}-.6792558{col 26}{space 2}        .{col 37}{space 1}       .{col 46}{space 3}    .{col 54}{space 4}        .{col 67}{space 3}        .
+{txt}{space 4}children {c |}{col 14}{res}{space 2}  6.87045{col 26}{space 2}        .{col 37}{space 1}       .{col 46}{space 3}    .{col 54}{space 4}        .{col 67}{space 3}        .
+{txt}{space 6}income {c |}{col 14}{res}{space 2}-7.201115{col 26}{space 2}        .{col 37}{space 1}       .{col 46}{space 3}    .{col 54}{space 4}        .{col 67}{space 3}        .
+{txt}{space 8}year {c |}{col 14}{res}{space 2} 2.101929{col 26}{space 2}        .{col 37}{space 1}       .{col 46}{space 3}    .{col 54}{space 4}        .{col 67}{space 3}        .
+{txt}{space 4}1.origin {c |}{col 14}{res}{space 2}-12.81782{col 26}{space 2}        .{col 37}{space 1}       .{col 46}{space 3}    .{col 54}{space 4}        .{col 67}{space 3}        .
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2}-190.9479{col 26}{space 2}        .{col 37}{space 1}       .{col 46}{space 3}    .{col 54}{space 4}        .{col 67}{space 3}        .
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{p 0 6 2}Note: 15 failures and 136 successes completely determined.{p_end}
+
+{com}. 
+. logit route time flow signals
+
+{res}{txt}Iteration 0:{space 3}log likelihood = {res:-48.867438}  
+Iteration 1:{space 3}log likelihood = {res:-28.771817}  
+Iteration 2:{space 3}log likelihood = {res:-7.9529691}  
+Iteration 3:{space 3}log likelihood = {res:-5.3362108}  
+Iteration 4:{space 3}log likelihood = {res:-4.8830366}  
+Iteration 5:{space 3}log likelihood = {res:-4.8708346}  
+Iteration 6:{space 3}log likelihood = {res:-4.8708175}  
+Iteration 7:{space 3}log likelihood = {res:-4.8708175}  
+{res}
+{txt}Logistic regression{col 49}Number of obs{col 67}= {res}       151
+{txt}{col 49}LR chi2({res}3{txt}){col 67}= {res}     87.99
+{txt}{col 49}Prob > chi2{col 67}= {res}    0.0000
+{txt}Log likelihood = {res}-4.8708175{txt}{col 49}Pseudo R2{col 67}= {res}    0.9003
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}       route{col 14}{c |}      Coef.{col 26}   Std. Err.{col 38}      z{col 46}   P>|z|{col 54}     [95% Con{col 67}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 8}time {c |}{col 14}{res}{space 2}-.5349713{col 26}{space 2} .3196359{col 37}{space 1}   -1.67{col 46}{space 3}0.094{col 54}{space 4}-1.161446{col 67}{space 3} .0915035
+{txt}{space 8}flow {c |}{col 14}{res}{space 2} .0521703{col 26}{space 2} .0219512{col 37}{space 1}    2.38{col 46}{space 3}0.017{col 54}{space 4} .0091467{col 67}{space 3} .0951939
+{txt}{space 5}signals {c |}{col 14}{res}{space 2} 2.770252{col 26}{space 2} 1.392625{col 37}{space 1}    1.99{col 46}{space 3}0.047{col 54}{space 4}  .040757{col 67}{space 3} 5.499748
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2}-28.51541{col 26}{space 2} 13.96574{col 37}{space 1}   -2.04{col 46}{space 3}0.041{col 54}{space 4}-55.88777{col 67}{space 3}-1.143059
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{p 0 6 2}Note: 1 failure and 51 successes completely determined.{p_end}
+
+{com}. logit route time flow signals distance i.seatbelts
+
+{res}{txt}Iteration 0:{space 3}log likelihood = {res:-48.867438}  
+Iteration 1:{space 3}log likelihood = {res:-21.918462}  
+Iteration 2:{space 3}log likelihood = {res:-9.9992966}  
+Iteration 3:{space 3}log likelihood = {res:-.51304766}  
+Iteration 4:{space 3}log likelihood = {res: -.0008956}  
+Iteration 5:{space 3}log likelihood = {res:         0}  
+Iteration 6:{space 3}log likelihood = {res:         0}  
+{res}
+{txt}Logistic regression{col 49}Number of obs{col 67}= {res}       151
+{txt}{col 49}LR chi2({res}-1{txt}){col 67}= {res}     97.73
+{txt}{col 49}Prob > chi2{col 67}= {res}         .
+{txt}Log likelihood = {res}         0{txt}{col 49}Pseudo R2{col 67}= {res}    1.0000
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}       route{col 14}{c |}      Coef.{col 26}   Std. Err.{col 38}      z{col 46}   P>|z|{col 54}     [95% Con{col 67}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 8}time {c |}{col 14}{res}{space 2}-4.005361{col 26}{space 2}        .{col 37}{space 1}       .{col 46}{space 3}    .{col 54}{space 4}        .{col 67}{space 3}        .
+{txt}{space 8}flow {c |}{col 14}{res}{space 2} .3180946{col 26}{space 2}        .{col 37}{space 1}       .{col 46}{space 3}    .{col 54}{space 4}        .{col 67}{space 3}        .
+{txt}{space 5}signals {c |}{col 14}{res}{space 2} 28.42813{col 26}{space 2}        .{col 37}{space 1}       .{col 46}{space 3}    .{col 54}{space 4}        .{col 67}{space 3}        .
+{txt}{space 4}distance {c |}{col 14}{res}{space 2}-3.174058{col 26}{space 2}        .{col 37}{space 1}       .{col 46}{space 3}    .{col 54}{space 4}        .{col 67}{space 3}        .
+{txt}{space 1}1.seatbelts {c |}{col 14}{res}{space 2} 20.04775{col 26}{space 2}        .{col 37}{space 1}       .{col 46}{space 3}    .{col 54}{space 4}        .{col 67}{space 3}        .
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2}-96.20949{col 26}{space 2}        .{col 37}{space 1}       .{col 46}{space 3}    .{col 54}{space 4}        .{col 67}{space 3}        .
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{p 0 6 2}Note: 15 failures and 136 successes completely determined.{p_end}
+
+{com}. logit route time flow signals distance
+
+{res}{txt}Iteration 0:{space 3}log likelihood = {res:-48.867438}  
+Iteration 1:{space 3}log likelihood = {res:-21.962593}  
+Iteration 2:{space 3}log likelihood = {res:-10.041444}  
+Iteration 3:{space 3}log likelihood = {res:         0}  
+Iteration 4:{space 3}log likelihood = {res:         0}  
+{res}
+{txt}Logistic regression{col 49}Number of obs{col 67}= {res}       151
+{txt}{col 49}LR chi2({res}-1{txt}){col 67}= {res}     97.73
+{txt}{col 49}Prob > chi2{col 67}= {res}         .
+{txt}Log likelihood = {res}         0{txt}{col 49}Pseudo R2{col 67}= {res}    1.0000
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}       route{col 14}{c |}      Coef.{col 26}   Std. Err.{col 38}      z{col 46}   P>|z|{col 54}     [95% Con{col 67}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 8}time {c |}{col 14}{res}{space 2}-8.406591{col 26}{space 2}        .{col 37}{space 1}       .{col 46}{space 3}    .{col 54}{space 4}        .{col 67}{space 3}        .
+{txt}{space 8}flow {c |}{col 14}{res}{space 2}  1.14443{col 26}{space 2}        .{col 37}{space 1}       .{col 46}{space 3}    .{col 54}{space 4}        .{col 67}{space 3}        .
+{txt}{space 5}signals {c |}{col 14}{res}{space 2} 63.46112{col 26}{space 2}        .{col 37}{space 1}       .{col 46}{space 3}    .{col 54}{space 4}        .{col 67}{space 3}        .
+{txt}{space 4}distance {c |}{col 14}{res}{space 2}-6.488168{col 26}{space 2}        .{col 37}{space 1}       .{col 46}{space 3}    .{col 54}{space 4}        .{col 67}{space 3}        .
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2}-408.9289{col 26}{space 2}        .{col 37}{space 1}       .{col 46}{space 3}    .{col 54}{space 4}        .{col 67}{space 3}        .
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{p 0 6 2}Note: 15 failures and 136 successes completely determined.{p_end}
+
+{com}. logit route time flow signals i.seatbelts
+
+{res}{txt}Iteration 0:{space 3}log likelihood = {res:-48.867438}  
+Iteration 1:{space 3}log likelihood = {res:-28.787353}  
+Iteration 2:{space 3}log likelihood = {res: -7.948711}  
+Iteration 3:{space 3}log likelihood = {res:  -5.76656}  
+Iteration 4:{space 3}log likelihood = {res:-3.3856911}  
+Iteration 5:{space 3}log likelihood = {res:-2.8116803}  
+Iteration 6:{space 3}log likelihood = {res:-1.6694063}  (not concave)
+Iteration 7:{space 3}log likelihood = {res:-1.4029111}  (not concave)
+Iteration 8:{space 3}log likelihood = {res:-1.4023351}  (not concave)
+Iteration 9:{space 3}log likelihood = {res:-1.4022535}  (not concave)
+Iteration 10:{space 2}log likelihood = {res:-1.4022338}  (not concave)
+Iteration 11:{space 2}log likelihood = {res:-1.4020894}  (not concave)
+Iteration 12:{space 2}log likelihood = {res:-1.4019933}  (not concave)
+Iteration 13:{space 2}log likelihood = {res:-1.4019743}  (not concave)
+Iteration 14:{space 2}log likelihood = {res:-1.4019575}  (not concave)
+Iteration 15:{space 2}log likelihood = {res:-1.4019414}  (not concave)
+Iteration 16:{space 2}log likelihood = {res:-1.4019255}  (not concave)
+Iteration 17:{space 2}log likelihood = {res:-1.4019096}  (not concave)
+Iteration 18:{space 2}log likelihood = {res:-1.4018937}  (not concave)
+Iteration 19:{space 2}log likelihood = {res:-1.4018779}  (not concave)
+Iteration 20:{space 2}log likelihood = {res:-1.4018622}  (not concave)
+Iteration 21:{space 2}log likelihood = {res:-1.4018464}  (not concave)
+Iteration 22:{space 2}log likelihood = {res:-1.4018307}  (not concave)
+Iteration 23:{space 2}log likelihood = {res: -1.401815}  (not concave)
+Iteration 24:{space 2}log likelihood = {res:-1.4017993}  (not concave)
+Iteration 25:{space 2}log likelihood = {res:-1.4017837}  (not concave)
+Iteration 26:{space 2}log likelihood = {res:-1.4017681}  (not concave)
+Iteration 27:{space 2}log likelihood = {res:-1.4017526}  (not concave)
+Iteration 28:{space 2}log likelihood = {res: -1.401737}  (not concave)
+Iteration 29:{space 2}log likelihood = {res:-1.4017215}  (not concave)
+Iteration 30:{space 2}log likelihood = {res: -1.401706}  (not concave)
+Iteration 31:{space 2}log likelihood = {res:-1.4016906}  (not concave)
+Iteration 32:{space 2}log likelihood = {res:-1.4016752}  (not concave)
+Iteration 33:{space 2}log likelihood = {res:-1.4016598}  (not concave)
+Iteration 34:{space 2}log likelihood = {res:-1.4016444}  (not concave)
+Iteration 35:{space 2}log likelihood = {res:-1.4016291}  (not concave)
+Iteration 36:{space 2}log likelihood = {res:-1.4016138}  (not concave)
+Iteration 37:{space 2}log likelihood = {res:-1.4015986}  (not concave)
+Iteration 38:{space 2}log likelihood = {res:-1.4015833}  (not concave)
+Iteration 39:{space 2}log likelihood = {res:-1.4015681}  (not concave)
+Iteration 40:{space 2}log likelihood = {res:-1.4015529}  (not concave)
+Iteration 41:{space 2}log likelihood = {res:-1.4015378}  (not concave)
+Iteration 42:{space 2}log likelihood = {res:-1.4015227}  (not concave)
+Iteration 43:{space 2}log likelihood = {res:-1.4015076}  (not concave)
+Iteration 44:{space 2}log likelihood = {res:-1.4014925}  (not concave)
+Iteration 45:{space 2}log likelihood = {res:-1.4014775}  (not concave)
+Iteration 46:{space 2}log likelihood = {res:-1.4014625}  (not concave)
+Iteration 47:{space 2}log likelihood = {res:-1.4014475}  (not concave)
+Iteration 48:{space 2}log likelihood = {res:-1.4014326}  (not concave)
+Iteration 49:{space 2}log likelihood = {res:-1.4014176}  (not concave)
+Iteration 50:{space 2}log likelihood = {res:-1.4014028}  (not concave)
+Iteration 51:{space 2}log likelihood = {res:-1.4013879}  (not concave)
+Iteration 52:{space 2}log likelihood = {res:-1.4013731}  (not concave)
+Iteration 53:{space 2}log likelihood = {res:-1.4013583}  (not concave)
+Iteration 54:{space 2}log likelihood = {res:-1.4013435}  (not concave)
+Iteration 55:{space 2}log likelihood = {res:-1.4013287}  (not concave)
+Iteration 56:{space 2}log likelihood = {res: -1.401314}  (not concave)
+Iteration 57:{space 2}log likelihood = {res:-1.4012993}  (not concave)
+Iteration 58:{space 2}log likelihood = {res:-1.4012847}  (not concave)
+Iteration 59:{space 2}log likelihood = {res:  -1.40127}  (not concave)
+Iteration 60:{space 2}log likelihood = {res:-1.4012554}  (not concave)
+Iteration 61:{space 2}log likelihood = {res:-1.4012408}  (not concave)
+Iteration 62:{space 2}log likelihood = {res:-1.4012263}  (not concave)
+Iteration 63:{space 2}log likelihood = {res:-1.4012117}  (not concave)
+Iteration 64:{space 2}log likelihood = {res:-1.4011972}  (not concave)
+Iteration 65:{space 2}log likelihood = {res:-1.4011828}  (not concave)
+Iteration 66:{space 2}log likelihood = {res:-1.4011683}  (not concave)
+Iteration 67:{space 2}log likelihood = {res:-1.4011539}  (not concave)
+Iteration 68:{space 2}log likelihood = {res:-1.4011395}  (not concave)
+Iteration 69:{space 2}log likelihood = {res:-1.4011252}  (not concave)
+Iteration 70:{space 2}log likelihood = {res:-1.4011108}  (not concave)
+Iteration 71:{space 2}log likelihood = {res:-1.4010965}  (not concave)
+Iteration 72:{space 2}log likelihood = {res:-1.4010822}  (not concave)
+Iteration 73:{space 2}log likelihood = {res: -1.401068}  (not concave)
+Iteration 74:{space 2}log likelihood = {res:-1.4010537}  (not concave)
+Iteration 75:{space 2}log likelihood = {res:-1.4010395}  (not concave)
+Iteration 76:{space 2}log likelihood = {res:-1.4010254}  (not concave)
+Iteration 77:{space 2}log likelihood = {res:-1.4010112}  (not concave)
+Iteration 78:{space 2}log likelihood = {res:-1.4009971}  (not concave)
+Iteration 79:{space 2}log likelihood = {res: -1.400983}  (not concave)
+Iteration 80:{space 2}log likelihood = {res:-1.4009689}  (not concave)
+Iteration 81:{space 2}log likelihood = {res:-1.4009549}  (not concave)
+Iteration 82:{space 2}log likelihood = {res:-1.4009408}  (not concave)
+Iteration 83:{space 2}log likelihood = {res:-1.4009269}  (not concave)
+Iteration 84:{space 2}log likelihood = {res:-1.4009129}  (not concave)
+Iteration 85:{space 2}log likelihood = {res:-1.4008989}  (not concave)
+Iteration 86:{space 2}log likelihood = {res: -1.400885}  (not concave)
+Iteration 87:{space 2}log likelihood = {res:-1.4008711}  (not concave)
+Iteration 88:{space 2}log likelihood = {res:-1.4008573}  (not concave)
+Iteration 89:{space 2}log likelihood = {res:-1.4008434}  (not concave)
+Iteration 90:{space 2}log likelihood = {res:-1.4008296}  (not concave)
+Iteration 91:{space 2}log likelihood = {res:-1.4008158}  (not concave)
+Iteration 92:{space 2}log likelihood = {res:-1.4008021}  (not concave)
+Iteration 93:{space 2}log likelihood = {res:-1.4007883}  (not concave)
+Iteration 94:{space 2}log likelihood = {res:-1.4007746}  (not concave)
+Iteration 95:{space 2}log likelihood = {res:-1.4007609}  (not concave)
+Iteration 96:{space 2}log likelihood = {res:-1.4007473}  (not concave)
+Iteration 97:{space 2}log likelihood = {res:-1.4007336}  (not concave)
+Iteration 98:{space 2}log likelihood = {res:  -1.40072}  (not concave)
+Iteration 99:{space 2}log likelihood = {res:-1.4007064}  (not concave)
+Iteration 100:{space 1}log likelihood = {res:-1.4006929}  (not concave)
+Iteration 101:{space 1}log likelihood = {res:-1.4006793}  (not concave)
+Iteration 102:{space 1}log likelihood = {res:-1.4006658}  (not concave)
+Iteration 103:{space 1}log likelihood = {res:-1.4006523}  (not concave)
+Iteration 104:{space 1}log likelihood = {res:-1.4006389}  (not concave)
+Iteration 105:{space 1}log likelihood = {res:-1.4006254}  (not concave)
+Iteration 106:{space 1}log likelihood = {res: -1.400612}  (not concave)
+Iteration 107:{space 1}log likelihood = {res:-1.4005986}  (not concave)
+Iteration 108:{space 1}log likelihood = {res:-1.4005852}  (not concave)
+Iteration 109:{space 1}log likelihood = {res:-1.4005719}  (not concave)
+Iteration 110:{space 1}log likelihood = {res:-1.4005586}  (not concave)
+Iteration 111:{space 1}log likelihood = {res:-1.4005453}  (not concave)
+Iteration 112:{space 1}log likelihood = {res: -1.400532}  (not concave)
+Iteration 113:{space 1}log likelihood = {res:-1.4005188}  (not concave)
+Iteration 114:{space 1}log likelihood = {res:-1.4005056}  (not concave)
+Iteration 115:{space 1}log likelihood = {res:-1.4004924}  (not concave)
+Iteration 116:{space 1}log likelihood = {res:-1.4004792}  (not concave)
+Iteration 117:{space 1}log likelihood = {res: -1.400466}  (not concave)
+Iteration 118:{space 1}log likelihood = {res:-1.4004529}  (not concave)
+Iteration 119:{space 1}log likelihood = {res:-1.4004398}  (not concave)
+Iteration 120:{space 1}log likelihood = {res:-1.4004267}  (not concave)
+Iteration 121:{space 1}log likelihood = {res:-1.4004137}  (not concave)
+Iteration 122:{space 1}log likelihood = {res:-1.4004006}  (not concave)
+Iteration 123:{space 1}log likelihood = {res:-1.4003876}  (not concave)
+Iteration 124:{space 1}log likelihood = {res:-1.4003746}  (not concave)
+Iteration 125:{space 1}log likelihood = {res:-1.4003617}  (not concave)
+Iteration 126:{space 1}log likelihood = {res:-1.4003487}  (not concave)
+Iteration 127:{space 1}log likelihood = {res:-1.4003358}  (not concave)
+Iteration 128:{space 1}log likelihood = {res:-1.4003229}  (not concave)
+Iteration 129:{space 1}log likelihood = {res:  -1.40031}  (not concave)
+Iteration 130:{space 1}log likelihood = {res:-1.4002972}  (not concave)
+Iteration 131:{space 1}log likelihood = {res:-1.4002844}  (not concave)
+Iteration 132:{space 1}log likelihood = {res:-1.4002716}  (not concave)
+Iteration 133:{space 1}log likelihood = {res:-1.4002588}  (not concave)
+Iteration 134:{space 1}log likelihood = {res: -1.400246}  (not concave)
+Iteration 135:{space 1}log likelihood = {res:-1.4002333}  (not concave)
+Iteration 136:{space 1}log likelihood = {res:-1.4002206}  (not concave)
+Iteration 137:{space 1}log likelihood = {res:-1.4002079}  (not concave)
+Iteration 138:{space 1}log likelihood = {res:-1.4001952}  (not concave)
+Iteration 139:{space 1}log likelihood = {res:-1.4001826}  (not concave)
+Iteration 140:{space 1}log likelihood = {res:-1.4001699}  (not concave)
+Iteration 141:{space 1}log likelihood = {res:-1.4001573}  (not concave)
+Iteration 142:{space 1}log likelihood = {res:-1.4001448}  (not concave)
+Iteration 143:{space 1}log likelihood = {res:-1.4001322}  (not concave)
+Iteration 144:{space 1}log likelihood = {res:-1.4001197}  (not concave)
+Iteration 145:{space 1}log likelihood = {res:-1.4001072}  (not concave)
+Iteration 146:{space 1}log likelihood = {res:-1.4000947}  (not concave)
+Iteration 147:{space 1}log likelihood = {res:-1.4000822}  (not concave)
+Iteration 148:{space 1}log likelihood = {res:-1.4000698}  (not concave)
+Iteration 149:{space 1}log likelihood = {res:-1.4000573}  (not concave)
+Iteration 150:{space 1}log likelihood = {res:-1.4000449}  (not concave)
+Iteration 151:{space 1}log likelihood = {res:-1.4000325}  (not concave)
+Iteration 152:{space 1}log likelihood = {res:-1.4000202}  (not concave)
+Iteration 153:{space 1}log likelihood = {res:-1.4000079}  (not concave)
+Iteration 154:{space 1}log likelihood = {res:-1.3999955}  (not concave)
+Iteration 155:{space 1}log likelihood = {res:-1.3999832}  (not concave)
+Iteration 156:{space 1}log likelihood = {res: -1.399971}  (not concave)
+Iteration 157:{space 1}log likelihood = {res:-1.3999587}  (not concave)
+Iteration 158:{space 1}log likelihood = {res:-1.3999465}  (not concave)
+Iteration 159:{space 1}log likelihood = {res:-1.3999343}  (not concave)
+Iteration 160:{space 1}log likelihood = {res:-1.3999221}  (not concave)
+Iteration 161:{space 1}log likelihood = {res:-1.3999099}  (not concave)
+Iteration 162:{space 1}log likelihood = {res:-1.3998978}  (not concave)
+Iteration 163:{space 1}log likelihood = {res:-1.3998856}  (not concave)
+Iteration 164:{space 1}log likelihood = {res:-1.3998735}  (not concave)
+Iteration 165:{space 1}log likelihood = {res:-1.3998615}  (not concave)
+Iteration 166:{space 1}log likelihood = {res:-1.3998494}  (not concave)
+Iteration 167:{space 1}log likelihood = {res:-1.3998374}  (not concave)
+Iteration 168:{space 1}log likelihood = {res:-1.3998253}  (not concave)
+Iteration 169:{space 1}log likelihood = {res:-1.3998133}  (not concave)
+Iteration 170:{space 1}log likelihood = {res:-1.3998014}  (not concave)
+Iteration 171:{space 1}log likelihood = {res:-1.3997894}  (not concave)
+Iteration 172:{space 1}log likelihood = {res:-1.3997775}  (not concave)
+Iteration 173:{space 1}log likelihood = {res:-1.3997655}  (not concave)
+Iteration 174:{space 1}log likelihood = {res:-1.3997536}  (not concave)
+Iteration 175:{space 1}log likelihood = {res:-1.3997418}  (not concave)
+Iteration 176:{space 1}log likelihood = {res:-1.3997299}  (not concave)
+Iteration 177:{space 1}log likelihood = {res:-1.3997181}  (not concave)
+Iteration 178:{space 1}log likelihood = {res:-1.3997063}  (not concave)
+Iteration 179:{space 1}log likelihood = {res:-1.3996945}  (not concave)
+Iteration 180:{space 1}log likelihood = {res:-1.3996827}  (not concave)
+Iteration 181:{space 1}log likelihood = {res:-1.3996709}  (not concave)
+Iteration 182:{space 1}log likelihood = {res:-1.3996592}  (not concave)
+Iteration 183:{space 1}log likelihood = {res:-1.3996475}  (not concave)
+Iteration 184:{space 1}log likelihood = {res:-1.3996358}  (not concave)
+Iteration 185:{space 1}log likelihood = {res:-1.3996241}  (not concave)
+Iteration 186:{space 1}log likelihood = {res:-1.3996124}  (not concave)
+Iteration 187:{space 1}log likelihood = {res:-1.3996008}  (not concave)
+Iteration 188:{space 1}log likelihood = {res:-1.3995892}  (not concave)
+Iteration 189:{space 1}log likelihood = {res:-1.3995776}  (not concave)
+Iteration 190:{space 1}log likelihood = {res: -1.399566}  (not concave)
+Iteration 191:{space 1}log likelihood = {res:-1.3995545}  (not concave)
+Iteration 192:{space 1}log likelihood = {res:-1.3995429}  (not concave)
+Iteration 193:{space 1}log likelihood = {res:-1.3995314}  (not concave)
+Iteration 194:{space 1}log likelihood = {res:-1.3995199}  (not concave)
+Iteration 195:{space 1}log likelihood = {res:-1.3995084}  (not concave)
+Iteration 196:{space 1}log likelihood = {res: -1.399497}  (not concave)
+Iteration 197:{space 1}log likelihood = {res:-1.3994855}  (not concave)
+Iteration 198:{space 1}log likelihood = {res:-1.3994741}  (not concave)
+Iteration 199:{space 1}log likelihood = {res:-1.3994627}  (not concave)
+Iteration 200:{space 1}log likelihood = {res:-1.3994513}  (not concave)
+Iteration 201:{space 1}log likelihood = {res:  -1.39944}  (not concave)
+Iteration 202:{space 1}log likelihood = {res:-1.3994286}  (not concave)
+Iteration 203:{space 1}log likelihood = {res:-1.3994173}  (not concave)
+Iteration 204:{space 1}log likelihood = {res: -1.399406}  (not concave)
+Iteration 205:{space 1}log likelihood = {res:-1.3993947}  (not concave)
+Iteration 206:{space 1}log likelihood = {res:-1.3993834}  (not concave)
+Iteration 207:{space 1}log likelihood = {res:-1.3993722}  (not concave)
+Iteration 208:{space 1}log likelihood = {res:-1.3993609}  (not concave)
+Iteration 209:{space 1}log likelihood = {res:-1.3993497}  (not concave)
+Iteration 210:{space 1}log likelihood = {res:-1.3993385}  (not concave)
+Iteration 211:{space 1}log likelihood = {res:-1.3993273}  (not concave)
+Iteration 212:{space 1}log likelihood = {res:-1.3993162}  (not concave)
+Iteration 213:{space 1}log likelihood = {res:-1.3993051}  (not concave)
+Iteration 214:{space 1}log likelihood = {res:-1.3992939}  (not concave)
+Iteration 215:{space 1}log likelihood = {res:-1.3992828}  (not concave)
+Iteration 216:{space 1}log likelihood = {res:-1.3992717}  (not concave)
+Iteration 217:{space 1}log likelihood = {res:-1.3992607}  (not concave)
+Iteration 218:{space 1}log likelihood = {res:-1.3992496}  (not concave)
+Iteration 219:{space 1}log likelihood = {res:-1.3992386}  (not concave)
+Iteration 220:{space 1}log likelihood = {res:-1.3992276}  (not concave)
+Iteration 221:{space 1}log likelihood = {res:-1.3992166}  (not concave)
+Iteration 222:{space 1}log likelihood = {res:-1.3992056}  (not concave)
+Iteration 223:{space 1}log likelihood = {res:-1.3991947}  (not concave)
+Iteration 224:{space 1}log likelihood = {res:-1.3991837}  (not concave)
+Iteration 225:{space 1}log likelihood = {res:-1.3991728}  (not concave)
+Iteration 226:{space 1}log likelihood = {res:-1.3991619}  (not concave)
+Iteration 227:{space 1}log likelihood = {res: -1.399151}  (not concave)
+Iteration 228:{space 1}log likelihood = {res:-1.3991402}  (not concave)
+Iteration 229:{space 1}log likelihood = {res:-1.3991293}  (not concave)
+Iteration 230:{space 1}log likelihood = {res:-1.3991185}  (not concave)
+Iteration 231:{space 1}log likelihood = {res:-1.3991077}  (not concave)
+Iteration 232:{space 1}log likelihood = {res:-1.3990969}  (not concave)
+Iteration 233:{space 1}log likelihood = {res:-1.3990861}  (not concave)
+Iteration 234:{space 1}log likelihood = {res:-1.3990754}  (not concave)
+Iteration 235:{space 1}log likelihood = {res:-1.3990646}  (not concave)
+Iteration 236:{space 1}log likelihood = {res:-1.3990539}  (not concave)
+Iteration 237:{space 1}log likelihood = {res:-1.3990432}  (not concave)
+Iteration 238:{space 1}log likelihood = {res:-1.3990325}  (not concave)
+Iteration 239:{space 1}log likelihood = {res:-1.3990218}  (not concave)
+Iteration 240:{space 1}log likelihood = {res:-1.3990112}  (not concave)
+Iteration 241:{space 1}log likelihood = {res:-1.3990005}  (not concave)
+Iteration 242:{space 1}log likelihood = {res:-1.3989899}  (not concave)
+Iteration 243:{space 1}log likelihood = {res:-1.3989793}  (not concave)
+Iteration 244:{space 1}log likelihood = {res:-1.3989687}  (not concave)
+Iteration 245:{space 1}log likelihood = {res:-1.3989582}  (not concave)
+Iteration 246:{space 1}log likelihood = {res:-1.3989476}  (not concave)
+Iteration 247:{space 1}log likelihood = {res:-1.3989371}  (not concave)
+Iteration 248:{space 1}log likelihood = {res:-1.3989266}  (not concave)
+Iteration 249:{space 1}log likelihood = {res:-1.3989161}  (not concave)
+Iteration 250:{space 1}log likelihood = {res:-1.3989056}  (not concave)
+Iteration 251:{space 1}log likelihood = {res:-1.3988951}  (not concave)
+Iteration 252:{space 1}log likelihood = {res:-1.3988847}  (not concave)
+Iteration 253:{space 1}log likelihood = {res:-1.3988742}  (not concave)
+Iteration 254:{space 1}log likelihood = {res:-1.3988638}  (not concave)
+Iteration 255:{space 1}log likelihood = {res:-1.3988534}  (not concave)
+Iteration 256:{space 1}log likelihood = {res: -1.398843}  (not concave)
+Iteration 257:{space 1}log likelihood = {res:-1.3988327}  (not concave)
+Iteration 258:{space 1}log likelihood = {res:-1.3988223}  (not concave)
+Iteration 259:{space 1}log likelihood = {res: -1.398812}  (not concave)
+Iteration 260:{space 1}log likelihood = {res:-1.3988017}  (not concave)
+Iteration 261:{space 1}log likelihood = {res:-1.3987914}  (not concave)
+Iteration 262:{space 1}log likelihood = {res:-1.3987811}  (not concave)
+Iteration 263:{space 1}log likelihood = {res:-1.3987708}  (not concave)
+Iteration 264:{space 1}log likelihood = {res:-1.3987606}  (not concave)
+Iteration 265:{space 1}log likelihood = {res:-1.3987503}  (not concave)
+Iteration 266:{space 1}log likelihood = {res:-1.3987401}  (not concave)
+Iteration 267:{space 1}log likelihood = {res:-1.3987299}  (not concave)
+Iteration 268:{space 1}log likelihood = {res:-1.3987197}  (not concave)
+Iteration 269:{space 1}log likelihood = {res:-1.3987096}  (not concave)
+Iteration 270:{space 1}log likelihood = {res:-1.3986994}  (not concave)
+Iteration 271:{space 1}log likelihood = {res:-1.3986893}  (not concave)
+Iteration 272:{space 1}log likelihood = {res:-1.3986792}  (not concave)
+Iteration 273:{space 1}log likelihood = {res:-1.3986691}  (not concave)
+Iteration 274:{space 1}log likelihood = {res: -1.398659}  (not concave)
+Iteration 275:{space 1}log likelihood = {res:-1.3986489}  (not concave)
+Iteration 276:{space 1}log likelihood = {res:-1.3986389}  (not concave)
+Iteration 277:{space 1}log likelihood = {res:-1.3986288}  (not concave)
+Iteration 278:{space 1}log likelihood = {res:-1.3986188}  (not concave)
+Iteration 279:{space 1}log likelihood = {res:-1.3986088}  (not concave)
+Iteration 280:{space 1}log likelihood = {res:-1.3985988}  (not concave)
+Iteration 281:{space 1}log likelihood = {res:-1.3985888}  (not concave)
+Iteration 282:{space 1}log likelihood = {res:-1.3985789}  (not concave)
+Iteration 283:{space 1}log likelihood = {res:-1.3985689}  (not concave)
+Iteration 284:{space 1}log likelihood = {res: -1.398559}  (not concave)
+Iteration 285:{space 1}log likelihood = {res:-1.3985491}  (not concave)
+Iteration 286:{space 1}log likelihood = {res:-1.3985392}  (not concave)
+Iteration 287:{space 1}log likelihood = {res:-1.3985293}  (not concave)
+Iteration 288:{space 1}log likelihood = {res:-1.3985194}  (not concave)
+Iteration 289:{space 1}log likelihood = {res:-1.3985096}  (not concave)
+Iteration 290:{space 1}log likelihood = {res:-1.3984997}  (not concave)
+Iteration 291:{space 1}log likelihood = {res:-1.3984899}  (not concave)
+Iteration 292:{space 1}log likelihood = {res:-1.3984801}  (not concave)
+Iteration 293:{space 1}log likelihood = {res:-1.3984703}  (not concave)
+Iteration 294:{space 1}log likelihood = {res:-1.3984606}  (not concave)
+Iteration 295:{space 1}log likelihood = {res:-1.3984508}  (not concave)
+Iteration 296:{space 1}log likelihood = {res:-1.3984411}  (not concave)
+Iteration 297:{space 1}log likelihood = {res:-1.3984313}  (not concave)
+Iteration 298:{space 1}log likelihood = {res:-1.3984216}  (not concave)
+Iteration 299:{space 1}log likelihood = {res:-1.3984119}  (not concave)
+Iteration 300:{space 1}log likelihood = {res:-1.3984022}  (not concave)
+{err}convergence not achieved
+{res}
+{txt}Logistic regression{col 49}Number of obs{col 67}= {res}       151
+{txt}{col 49}LR chi2({res}1{txt}){col 67}= {res}     94.94
+{txt}{col 49}Prob > chi2{col 67}= {res}    0.0000
+{txt}Log likelihood = {res}-1.3984022{txt}{col 49}Pseudo R2{col 67}= {res}    0.9714
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}       route{col 14}{c |}      Coef.{col 26}   Std. Err.{col 38}      z{col 46}   P>|z|{col 54}     [95% Con{col 67}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 8}time {c |}{col 14}{res}{space 2}-44.71734{col 26}{space 2} 12.81192{col 37}{space 1}   -3.49{col 46}{space 3}0.000{col 54}{space 4}-69.82824{col 67}{space 3}-19.60644
+{txt}{space 8}flow {c |}{col 14}{res}{space 2}  2.42968{col 26}{space 2} .4653953{col 37}{space 1}    5.22{col 46}{space 3}0.000{col 54}{space 4} 1.517522{col 67}{space 3} 3.341838
+{txt}{space 5}signals {c |}{col 14}{res}{space 2} 179.9111{col 26}{space 2}        .{col 37}{space 1}       .{col 46}{space 3}    .{col 54}{space 4}        .{col 67}{space 3}        .
+{txt}{space 1}1.seatbelts {c |}{col 14}{res}{space 2} 197.8608{col 26}{space 2}        .{col 37}{space 1}       .{col 46}{space 3}    .{col 54}{space 4}        .{col 67}{space 3}        .
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2}-1568.737{col 26}{space 2}        .{col 37}{space 1}       .{col 46}{space 3}    .{col 54}{space 4}        .{col 67}{space 3}        .
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{p 0 6 2}Note: 14 failures and 134 successes completely determined.{p_end}
+{err}convergence not achieved
+{txt}{search r(430), local:r(430);}
+
+{com}. logit route time flow signals seatbelts
+
+{res}{txt}Iteration 0:{space 3}log likelihood = {res:-48.867438}  
+Iteration 1:{space 3}log likelihood = {res:-28.787353}  
+Iteration 2:{space 3}log likelihood = {res: -7.948711}  
+Iteration 3:{space 3}log likelihood = {res:  -5.76656}  
+Iteration 4:{space 3}log likelihood = {res:-3.3856911}  
+Iteration 5:{space 3}log likelihood = {res:-2.8116803}  
+Iteration 6:{space 3}log likelihood = {res:-1.6694063}  (not concave)
+Iteration 7:{space 3}log likelihood = {res:-1.4029111}  (not concave)
+Iteration 8:{space 3}log likelihood = {res:-1.4023351}  (not concave)
+Iteration 9:{space 3}log likelihood = {res:-1.4022535}  (not concave)
+Iteration 10:{space 2}log likelihood = {res:-1.4022338}  (not concave)
+Iteration 11:{space 2}log likelihood = {res:-1.4020894}  (not concave)
+Iteration 12:{space 2}log likelihood = {res:-1.4019933}  (not concave)
+Iteration 13:{space 2}log likelihood = {res:-1.4019743}  (not concave)
+Iteration 14:{space 2}log likelihood = {res:-1.4019575}  (not concave)
+Iteration 15:{space 2}log likelihood = {res:-1.4019414}  (not concave)
+Iteration 16:{space 2}log likelihood = {res:-1.4019255}  (not concave)
+Iteration 17:{space 2}log likelihood = {res:-1.4019096}  (not concave)
+Iteration 18:{space 2}log likelihood = {res:-1.4018937}  (not concave)
+Iteration 19:{space 2}log likelihood = {res:-1.4018779}  (not concave)
+Iteration 20:{space 2}log likelihood = {res:-1.4018622}  (not concave)
+Iteration 21:{space 2}log likelihood = {res:-1.4018464}  (not concave)
+Iteration 22:{space 2}log likelihood = {res:-1.4018307}  (not concave)
+Iteration 23:{space 2}log likelihood = {res: -1.401815}  (not concave)
+Iteration 24:{space 2}log likelihood = {res:-1.4017993}  (not concave)
+Iteration 25:{space 2}log likelihood = {res:-1.4017837}  (not concave)
+Iteration 26:{space 2}log likelihood = {res:-1.4017681}  (not concave)
+Iteration 27:{space 2}log likelihood = {res:-1.4017526}  (not concave)
+Iteration 28:{space 2}log likelihood = {res: -1.401737}  (not concave)
+Iteration 29:{space 2}log likelihood = {res:-1.4017215}  (not concave)
+Iteration 30:{space 2}log likelihood = {res: -1.401706}  (not concave)
+Iteration 31:{space 2}log likelihood = {res:-1.4016906}  (not concave)
+Iteration 32:{space 2}log likelihood = {res:-1.4016752}  (not concave)
+Iteration 33:{space 2}log likelihood = {res:-1.4016598}  (not concave)
+Iteration 34:{space 2}log likelihood = {res:-1.4016444}  (not concave)
+Iteration 35:{space 2}log likelihood = {res:-1.4016291}  (not concave)
+Iteration 36:{space 2}log likelihood = {res:-1.4016138}  (not concave)
+Iteration 37:{space 2}log likelihood = {res:-1.4015986}  (not concave)
+Iteration 38:{space 2}log likelihood = {res:-1.4015833}  (not concave)
+Iteration 39:{space 2}log likelihood = {res:-1.4015681}  (not concave)
+Iteration 40:{space 2}log likelihood = {res:-1.4015529}  (not concave)
+Iteration 41:{space 2}log likelihood = {res:-1.4015378}  (not concave)
+Iteration 42:{space 2}log likelihood = {res:-1.4015227}  (not concave)
+Iteration 43:{space 2}log likelihood = {res:-1.4015076}  (not concave)
+Iteration 44:{space 2}log likelihood = {res:-1.4014925}  (not concave)
+Iteration 45:{space 2}log likelihood = {res:-1.4014775}  (not concave)
+Iteration 46:{space 2}log likelihood = {res:-1.4014625}  (not concave)
+Iteration 47:{space 2}log likelihood = {res:-1.4014475}  (not concave)
+Iteration 48:{space 2}log likelihood = {res:-1.4014326}  (not concave)
+Iteration 49:{space 2}log likelihood = {res:-1.4014176}  (not concave)
+Iteration 50:{space 2}log likelihood = {res:-1.4014028}  (not concave)
+Iteration 51:{space 2}log likelihood = {res:-1.4013879}  (not concave)
+Iteration 52:{space 2}log likelihood = {res:-1.4013731}  (not concave)
+Iteration 53:{space 2}log likelihood = {res:-1.4013583}  (not concave)
+Iteration 54:{space 2}log likelihood = {res:-1.4013435}  (not concave)
+Iteration 55:{space 2}log likelihood = {res:-1.4013287}  (not concave)
+Iteration 56:{space 2}log likelihood = {res: -1.401314}  (not concave)
+Iteration 57:{space 2}log likelihood = {res:-1.4012993}  (not concave)
+Iteration 58:{space 2}log likelihood = {res:-1.4012847}  (not concave)
+Iteration 59:{space 2}log likelihood = {res:  -1.40127}  (not concave)
+Iteration 60:{space 2}log likelihood = {res:-1.4012554}  (not concave)
+Iteration 61:{space 2}log likelihood = {res:-1.4012408}  (not concave)
+Iteration 62:{space 2}log likelihood = {res:-1.4012263}  (not concave)
+Iteration 63:{space 2}log likelihood = {res:-1.4012117}  (not concave)
+Iteration 64:{space 2}log likelihood = {res:-1.4011972}  (not concave)
+Iteration 65:{space 2}log likelihood = {res:-1.4011828}  (not concave)
+Iteration 66:{space 2}log likelihood = {res:-1.4011683}  (not concave)
+Iteration 67:{space 2}log likelihood = {res:-1.4011539}  (not concave)
+Iteration 68:{space 2}log likelihood = {res:-1.4011395}  (not concave)
+Iteration 69:{space 2}log likelihood = {res:-1.4011252}  (not concave)
+Iteration 70:{space 2}log likelihood = {res:-1.4011108}  (not concave)
+Iteration 71:{space 2}log likelihood = {res:-1.4010965}  (not concave)
+Iteration 72:{space 2}log likelihood = {res:-1.4010822}  (not concave)
+Iteration 73:{space 2}log likelihood = {res: -1.401068}  (not concave)
+Iteration 74:{space 2}log likelihood = {res:-1.4010537}  (not concave)
+Iteration 75:{space 2}log likelihood = {res:-1.4010395}  (not concave)
+Iteration 76:{space 2}log likelihood = {res:-1.4010254}  (not concave)
+Iteration 77:{space 2}log likelihood = {res:-1.4010112}  (not concave)
+Iteration 78:{space 2}log likelihood = {res:-1.4009971}  (not concave)
+Iteration 79:{space 2}log likelihood = {res: -1.400983}  (not concave)
+Iteration 80:{space 2}log likelihood = {res:-1.4009689}  (not concave)
+Iteration 81:{space 2}log likelihood = {res:-1.4009549}  (not concave)
+Iteration 82:{space 2}log likelihood = {res:-1.4009408}  (not concave)
+Iteration 83:{space 2}log likelihood = {res:-1.4009269}  (not concave)
+Iteration 84:{space 2}log likelihood = {res:-1.4009129}  (not concave)
+Iteration 85:{space 2}log likelihood = {res:-1.4008989}  (not concave)
+Iteration 86:{space 2}log likelihood = {res: -1.400885}  (not concave)
+Iteration 87:{space 2}log likelihood = {res:-1.4008711}  (not concave)
+Iteration 88:{space 2}log likelihood = {res:-1.4008573}  (not concave)
+Iteration 89:{space 2}log likelihood = {res:-1.4008434}  (not concave)
+Iteration 90:{space 2}log likelihood = {res:-1.4008296}  (not concave)
+Iteration 91:{space 2}log likelihood = {res:-1.4008158}  (not concave)
+Iteration 92:{space 2}log likelihood = {res:-1.4008021}  (not concave)
+Iteration 93:{space 2}log likelihood = {res:-1.4007883}  (not concave)
+Iteration 94:{space 2}log likelihood = {res:-1.4007746}  (not concave)
+Iteration 95:{space 2}log likelihood = {res:-1.4007609}  (not concave)
+Iteration 96:{space 2}log likelihood = {res:-1.4007473}  (not concave)
+Iteration 97:{space 2}log likelihood = {res:-1.4007336}  (not concave)
+Iteration 98:{space 2}log likelihood = {res:  -1.40072}  (not concave)
+Iteration 99:{space 2}log likelihood = {res:-1.4007064}  (not concave)
+Iteration 100:{space 1}log likelihood = {res:-1.4006929}  (not concave)
+Iteration 101:{space 1}log likelihood = {res:-1.4006793}  (not concave)
+Iteration 102:{space 1}log likelihood = {res:-1.4006658}  (not concave)
+Iteration 103:{space 1}log likelihood = {res:-1.4006523}  (not concave)
+Iteration 104:{space 1}log likelihood = {res:-1.4006389}  (not concave)
+Iteration 105:{space 1}log likelihood = {res:-1.4006254}  (not concave)
+Iteration 106:{space 1}log likelihood = {res: -1.400612}  (not concave)
+Iteration 107:{space 1}log likelihood = {res:-1.4005986}  (not concave)
+Iteration 108:{space 1}log likelihood = {res:-1.4005852}  (not concave)
+Iteration 109:{space 1}log likelihood = {res:-1.4005719}  (not concave)
+Iteration 110:{space 1}log likelihood = {res:-1.4005586}  (not concave)
+Iteration 111:{space 1}log likelihood = {res:-1.4005453}  (not concave)
+Iteration 112:{space 1}log likelihood = {res: -1.400532}  (not concave)
+Iteration 113:{space 1}log likelihood = {res:-1.4005188}  (not concave)
+Iteration 114:{space 1}log likelihood = {res:-1.4005056}  (not concave)
+Iteration 115:{space 1}log likelihood = {res:-1.4004924}  (not concave)
+Iteration 116:{space 1}log likelihood = {res:-1.4004792}  (not concave)
+Iteration 117:{space 1}log likelihood = {res: -1.400466}  (not concave)
+Iteration 118:{space 1}log likelihood = {res:-1.4004529}  (not concave)
+Iteration 119:{space 1}log likelihood = {res:-1.4004398}  (not concave)
+Iteration 120:{space 1}log likelihood = {res:-1.4004267}  (not concave)
+Iteration 121:{space 1}log likelihood = {res:-1.4004137}  (not concave)
+Iteration 122:{space 1}log likelihood = {res:-1.4004006}  (not concave)
+Iteration 123:{space 1}log likelihood = {res:-1.4003876}  (not concave)
+Iteration 124:{space 1}log likelihood = {res:-1.4003746}  (not concave)
+Iteration 125:{space 1}log likelihood = {res:-1.4003617}  (not concave)
+Iteration 126:{space 1}log likelihood = {res:-1.4003487}  (not concave)
+Iteration 127:{space 1}log likelihood = {res:-1.4003358}  (not concave)
+Iteration 128:{space 1}log likelihood = {res:-1.4003229}  (not concave)
+Iteration 129:{space 1}log likelihood = {res:  -1.40031}  (not concave)
+Iteration 130:{space 1}log likelihood = {res:-1.4002972}  (not concave)
+Iteration 131:{space 1}log likelihood = {res:-1.4002844}  (not concave)
+Iteration 132:{space 1}log likelihood = {res:-1.4002716}  (not concave)
+Iteration 133:{space 1}log likelihood = {res:-1.4002588}  (not concave)
+Iteration 134:{space 1}log likelihood = {res: -1.400246}  (not concave)
+Iteration 135:{space 1}log likelihood = {res:-1.4002333}  (not concave)
+Iteration 136:{space 1}log likelihood = {res:-1.4002206}  (not concave)
+Iteration 137:{space 1}log likelihood = {res:-1.4002079}  (not concave)
+Iteration 138:{space 1}log likelihood = {res:-1.4001952}  (not concave)
+Iteration 139:{space 1}log likelihood = {res:-1.4001826}  (not concave)
+Iteration 140:{space 1}log likelihood = {res:-1.4001699}  (not concave)
+Iteration 141:{space 1}log likelihood = {res:-1.4001573}  (not concave)
+Iteration 142:{space 1}log likelihood = {res:-1.4001448}  (not concave)
+Iteration 143:{space 1}log likelihood = {res:-1.4001322}  (not concave)
+Iteration 144:{space 1}log likelihood = {res:-1.4001197}  (not concave)
+Iteration 145:{space 1}log likelihood = {res:-1.4001072}  (not concave)
+Iteration 146:{space 1}log likelihood = {res:-1.4000947}  (not concave)
+Iteration 147:{space 1}log likelihood = {res:-1.4000822}  (not concave)
+Iteration 148:{space 1}log likelihood = {res:-1.4000698}  (not concave)
+Iteration 149:{space 1}log likelihood = {res:-1.4000573}  (not concave)
+Iteration 150:{space 1}log likelihood = {res:-1.4000449}  (not concave)
+Iteration 151:{space 1}log likelihood = {res:-1.4000325}  (not concave)
+Iteration 152:{space 1}log likelihood = {res:-1.4000202}  (not concave)
+Iteration 153:{space 1}log likelihood = {res:-1.4000079}  (not concave)
+Iteration 154:{space 1}log likelihood = {res:-1.3999955}  (not concave)
+Iteration 155:{space 1}log likelihood = {res:-1.3999832}  (not concave)
+Iteration 156:{space 1}log likelihood = {res: -1.399971}  (not concave)
+Iteration 157:{space 1}log likelihood = {res:-1.3999587}  (not concave)
+Iteration 158:{space 1}log likelihood = {res:-1.3999465}  (not concave)
+Iteration 159:{space 1}log likelihood = {res:-1.3999343}  (not concave)
+Iteration 160:{space 1}log likelihood = {res:-1.3999221}  (not concave)
+Iteration 161:{space 1}log likelihood = {res:-1.3999099}  (not concave)
+Iteration 162:{space 1}log likelihood = {res:-1.3998978}  (not concave)
+Iteration 163:{space 1}log likelihood = {res:-1.3998856}  (not concave)
+Iteration 164:{space 1}log likelihood = {res:-1.3998735}  (not concave)
+Iteration 165:{space 1}log likelihood = {res:-1.3998615}  (not concave)
+Iteration 166:{space 1}log likelihood = {res:-1.3998494}  (not concave)
+Iteration 167:{space 1}log likelihood = {res:-1.3998374}  (not concave)
+Iteration 168:{space 1}log likelihood = {res:-1.3998253}  (not concave)
+Iteration 169:{space 1}log likelihood = {res:-1.3998133}  (not concave)
+Iteration 170:{space 1}log likelihood = {res:-1.3998014}  (not concave)
+Iteration 171:{space 1}log likelihood = {res:-1.3997894}  (not concave)
+Iteration 172:{space 1}log likelihood = {res:-1.3997775}  (not concave)
+Iteration 173:{space 1}log likelihood = {res:-1.3997655}  (not concave)
+Iteration 174:{space 1}log likelihood = {res:-1.3997536}  (not concave)
+Iteration 175:{space 1}log likelihood = {res:-1.3997418}  (not concave)
+Iteration 176:{space 1}log likelihood = {res:-1.3997299}  (not concave)
+Iteration 177:{space 1}log likelihood = {res:-1.3997181}  (not concave)
+Iteration 178:{space 1}log likelihood = {res:-1.3997063}  (not concave)
+Iteration 179:{space 1}log likelihood = {res:-1.3996945}  (not concave)
+Iteration 180:{space 1}log likelihood = {res:-1.3996827}  (not concave)
+Iteration 181:{space 1}log likelihood = {res:-1.3996709}  (not concave)
+Iteration 182:{space 1}log likelihood = {res:-1.3996592}  (not concave)
+Iteration 183:{space 1}log likelihood = {res:-1.3996475}  (not concave)
+Iteration 184:{space 1}log likelihood = {res:-1.3996358}  (not concave)
+Iteration 185:{space 1}log likelihood = {res:-1.3996241}  (not concave)
+Iteration 186:{space 1}log likelihood = {res:-1.3996124}  (not concave)
+Iteration 187:{space 1}log likelihood = {res:-1.3996008}  (not concave)
+Iteration 188:{space 1}log likelihood = {res:-1.3995892}  (not concave)
+Iteration 189:{space 1}log likelihood = {res:-1.3995776}  (not concave)
+Iteration 190:{space 1}log likelihood = {res: -1.399566}  (not concave)
+Iteration 191:{space 1}log likelihood = {res:-1.3995545}  (not concave)
+Iteration 192:{space 1}log likelihood = {res:-1.3995429}  (not concave)
+Iteration 193:{space 1}log likelihood = {res:-1.3995314}  (not concave)
+Iteration 194:{space 1}log likelihood = {res:-1.3995199}  (not concave)
+Iteration 195:{space 1}log likelihood = {res:-1.3995084}  (not concave)
+Iteration 196:{space 1}log likelihood = {res: -1.399497}  (not concave)
+Iteration 197:{space 1}log likelihood = {res:-1.3994855}  (not concave)
+Iteration 198:{space 1}log likelihood = {res:-1.3994741}  (not concave)
+Iteration 199:{space 1}log likelihood = {res:-1.3994627}  (not concave)
+Iteration 200:{space 1}log likelihood = {res:-1.3994513}  (not concave)
+Iteration 201:{space 1}log likelihood = {res:  -1.39944}  (not concave)
+Iteration 202:{space 1}log likelihood = {res:-1.3994286}  (not concave)
+Iteration 203:{space 1}log likelihood = {res:-1.3994173}  (not concave)
+Iteration 204:{space 1}log likelihood = {res: -1.399406}  (not concave)
+Iteration 205:{space 1}log likelihood = {res:-1.3993947}  (not concave)
+Iteration 206:{space 1}log likelihood = {res:-1.3993834}  (not concave)
+Iteration 207:{space 1}log likelihood = {res:-1.3993722}  (not concave)
+Iteration 208:{space 1}log likelihood = {res:-1.3993609}  (not concave)
+Iteration 209:{space 1}log likelihood = {res:-1.3993497}  (not concave)
+Iteration 210:{space 1}log likelihood = {res:-1.3993385}  (not concave)
+Iteration 211:{space 1}log likelihood = {res:-1.3993273}  (not concave)
+Iteration 212:{space 1}log likelihood = {res:-1.3993162}  (not concave)
+Iteration 213:{space 1}log likelihood = {res:-1.3993051}  (not concave)
+Iteration 214:{space 1}log likelihood = {res:-1.3992939}  (not concave)
+Iteration 215:{space 1}log likelihood = {res:-1.3992828}  (not concave)
+Iteration 216:{space 1}log likelihood = {res:-1.3992717}  (not concave)
+Iteration 217:{space 1}log likelihood = {res:-1.3992607}  (not concave)
+Iteration 218:{space 1}log likelihood = {res:-1.3992496}  (not concave)
+Iteration 219:{space 1}log likelihood = {res:-1.3992386}  (not concave)
+Iteration 220:{space 1}log likelihood = {res:-1.3992276}  (not concave)
+Iteration 221:{space 1}log likelihood = {res:-1.3992166}  (not concave)
+Iteration 222:{space 1}log likelihood = {res:-1.3992056}  (not concave)
+Iteration 223:{space 1}log likelihood = {res:-1.3991947}  (not concave)
+Iteration 224:{space 1}log likelihood = {res:-1.3991837}  (not concave)
+Iteration 225:{space 1}log likelihood = {res:-1.3991728}  (not concave)
+Iteration 226:{space 1}log likelihood = {res:-1.3991619}  (not concave)
+Iteration 227:{space 1}log likelihood = {res: -1.399151}  (not concave)
+Iteration 228:{space 1}log likelihood = {res:-1.3991402}  (not concave)
+Iteration 229:{space 1}log likelihood = {res:-1.3991293}  (not concave)
+Iteration 230:{space 1}log likelihood = {res:-1.3991185}  (not concave)
+Iteration 231:{space 1}log likelihood = {res:-1.3991077}  (not concave)
+Iteration 232:{space 1}log likelihood = {res:-1.3990969}  (not concave)
+Iteration 233:{space 1}log likelihood = {res:-1.3990861}  (not concave)
+Iteration 234:{space 1}log likelihood = {res:-1.3990754}  (not concave)
+Iteration 235:{space 1}log likelihood = {res:-1.3990646}  (not concave)
+Iteration 236:{space 1}log likelihood = {res:-1.3990539}  (not concave)
+Iteration 237:{space 1}log likelihood = {res:-1.3990432}  (not concave)
+Iteration 238:{space 1}log likelihood = {res:-1.3990325}  (not concave)
+Iteration 239:{space 1}log likelihood = {res:-1.3990218}  (not concave)
+Iteration 240:{space 1}log likelihood = {res:-1.3990112}  (not concave)
+Iteration 241:{space 1}log likelihood = {res:-1.3990005}  (not concave)
+Iteration 242:{space 1}log likelihood = {res:-1.3989899}  (not concave)
+Iteration 243:{space 1}log likelihood = {res:-1.3989793}  (not concave)
+Iteration 244:{space 1}log likelihood = {res:-1.3989687}  (not concave)
+Iteration 245:{space 1}log likelihood = {res:-1.3989582}  (not concave)
+Iteration 246:{space 1}log likelihood = {res:-1.3989476}  (not concave)
+Iteration 247:{space 1}log likelihood = {res:-1.3989371}  (not concave)
+Iteration 248:{space 1}log likelihood = {res:-1.3989266}  (not concave)
+Iteration 249:{space 1}log likelihood = {res:-1.3989161}  (not concave)
+Iteration 250:{space 1}log likelihood = {res:-1.3989056}  (not concave)
+Iteration 251:{space 1}log likelihood = {res:-1.3988951}  (not concave)
+Iteration 252:{space 1}log likelihood = {res:-1.3988847}  (not concave)
+Iteration 253:{space 1}log likelihood = {res:-1.3988742}  (not concave)
+Iteration 254:{space 1}log likelihood = {res:-1.3988638}  (not concave)
+Iteration 255:{space 1}log likelihood = {res:-1.3988534}  (not concave)
+Iteration 256:{space 1}log likelihood = {res: -1.398843}  (not concave)
+Iteration 257:{space 1}log likelihood = {res:-1.3988327}  (not concave)
+Iteration 258:{space 1}log likelihood = {res:-1.3988223}  (not concave)
+Iteration 259:{space 1}log likelihood = {res: -1.398812}  (not concave)
+Iteration 260:{space 1}log likelihood = {res:-1.3988017}  (not concave)
+Iteration 261:{space 1}log likelihood = {res:-1.3987914}  (not concave)
+Iteration 262:{space 1}log likelihood = {res:-1.3987811}  (not concave)
+Iteration 263:{space 1}log likelihood = {res:-1.3987708}  (not concave)
+Iteration 264:{space 1}log likelihood = {res:-1.3987606}  (not concave)
+Iteration 265:{space 1}log likelihood = {res:-1.3987503}  (not concave)
+Iteration 266:{space 1}log likelihood = {res:-1.3987401}  (not concave)
+Iteration 267:{space 1}log likelihood = {res:-1.3987299}  (not concave)
+Iteration 268:{space 1}log likelihood = {res:-1.3987197}  (not concave)
+Iteration 269:{space 1}log likelihood = {res:-1.3987096}  (not concave)
+Iteration 270:{space 1}log likelihood = {res:-1.3986994}  (not concave)
+Iteration 271:{space 1}log likelihood = {res:-1.3986893}  (not concave)
+Iteration 272:{space 1}log likelihood = {res:-1.3986792}  (not concave)
+Iteration 273:{space 1}log likelihood = {res:-1.3986691}  (not concave)
+Iteration 274:{space 1}log likelihood = {res: -1.398659}  (not concave)
+Iteration 275:{space 1}log likelihood = {res:-1.3986489}  (not concave)
+Iteration 276:{space 1}log likelihood = {res:-1.3986389}  (not concave)
+Iteration 277:{space 1}log likelihood = {res:-1.3986288}  (not concave)
+Iteration 278:{space 1}log likelihood = {res:-1.3986188}  (not concave)
+Iteration 279:{space 1}log likelihood = {res:-1.3986088}  (not concave)
+Iteration 280:{space 1}log likelihood = {res:-1.3985988}  (not concave)
+Iteration 281:{space 1}log likelihood = {res:-1.3985888}  (not concave)
+Iteration 282:{space 1}log likelihood = {res:-1.3985789}  (not concave)
+Iteration 283:{space 1}log likelihood = {res:-1.3985689}  (not concave)
+Iteration 284:{space 1}log likelihood = {res: -1.398559}  (not concave)
+Iteration 285:{space 1}log likelihood = {res:-1.3985491}  (not concave)
+Iteration 286:{space 1}log likelihood = {res:-1.3985392}  (not concave)
+Iteration 287:{space 1}log likelihood = {res:-1.3985293}  (not concave)
+Iteration 288:{space 1}log likelihood = {res:-1.3985194}  (not concave)
+Iteration 289:{space 1}log likelihood = {res:-1.3985096}  (not concave)
+Iteration 290:{space 1}log likelihood = {res:-1.3984997}  (not concave)
+Iteration 291:{space 1}log likelihood = {res:-1.3984899}  (not concave)
+Iteration 292:{space 1}log likelihood = {res:-1.3984801}  (not concave)
+Iteration 293:{space 1}log likelihood = {res:-1.3984703}  (not concave)
+Iteration 294:{space 1}log likelihood = {res:-1.3984606}  (not concave)
+Iteration 295:{space 1}log likelihood = {res:-1.3984508}  (not concave)
+Iteration 296:{space 1}log likelihood = {res:-1.3984411}  (not concave)
+Iteration 297:{space 1}log likelihood = {res:-1.3984313}  (not concave)
+Iteration 298:{space 1}log likelihood = {res:-1.3984216}  (not concave)
+Iteration 299:{space 1}log likelihood = {res:-1.3984119}  (not concave)
+Iteration 300:{space 1}log likelihood = {res:-1.3984022}  (not concave)
+{err}convergence not achieved
+{res}
+{txt}Logistic regression{col 49}Number of obs{col 67}= {res}       151
+{txt}{col 49}LR chi2({res}1{txt}){col 67}= {res}     94.94
+{txt}{col 49}Prob > chi2{col 67}= {res}    0.0000
+{txt}Log likelihood = {res}-1.3984022{txt}{col 49}Pseudo R2{col 67}= {res}    0.9714
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}       route{col 14}{c |}      Coef.{col 26}   Std. Err.{col 38}      z{col 46}   P>|z|{col 54}     [95% Con{col 67}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 8}time {c |}{col 14}{res}{space 2}-44.71734{col 26}{space 2} 12.81192{col 37}{space 1}   -3.49{col 46}{space 3}0.000{col 54}{space 4}-69.82824{col 67}{space 3}-19.60644
+{txt}{space 8}flow {c |}{col 14}{res}{space 2}  2.42968{col 26}{space 2} .4653953{col 37}{space 1}    5.22{col 46}{space 3}0.000{col 54}{space 4} 1.517522{col 67}{space 3} 3.341838
+{txt}{space 5}signals {c |}{col 14}{res}{space 2} 179.9111{col 26}{space 2}        .{col 37}{space 1}       .{col 46}{space 3}    .{col 54}{space 4}        .{col 67}{space 3}        .
+{txt}{space 3}seatbelts {c |}{col 14}{res}{space 2} 197.8608{col 26}{space 2}        .{col 37}{space 1}       .{col 46}{space 3}    .{col 54}{space 4}        .{col 67}{space 3}        .
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2}-1568.737{col 26}{space 2}        .{col 37}{space 1}       .{col 46}{space 3}    .{col 54}{space 4}        .{col 67}{space 3}        .
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{p 0 6 2}Note: 14 failures and 134 successes completely determined.{p_end}
+{err}convergence not achieved
+{txt}{search r(430), local:r(430);}
+
+{com}. logit route time flow signals passengers
+
+{res}{txt}Iteration 0:{space 3}log likelihood = {res:-48.867438}  
+Iteration 1:{space 3}log likelihood = {res:-28.799976}  
+Iteration 2:{space 3}log likelihood = {res:-8.0610542}  
+Iteration 3:{space 3}log likelihood = {res:-5.4063092}  
+Iteration 4:{space 3}log likelihood = {res:-4.8399942}  
+Iteration 5:{space 3}log likelihood = {res:-4.8216502}  
+Iteration 6:{space 3}log likelihood = {res:-4.8214545}  
+Iteration 7:{space 3}log likelihood = {res:-4.8214544}  
+{res}
+{txt}Logistic regression{col 49}Number of obs{col 67}= {res}       151
+{txt}{col 49}LR chi2({res}4{txt}){col 67}= {res}     88.09
+{txt}{col 49}Prob > chi2{col 67}= {res}    0.0000
+{txt}Log likelihood = {res}-4.8214544{txt}{col 49}Pseudo R2{col 67}= {res}    0.9013
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}       route{col 14}{c |}      Coef.{col 26}   Std. Err.{col 38}      z{col 46}   P>|z|{col 54}     [95% Con{col 67}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 8}time {c |}{col 14}{res}{space 2}-.5253815{col 26}{space 2} .3189798{col 37}{space 1}   -1.65{col 46}{space 3}0.100{col 54}{space 4} -1.15057{col 67}{space 3} .0998074
+{txt}{space 8}flow {c |}{col 14}{res}{space 2} .0527733{col 26}{space 2}  .022307{col 37}{space 1}    2.37{col 46}{space 3}0.018{col 54}{space 4} .0090523{col 67}{space 3} .0964943
+{txt}{space 5}signals {c |}{col 14}{res}{space 2} 2.776698{col 26}{space 2} 1.390987{col 37}{space 1}    2.00{col 46}{space 3}0.046{col 54}{space 4} .0504143{col 67}{space 3} 5.502982
+{txt}{space 2}passengers {c |}{col 14}{res}{space 2} 1.622344{col 26}{space 2} 5.825398{col 37}{space 1}    0.28{col 46}{space 3}0.781{col 54}{space 4}-9.795227{col 67}{space 3} 13.03992
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2}-28.96653{col 26}{space 2} 14.11532{col 37}{space 1}   -2.05{col 46}{space 3}0.040{col 54}{space 4}-56.63204{col 67}{space 3}-1.301013
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{p 0 6 2}Note: 1 failure and 51 successes completely determined.{p_end}
+
+{com}. logit route time flow signals passengers age i.gender
+
+{res}{txt}Iteration 0:{space 3}log likelihood = {res:-48.867438}  
+Iteration 1:{space 3}log likelihood = {res:-28.880182}  
+Iteration 2:{space 3}log likelihood = {res:-7.2442771}  
+Iteration 3:{space 3}log likelihood = {res:-2.9221194}  
+Iteration 4:{space 3}log likelihood = {res:         0}  
+Iteration 5:{space 3}log likelihood = {res:         0}  
+{res}
+{txt}Logistic regression{col 49}Number of obs{col 67}= {res}       151
+{txt}{col 49}LR chi2({res}-1{txt}){col 67}= {res}     97.73
+{txt}{col 49}Prob > chi2{col 67}= {res}         .
+{txt}Log likelihood = {res}         0{txt}{col 49}Pseudo R2{col 67}= {res}    1.0000
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}       route{col 14}{c |}      Coef.{col 26}   Std. Err.{col 38}      z{col 46}   P>|z|{col 54}     [95% Con{col 67}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 8}time {c |}{col 14}{res}{space 2}-26.84072{col 26}{space 2}        .{col 37}{space 1}       .{col 46}{space 3}    .{col 54}{space 4}        .{col 67}{space 3}        .
+{txt}{space 8}flow {c |}{col 14}{res}{space 2}  2.51703{col 26}{space 2}        .{col 37}{space 1}       .{col 46}{space 3}    .{col 54}{space 4}        .{col 67}{space 3}        .
+{txt}{space 5}signals {c |}{col 14}{res}{space 2} 101.1453{col 26}{space 2}        .{col 37}{space 1}       .{col 46}{space 3}    .{col 54}{space 4}        .{col 67}{space 3}        .
+{txt}{space 2}passengers {c |}{col 14}{res}{space 2}-145.9817{col 26}{space 2}        .{col 37}{space 1}       .{col 46}{space 3}    .{col 54}{space 4}        .{col 67}{space 3}        .
+{txt}{space 9}age {c |}{col 14}{res}{space 2} 127.6053{col 26}{space 2}        .{col 37}{space 1}       .{col 46}{space 3}    .{col 54}{space 4}        .{col 67}{space 3}        .
+{txt}{space 4}1.gender {c |}{col 14}{res}{space 2} 42.35318{col 26}{space 2}        .{col 37}{space 1}       .{col 46}{space 3}    .{col 54}{space 4}        .{col 67}{space 3}        .
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2}-1454.574{col 26}{space 2}        .{col 37}{space 1}       .{col 46}{space 3}    .{col 54}{space 4}        .{col 67}{space 3}        .
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{p 0 6 2}Note: 15 failures and 136 successes completely determined.{p_end}
+
+{com}. logit route time flow signals passengers i.age i.gender
+
+{res}{txt}Iteration 0:{space 3}log likelihood = {res:-48.867438}  
+Iteration 1:{space 3}log likelihood = {res:-28.095268}  
+Iteration 2:{space 3}log likelihood = {res: -9.310942}  
+Iteration 3:{space 3}log likelihood = {res:-3.2810334}  
+Iteration 4:{space 3}log likelihood = {res:-1.3240887}  
+Iteration 5:{space 3}log likelihood = {res:-.49341181}  
+Iteration 6:{space 3}log likelihood = {res:         0}  
+Iteration 7:{space 3}log likelihood = {res:         0}  
+{res}
+{txt}Logistic regression{col 49}Number of obs{col 67}= {res}       151
+{txt}{col 49}LR chi2({res}-1{txt}){col 67}= {res}     97.73
+{txt}{col 49}Prob > chi2{col 67}= {res}         .
+{txt}Log likelihood = {res}         0{txt}{col 49}Pseudo R2{col 67}= {res}    1.0000
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}       route{col 14}{c |}      Coef.{col 26}   Std. Err.{col 38}      z{col 46}   P>|z|{col 54}     [95% Con{col 67}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 8}time {c |}{col 14}{res}{space 2}-29.58736{col 26}{space 2}        .{col 37}{space 1}       .{col 46}{space 3}    .{col 54}{space 4}        .{col 67}{space 3}        .
+{txt}{space 8}flow {c |}{col 14}{res}{space 2} 2.173371{col 26}{space 2}        .{col 37}{space 1}       .{col 46}{space 3}    .{col 54}{space 4}        .{col 67}{space 3}        .
+{txt}{space 5}signals {c |}{col 14}{res}{space 2} 7.135311{col 26}{space 2}        .{col 37}{space 1}       .{col 46}{space 3}    .{col 54}{space 4}        .{col 67}{space 3}        .
+{txt}{space 2}passengers {c |}{col 14}{res}{space 2}-64.43808{col 26}{space 2}        .{col 37}{space 1}       .{col 46}{space 3}    .{col 54}{space 4}        .{col 67}{space 3}        .
+{txt}{space 12} {c |}
+{space 9}age {c |}
+{space 10}2  {c |}{col 14}{res}{space 2} 97.51984{col 26}{space 2}        .{col 37}{space 1}       .{col 46}{space 3}    .{col 54}{space 4}        .{col 67}{space 3}        .
+{txt}{space 10}3  {c |}{col 14}{res}{space 2} 182.0204{col 26}{space 2}        .{col 37}{space 1}       .{col 46}{space 3}    .{col 54}{space 4}        .{col 67}{space 3}        .
+{txt}{space 10}4  {c |}{col 14}{res}{space 2} 181.2748{col 26}{space 2}        .{col 37}{space 1}       .{col 46}{space 3}    .{col 54}{space 4}        .{col 67}{space 3}        .
+{txt}{space 10}5  {c |}{col 14}{res}{space 2}-8.186219{col 26}{space 2}        .{col 37}{space 1}       .{col 46}{space 3}    .{col 54}{space 4}        .{col 67}{space 3}        .
+{txt}{space 12} {c |}
+{space 4}1.gender {c |}{col 14}{res}{space 2}-40.11538{col 26}{space 2}        .{col 37}{space 1}       .{col 46}{space 3}    .{col 54}{space 4}        .{col 67}{space 3}        .
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2}-493.3133{col 26}{space 2}        .{col 37}{space 1}       .{col 46}{space 3}    .{col 54}{space 4}        .{col 67}{space 3}        .
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{p 0 6 2}Note: 15 failures and 136 successes completely determined.{p_end}
+
+{com}. logit route time flow signals passengers i.age
+
+{res}{txt}Iteration 0:{space 3}log likelihood = {res:-48.867438}  
+Iteration 1:{space 3}log likelihood = {res:-27.908626}  
+Iteration 2:{space 3}log likelihood = {res:-9.2327112}  
+Iteration 3:{space 3}log likelihood = {res:-3.0936534}  
+Iteration 4:{space 3}log likelihood = {res:-1.1604225}  
+Iteration 5:{space 3}log likelihood = {res:-.47712717}  
+Iteration 6:{space 3}log likelihood = {res:-.01061414}  
+Iteration 7:{space 3}log likelihood = {res:         0}  
+Iteration 8:{space 3}log likelihood = {res:         0}  
+{res}
+{txt}Logistic regression{col 49}Number of obs{col 67}= {res}       151
+{txt}{col 49}LR chi2({res}-1{txt}){col 67}= {res}     97.73
+{txt}{col 49}Prob > chi2{col 67}= {res}         .
+{txt}Log likelihood = {res}         0{txt}{col 49}Pseudo R2{col 67}= {res}    1.0000
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}       route{col 14}{c |}      Coef.{col 26}   Std. Err.{col 38}      z{col 46}   P>|z|{col 54}     [95% Con{col 67}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 8}time {c |}{col 14}{res}{space 2}-21.84417{col 26}{space 2}        .{col 37}{space 1}       .{col 46}{space 3}    .{col 54}{space 4}        .{col 67}{space 3}        .
+{txt}{space 8}flow {c |}{col 14}{res}{space 2} 1.511341{col 26}{space 2}        .{col 37}{space 1}       .{col 46}{space 3}    .{col 54}{space 4}        .{col 67}{space 3}        .
+{txt}{space 5}signals {c |}{col 14}{res}{space 2} 8.688625{col 26}{space 2}        .{col 37}{space 1}       .{col 46}{space 3}    .{col 54}{space 4}        .{col 67}{space 3}        .
+{txt}{space 2}passengers {c |}{col 14}{res}{space 2} -53.8446{col 26}{space 2}        .{col 37}{space 1}       .{col 46}{space 3}    .{col 54}{space 4}        .{col 67}{space 3}        .
+{txt}{space 12} {c |}
+{space 9}age {c |}
+{space 10}2  {c |}{col 14}{res}{space 2} 72.06387{col 26}{space 2}        .{col 37}{space 1}       .{col 46}{space 3}    .{col 54}{space 4}        .{col 67}{space 3}        .
+{txt}{space 10}3  {c |}{col 14}{res}{space 2} 136.4825{col 26}{space 2}        .{col 37}{space 1}       .{col 46}{space 3}    .{col 54}{space 4}        .{col 67}{space 3}        .
+{txt}{space 10}4  {c |}{col 14}{res}{space 2} 124.3123{col 26}{space 2}        .{col 37}{space 1}       .{col 46}{space 3}    .{col 54}{space 4}        .{col 67}{space 3}        .
+{txt}{space 10}5  {c |}{col 14}{res}{space 2}-2.290168{col 26}{space 2}        .{col 37}{space 1}       .{col 46}{space 3}    .{col 54}{space 4}        .{col 67}{space 3}        .
+{txt}{space 12} {c |}
+{space 7}_cons {c |}{col 14}{res}{space 2}-358.7985{col 26}{space 2}        .{col 37}{space 1}       .{col 46}{space 3}    .{col 54}{space 4}        .{col 67}{space 3}        .
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{p 0 6 2}Note: 15 failures and 136 successes completely determined.{p_end}
+
+{com}. logit route time flow signals passengers i.gender
+
+{res}{txt}Iteration 0:{space 3}log likelihood = {res:-48.867438}  
+Iteration 1:{space 3}log likelihood = {res:-28.981518}  
+Iteration 2:{space 3}log likelihood = {res:-8.2254663}  
+Iteration 3:{space 3}log likelihood = {res:-5.5493303}  
+Iteration 4:{space 3}log likelihood = {res:-4.7424684}  
+Iteration 5:{space 3}log likelihood = {res:-4.7030168}  
+Iteration 6:{space 3}log likelihood = {res:-4.7025244}  
+Iteration 7:{space 3}log likelihood = {res:-4.7025241}  
+{res}
+{txt}Logistic regression{col 49}Number of obs{col 67}= {res}       151
+{txt}{col 49}LR chi2({res}5{txt}){col 67}= {res}     88.33
+{txt}{col 49}Prob > chi2{col 67}= {res}    0.0000
+{txt}Log likelihood = {res}-4.7025241{txt}{col 49}Pseudo R2{col 67}= {res}    0.9038
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}       route{col 14}{c |}      Coef.{col 26}   Std. Err.{col 38}      z{col 46}   P>|z|{col 54}     [95% Con{col 67}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 8}time {c |}{col 14}{res}{space 2}-.4906038{col 26}{space 2} .3097292{col 37}{space 1}   -1.58{col 46}{space 3}0.113{col 54}{space 4}-1.097662{col 67}{space 3} .1164543
+{txt}{space 8}flow {c |}{col 14}{res}{space 2}  .056808{col 26}{space 2} .0265049{col 37}{space 1}    2.14{col 46}{space 3}0.032{col 54}{space 4} .0048593{col 67}{space 3} .1087567
+{txt}{space 5}signals {c |}{col 14}{res}{space 2} 2.930321{col 26}{space 2} 1.433245{col 37}{space 1}    2.04{col 46}{space 3}0.041{col 54}{space 4}  .121212{col 67}{space 3} 5.739431
+{txt}{space 2}passengers {c |}{col 14}{res}{space 2} 1.279814{col 26}{space 2} 6.971612{col 37}{space 1}    0.18{col 46}{space 3}0.854{col 54}{space 4}-12.38429{col 67}{space 3} 14.94392
+{txt}{space 4}1.gender {c |}{col 14}{res}{space 2}  1.16078{col 26}{space 2} 2.555387{col 37}{space 1}    0.45{col 46}{space 3}0.650{col 54}{space 4}-3.847687{col 67}{space 3} 6.169248
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2}-32.28038{col 26}{space 2}  17.1875{col 37}{space 1}   -1.88{col 46}{space 3}0.060{col 54}{space 4}-65.96726{col 67}{space 3} 1.406504
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{p 0 6 2}Note: 1 failure and 54 successes completely determined.{p_end}
+
+{com}. logit route time flow signals passengers i.gender i.marital
+
+{res}{txt}Iteration 0:{space 3}log likelihood = {res:-48.867438}  
+Iteration 1:{space 3}log likelihood = {res:-29.001617}  
+Iteration 2:{space 3}log likelihood = {res:-7.6602379}  
+Iteration 3:{space 3}log likelihood = {res:-5.0631875}  
+Iteration 4:{space 3}log likelihood = {res:-4.2718184}  
+Iteration 5:{space 3}log likelihood = {res: -4.244295}  
+Iteration 6:{space 3}log likelihood = {res:-4.2440708}  
+Iteration 7:{space 3}log likelihood = {res:-4.2440706}  
+{res}
+{txt}Logistic regression{col 49}Number of obs{col 67}= {res}       151
+{txt}{col 49}LR chi2({res}6{txt}){col 67}= {res}     89.25
+{txt}{col 49}Prob > chi2{col 67}= {res}    0.0000
+{txt}Log likelihood = {res}-4.2440706{txt}{col 49}Pseudo R2{col 67}= {res}    0.9132
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}       route{col 14}{c |}      Coef.{col 26}   Std. Err.{col 38}      z{col 46}   P>|z|{col 54}     [95% Con{col 67}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 8}time {c |}{col 14}{res}{space 2}-.5936764{col 26}{space 2}  .351648{col 37}{space 1}   -1.69{col 46}{space 3}0.091{col 54}{space 4}-1.282894{col 67}{space 3} .0955411
+{txt}{space 8}flow {c |}{col 14}{res}{space 2} .0587371{col 26}{space 2} .0262301{col 37}{space 1}    2.24{col 46}{space 3}0.025{col 54}{space 4}  .007327{col 67}{space 3} .1101472
+{txt}{space 5}signals {c |}{col 14}{res}{space 2}  2.92091{col 26}{space 2} 1.482588{col 37}{space 1}    1.97{col 46}{space 3}0.049{col 54}{space 4}   .01509{col 67}{space 3}  5.82673
+{txt}{space 2}passengers {c |}{col 14}{res}{space 2}-1.155722{col 26}{space 2} 6.804021{col 37}{space 1}   -0.17{col 46}{space 3}0.865{col 54}{space 4}-14.49136{col 67}{space 3} 12.17991
+{txt}{space 4}1.gender {c |}{col 14}{res}{space 2} 1.270672{col 26}{space 2} 2.601172{col 37}{space 1}    0.49{col 46}{space 3}0.625{col 54}{space 4}-3.827532{col 67}{space 3} 6.368875
+{txt}{space 3}1.marital {c |}{col 14}{res}{space 2}-2.859584{col 26}{space 2} 3.624413{col 37}{space 1}   -0.79{col 46}{space 3}0.430{col 54}{space 4}-9.963302{col 67}{space 3} 4.244135
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2}-29.22735{col 26}{space 2} 16.61878{col 37}{space 1}   -1.76{col 46}{space 3}0.079{col 54}{space 4}-61.79956{col 67}{space 3} 3.344862
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{p 0 6 2}Note: 1 failure and 58 successes completely determined.{p_end}
+
+{com}. logit route time flow signals passengers i.gender i.marital children i.income
+
+{txt}note: 4.income != 0 predicts success perfectly
+      4.income dropped and 8 obs not used
+
+{res}{txt}Iteration 0:{space 3}log likelihood = {res:-48.006155}  
+Iteration 1:{space 3}log likelihood = {res:-28.207472}  
+Iteration 2:{space 3}log likelihood = {res:-9.5303157}  
+Iteration 3:{space 3}log likelihood = {res:-5.6013261}  
+Iteration 4:{space 3}log likelihood = {res: -4.161876}  
+Iteration 5:{space 3}log likelihood = {res:-4.1183138}  
+Iteration 6:{space 3}log likelihood = {res:-4.1157896}  
+Iteration 7:{space 3}log likelihood = {res:-4.1156154}  
+Iteration 8:{space 3}log likelihood = {res:-4.1156142}  
+Iteration 9:{space 3}log likelihood = {res:-4.1156142}  
+{res}
+{txt}Logistic regression{col 49}Number of obs{col 67}= {res}       143
+{txt}{col 49}LR chi2({res}10{txt}){col 67}= {res}     87.78
+{txt}{col 49}Prob > chi2{col 67}= {res}    0.0000
+{txt}Log likelihood = {res}-4.1156142{txt}{col 49}Pseudo R2{col 67}= {res}    0.9143
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}       route{col 14}{c |}      Coef.{col 26}   Std. Err.{col 38}      z{col 46}   P>|z|{col 54}     [95% Con{col 67}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 8}time {c |}{col 14}{res}{space 2} -.513863{col 26}{space 2} .3922332{col 37}{space 1}   -1.31{col 46}{space 3}0.190{col 54}{space 4}-1.282626{col 67}{space 3} .2548999
+{txt}{space 8}flow {c |}{col 14}{res}{space 2}  .060554{col 26}{space 2} .0313958{col 37}{space 1}    1.93{col 46}{space 3}0.054{col 54}{space 4}-.0009806{col 67}{space 3} .1220885
+{txt}{space 5}signals {c |}{col 14}{res}{space 2} 2.637786{col 26}{space 2} 1.689333{col 37}{space 1}    1.56{col 46}{space 3}0.118{col 54}{space 4}-.6732465{col 67}{space 3} 5.948819
+{txt}{space 2}passengers {c |}{col 14}{res}{space 2} 3.194342{col 26}{space 2} 45.99427{col 37}{space 1}    0.07{col 46}{space 3}0.945{col 54}{space 4}-86.95278{col 67}{space 3} 93.34146
+{txt}{space 4}1.gender {c |}{col 14}{res}{space 2} 1.695295{col 26}{space 2} 3.299289{col 37}{space 1}    0.51{col 46}{space 3}0.607{col 54}{space 4}-4.771193{col 67}{space 3} 8.161782
+{txt}{space 3}1.marital {c |}{col 14}{res}{space 2}-3.244547{col 26}{space 2} 4.537504{col 37}{space 1}   -0.72{col 46}{space 3}0.475{col 54}{space 4}-12.13789{col 67}{space 3} 5.648798
+{txt}{space 4}children {c |}{col 14}{res}{space 2} 1.099486{col 26}{space 2} 11.69203{col 37}{space 1}    0.09{col 46}{space 3}0.925{col 54}{space 4}-21.81648{col 67}{space 3} 24.01545
+{txt}{space 12} {c |}
+{space 6}income {c |}
+{space 10}2  {c |}{col 14}{res}{space 2}-.8463053{col 26}{space 2} 4.075242{col 37}{space 1}   -0.21{col 46}{space 3}0.835{col 54}{space 4}-8.833633{col 67}{space 3} 7.141022
+{txt}{space 10}3  {c |}{col 14}{res}{space 2} 1.140228{col 26}{space 2}  3.94459{col 37}{space 1}    0.29{col 46}{space 3}0.773{col 54}{space 4}-6.591027{col 67}{space 3} 8.871483
+{txt}{space 10}4  {c |}{col 14}{res}{space 2}        0{col 26}{txt}  (empty)
+{space 10}5  {c |}{col 14}{res}{space 2}-9.037978{col 26}{space 2} 61.78213{col 37}{space 1}   -0.15{col 46}{space 3}0.884{col 54}{space 4}-130.1287{col 67}{space 3} 112.0528
+{txt}{space 12} {c |}
+{space 7}_cons {c |}{col 14}{res}{space 2}-28.79344{col 26}{space 2} 19.34202{col 37}{space 1}   -1.49{col 46}{space 3}0.137{col 54}{space 4}-66.70311{col 67}{space 3} 9.116231
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{p 0 6 2}Note: 2 failures and 60 successes completely determined.{p_end}
+
+{com}. 
+. import delimited "/Users/guslipkin/Documents/Fall2020/QMB 3200 ~ Advanced Quantitative Methods/TakeHome Final/cleaned.csv", clear 
+{res}{text}(15 vars, 151 obs)
+
+{com}. logit route time flow signals passengers i.gender i.marital children i.income
+
+{txt}note: 3.income != 0 predicts success perfectly
+      3.income dropped and 8 obs not used
+
+{res}{txt}Iteration 0:{space 3}log likelihood = {res:-48.006155}  
+Iteration 1:{space 3}log likelihood = {res:-28.207472}  
+Iteration 2:{space 3}log likelihood = {res:-9.5303157}  
+Iteration 3:{space 3}log likelihood = {res:-5.6013261}  
+Iteration 4:{space 3}log likelihood = {res: -4.161876}  
+Iteration 5:{space 3}log likelihood = {res:-4.1183138}  
+Iteration 6:{space 3}log likelihood = {res:-4.1157896}  
+Iteration 7:{space 3}log likelihood = {res:-4.1156154}  
+Iteration 8:{space 3}log likelihood = {res:-4.1156142}  
+Iteration 9:{space 3}log likelihood = {res:-4.1156142}  
+{res}
+{txt}Logistic regression{col 49}Number of obs{col 67}= {res}       143
+{txt}{col 49}LR chi2({res}10{txt}){col 67}= {res}     87.78
+{txt}{col 49}Prob > chi2{col 67}= {res}    0.0000
+{txt}Log likelihood = {res}-4.1156142{txt}{col 49}Pseudo R2{col 67}= {res}    0.9143
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}       route{col 14}{c |}      Coef.{col 26}   Std. Err.{col 38}      z{col 46}   P>|z|{col 54}     [95% Con{col 67}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 8}time {c |}{col 14}{res}{space 2} -.513863{col 26}{space 2} .3922332{col 37}{space 1}   -1.31{col 46}{space 3}0.190{col 54}{space 4}-1.282626{col 67}{space 3} .2548999
+{txt}{space 8}flow {c |}{col 14}{res}{space 2}  .060554{col 26}{space 2} .0313958{col 37}{space 1}    1.93{col 46}{space 3}0.054{col 54}{space 4}-.0009806{col 67}{space 3} .1220885
+{txt}{space 5}signals {c |}{col 14}{res}{space 2} 2.637786{col 26}{space 2} 1.689333{col 37}{space 1}    1.56{col 46}{space 3}0.118{col 54}{space 4}-.6732465{col 67}{space 3} 5.948819
+{txt}{space 2}passengers {c |}{col 14}{res}{space 2} 3.194342{col 26}{space 2} 45.99427{col 37}{space 1}    0.07{col 46}{space 3}0.945{col 54}{space 4}-86.95278{col 67}{space 3} 93.34146
+{txt}{space 4}1.gender {c |}{col 14}{res}{space 2} 1.695295{col 26}{space 2} 3.299289{col 37}{space 1}    0.51{col 46}{space 3}0.607{col 54}{space 4}-4.771193{col 67}{space 3} 8.161782
+{txt}{space 3}1.marital {c |}{col 14}{res}{space 2}-3.244547{col 26}{space 2} 4.537504{col 37}{space 1}   -0.72{col 46}{space 3}0.475{col 54}{space 4}-12.13789{col 67}{space 3} 5.648798
+{txt}{space 4}children {c |}{col 14}{res}{space 2} 1.099486{col 26}{space 2} 11.69203{col 37}{space 1}    0.09{col 46}{space 3}0.925{col 54}{space 4}-21.81648{col 67}{space 3} 24.01545
+{txt}{space 12} {c |}
+{space 6}income {c |}
+{space 10}1  {c |}{col 14}{res}{space 2}-.8463053{col 26}{space 2} 4.075242{col 37}{space 1}   -0.21{col 46}{space 3}0.835{col 54}{space 4}-8.833633{col 67}{space 3} 7.141022
+{txt}{space 10}2  {c |}{col 14}{res}{space 2} 1.140228{col 26}{space 2}  3.94459{col 37}{space 1}    0.29{col 46}{space 3}0.773{col 54}{space 4}-6.591027{col 67}{space 3} 8.871483
+{txt}{space 10}3  {c |}{col 14}{res}{space 2}        0{col 26}{txt}  (empty)
+{space 10}4  {c |}{col 14}{res}{space 2}-9.037978{col 26}{space 2} 61.78213{col 37}{space 1}   -0.15{col 46}{space 3}0.884{col 54}{space 4}-130.1287{col 67}{space 3} 112.0528
+{txt}{space 12} {c |}
+{space 7}_cons {c |}{col 14}{res}{space 2}-28.79344{col 26}{space 2} 19.34202{col 37}{space 1}   -1.49{col 46}{space 3}0.137{col 54}{space 4}-66.70311{col 67}{space 3} 9.116231
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{p 0 6 2}Note: 2 failures and 60 successes completely determined.{p_end}
+
+{com}. logit route time flow signals passengers i.gender i.marital children  income
+
+{res}{txt}Iteration 0:{space 3}log likelihood = {res:-48.867438}  
+Iteration 1:{space 3}log likelihood = {res:-28.891885}  
+Iteration 2:{space 3}log likelihood = {res:-7.6916816}  
+Iteration 3:{space 3}log likelihood = {res:-4.9611179}  
+Iteration 4:{space 3}log likelihood = {res:-4.2628508}  
+Iteration 5:{space 3}log likelihood = {res:-4.2162973}  
+Iteration 6:{space 3}log likelihood = {res:-4.2149064}  
+Iteration 7:{space 3}log likelihood = {res:-4.2149005}  
+Iteration 8:{space 3}log likelihood = {res:-4.2149005}  
+{res}
+{txt}Logistic regression{col 49}Number of obs{col 67}= {res}       151
+{txt}{col 49}LR chi2({res}8{txt}){col 67}= {res}     89.31
+{txt}{col 49}Prob > chi2{col 67}= {res}    0.0000
+{txt}Log likelihood = {res}-4.2149005{txt}{col 49}Pseudo R2{col 67}= {res}    0.9137
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}       route{col 14}{c |}      Coef.{col 26}   Std. Err.{col 38}      z{col 46}   P>|z|{col 54}     [95% Con{col 67}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 8}time {c |}{col 14}{res}{space 2}-.5583822{col 26}{space 2} .3811426{col 37}{space 1}   -1.47{col 46}{space 3}0.143{col 54}{space 4}-1.305408{col 67}{space 3} .1886436
+{txt}{space 8}flow {c |}{col 14}{res}{space 2} .0610483{col 26}{space 2} .0300643{col 37}{space 1}    2.03{col 46}{space 3}0.042{col 54}{space 4} .0021234{col 67}{space 3} .1199732
+{txt}{space 5}signals {c |}{col 14}{res}{space 2}  3.05003{col 26}{space 2} 1.694326{col 37}{space 1}    1.80{col 46}{space 3}0.072{col 54}{space 4}-.2707881{col 67}{space 3} 6.370847
+{txt}{space 2}passengers {c |}{col 14}{res}{space 2}-1.608229{col 26}{space 2} 6.441543{col 37}{space 1}   -0.25{col 46}{space 3}0.803{col 54}{space 4}-14.23342{col 67}{space 3} 11.01696
+{txt}{space 4}1.gender {c |}{col 14}{res}{space 2} 1.308856{col 26}{space 2} 2.710426{col 37}{space 1}    0.48{col 46}{space 3}0.629{col 54}{space 4}-4.003481{col 67}{space 3} 6.621194
+{txt}{space 3}1.marital {c |}{col 14}{res}{space 2}-2.817294{col 26}{space 2} 3.630845{col 37}{space 1}   -0.78{col 46}{space 3}0.438{col 54}{space 4}-9.933619{col 67}{space 3} 4.299032
+{txt}{space 4}children {c |}{col 14}{res}{space 2} 1.241401{col 26}{space 2}  19.3798{col 37}{space 1}    0.06{col 46}{space 3}0.949{col 54}{space 4}-36.74232{col 67}{space 3} 39.22512
+{txt}{space 6}income {c |}{col 14}{res}{space 2} .3664817{col 26}{space 2} 1.684526{col 37}{space 1}    0.22{col 46}{space 3}0.828{col 54}{space 4}-2.935129{col 67}{space 3} 3.668092
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2}-31.60328{col 26}{space 2} 21.22399{col 37}{space 1}   -1.49{col 46}{space 3}0.136{col 54}{space 4}-73.20155{col 67}{space 3} 9.994982
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{p 0 6 2}Note: 1 failure and 63 successes completely determined.{p_end}
+
+{com}. logit route time flow signals passengers i.gender i.marital children income year
+
+{res}{txt}Iteration 0:{space 3}log likelihood = {res:-48.867438}  
+Iteration 1:{space 3}log likelihood = {res:-28.745737}  
+Iteration 2:{space 3}log likelihood = {res:-7.0504682}  
+Iteration 3:{space 3}log likelihood = {res:-3.4057836}  
+Iteration 4:{space 3}log likelihood = {res:-.00116244}  (not concave)
+Iteration 5:{space 3}log likelihood = {res:-.00001262}  (not concave)
+Iteration 6:{space 3}log likelihood = {res:-2.004e-06}  (not concave)
+Iteration 7:{space 3}log likelihood = {res:-1.208e-06}  (not concave)
+Iteration 8:{space 3}log likelihood = {res:-7.346e-07}  (not concave)
+Iteration 9:{space 3}log likelihood = {res:-3.488e-07}  (not concave)
+Iteration 10:{space 2}log likelihood = {res:-2.110e-07}  (not concave)
+Iteration 11:{space 2}log likelihood = {res:-1.482e-07}  (not concave)
+Iteration 12:{space 2}log likelihood = {res:-7.314e-08}  (not concave)
+Iteration 13:{space 2}log likelihood = {res:-5.311e-08}  (not concave)
+Iteration 14:{space 2}log likelihood = {res:-4.903e-08}  (not concave)
+Iteration 15:{space 2}log likelihood = {res:-4.828e-08}  (not concave)
+Iteration 16:{space 2}log likelihood = {res:-4.798e-08}  (not concave)
+Iteration 17:{space 2}log likelihood = {res:-4.775e-08}  (not concave)
+Iteration 18:{space 2}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 19:{space 2}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 20:{space 2}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 21:{space 2}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 22:{space 2}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 23:{space 2}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 24:{space 2}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 25:{space 2}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 26:{space 2}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 27:{space 2}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 28:{space 2}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 29:{space 2}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 30:{space 2}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 31:{space 2}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 32:{space 2}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 33:{space 2}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 34:{space 2}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 35:{space 2}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 36:{space 2}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 37:{space 2}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 38:{space 2}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 39:{space 2}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 40:{space 2}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 41:{space 2}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 42:{space 2}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 43:{space 2}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 44:{space 2}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 45:{space 2}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 46:{space 2}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 47:{space 2}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 48:{space 2}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 49:{space 2}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 50:{space 2}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 51:{space 2}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 52:{space 2}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 53:{space 2}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 54:{space 2}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 55:{space 2}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 56:{space 2}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 57:{space 2}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 58:{space 2}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 59:{space 2}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 60:{space 2}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 61:{space 2}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 62:{space 2}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 63:{space 2}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 64:{space 2}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 65:{space 2}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 66:{space 2}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 67:{space 2}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 68:{space 2}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 69:{space 2}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 70:{space 2}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 71:{space 2}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 72:{space 2}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 73:{space 2}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 74:{space 2}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 75:{space 2}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 76:{space 2}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 77:{space 2}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 78:{space 2}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 79:{space 2}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 80:{space 2}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 81:{space 2}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 82:{space 2}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 83:{space 2}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 84:{space 2}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 85:{space 2}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 86:{space 2}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 87:{space 2}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 88:{space 2}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 89:{space 2}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 90:{space 2}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 91:{space 2}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 92:{space 2}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 93:{space 2}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 94:{space 2}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 95:{space 2}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 96:{space 2}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 97:{space 2}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 98:{space 2}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 99:{space 2}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 100:{space 1}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 101:{space 1}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 102:{space 1}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 103:{space 1}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 104:{space 1}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 105:{space 1}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 106:{space 1}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 107:{space 1}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 108:{space 1}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 109:{space 1}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 110:{space 1}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 111:{space 1}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 112:{space 1}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 113:{space 1}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 114:{space 1}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 115:{space 1}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 116:{space 1}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 117:{space 1}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 118:{space 1}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 119:{space 1}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 120:{space 1}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 121:{space 1}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 122:{space 1}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 123:{space 1}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 124:{space 1}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 125:{space 1}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 126:{space 1}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 127:{space 1}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 128:{space 1}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 129:{space 1}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 130:{space 1}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 131:{space 1}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 132:{space 1}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 133:{space 1}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 134:{space 1}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 135:{space 1}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 136:{space 1}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 137:{space 1}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 138:{space 1}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 139:{space 1}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 140:{space 1}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 141:{space 1}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 142:{space 1}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 143:{space 1}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 144:{space 1}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 145:{space 1}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 146:{space 1}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 147:{space 1}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 148:{space 1}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 149:{space 1}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 150:{space 1}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 151:{space 1}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 152:{space 1}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 153:{space 1}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 154:{space 1}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 155:{space 1}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 156:{space 1}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 157:{space 1}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 158:{space 1}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 159:{space 1}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 160:{space 1}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 161:{space 1}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 162:{space 1}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 163:{space 1}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 164:{space 1}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 165:{space 1}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 166:{space 1}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 167:{space 1}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 168:{space 1}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 169:{space 1}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 170:{space 1}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 171:{space 1}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 172:{space 1}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 173:{space 1}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 174:{space 1}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 175:{space 1}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 176:{space 1}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 177:{space 1}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 178:{space 1}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 179:{space 1}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 180:{space 1}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 181:{space 1}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 182:{space 1}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 183:{space 1}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 184:{space 1}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 185:{space 1}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 186:{space 1}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 187:{space 1}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 188:{space 1}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 189:{space 1}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 190:{space 1}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 191:{space 1}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 192:{space 1}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 193:{space 1}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 194:{space 1}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 195:{space 1}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 196:{space 1}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 197:{space 1}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 198:{space 1}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 199:{space 1}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 200:{space 1}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 201:{space 1}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 202:{space 1}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 203:{space 1}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 204:{space 1}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 205:{space 1}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 206:{space 1}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 207:{space 1}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 208:{space 1}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 209:{space 1}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 210:{space 1}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 211:{space 1}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 212:{space 1}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 213:{space 1}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 214:{space 1}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 215:{space 1}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 216:{space 1}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 217:{space 1}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 218:{space 1}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 219:{space 1}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 220:{space 1}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 221:{space 1}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 222:{space 1}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 223:{space 1}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 224:{space 1}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 225:{space 1}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 226:{space 1}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 227:{space 1}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 228:{space 1}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 229:{space 1}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 230:{space 1}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 231:{space 1}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 232:{space 1}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 233:{space 1}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 234:{space 1}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 235:{space 1}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 236:{space 1}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 237:{space 1}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 238:{space 1}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 239:{space 1}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 240:{space 1}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 241:{space 1}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 242:{space 1}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 243:{space 1}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 244:{space 1}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 245:{space 1}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 246:{space 1}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 247:{space 1}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 248:{space 1}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 249:{space 1}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 250:{space 1}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 251:{space 1}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 252:{space 1}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 253:{space 1}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 254:{space 1}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 255:{space 1}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 256:{space 1}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 257:{space 1}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 258:{space 1}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 259:{space 1}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 260:{space 1}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 261:{space 1}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 262:{space 1}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 263:{space 1}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 264:{space 1}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 265:{space 1}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 266:{space 1}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 267:{space 1}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 268:{space 1}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 269:{space 1}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 270:{space 1}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 271:{space 1}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 272:{space 1}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 273:{space 1}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 274:{space 1}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 275:{space 1}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 276:{space 1}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 277:{space 1}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 278:{space 1}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 279:{space 1}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 280:{space 1}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 281:{space 1}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 282:{space 1}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 283:{space 1}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 284:{space 1}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 285:{space 1}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 286:{space 1}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 287:{space 1}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 288:{space 1}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 289:{space 1}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 290:{space 1}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 291:{space 1}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 292:{space 1}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 293:{space 1}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 294:{space 1}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 295:{space 1}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 296:{space 1}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 297:{space 1}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 298:{space 1}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 299:{space 1}log likelihood = {res:-4.770e-08}  (not concave)
+Iteration 300:{space 1}log likelihood = {res:-4.770e-08}  (not concave)
+{err}convergence not achieved
+{res}
+{txt}Logistic regression{col 49}Number of obs{col 67}= {res}       151
+{txt}{col 49}LR chi2({res}0{txt}){col 67}= {res}     97.73
+{txt}{col 49}Prob > chi2{col 67}= {res}         .
+{txt}Log likelihood = {res}-4.770e-08{txt}{col 49}Pseudo R2{col 67}= {res}    1.0000
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}       route{col 14}{c |}      Coef.{col 26}   Std. Err.{col 38}      z{col 46}   P>|z|{col 54}     [95% Con{col 67}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 8}time {c |}{col 14}{res}{space 2}-5.547226{col 26}{space 2}        .{col 37}{space 1}       .{col 46}{space 3}    .{col 54}{space 4}        .{col 67}{space 3}        .
+{txt}{space 8}flow {c |}{col 14}{res}{space 2} .6079263{col 26}{space 2} 11.89279{col 37}{space 1}    0.05{col 46}{space 3}0.959{col 54}{space 4}-22.70152{col 67}{space 3} 23.91737
+{txt}{space 5}signals {c |}{col 14}{res}{space 2} 37.51731{col 26}{space 2}        .{col 37}{space 1}       .{col 46}{space 3}    .{col 54}{space 4}        .{col 67}{space 3}        .
+{txt}{space 2}passengers {c |}{col 14}{res}{space 2}-8.554561{col 26}{space 2}        .{col 37}{space 1}       .{col 46}{space 3}    .{col 54}{space 4}        .{col 67}{space 3}        .
+{txt}{space 4}1.gender {c |}{col 14}{res}{space 2} -1.45284{col 26}{space 2}        .{col 37}{space 1}       .{col 46}{space 3}    .{col 54}{space 4}        .{col 67}{space 3}        .
+{txt}{space 3}1.marital {c |}{col 14}{res}{space 2}-42.52123{col 26}{space 2}        .{col 37}{space 1}       .{col 46}{space 3}    .{col 54}{space 4}        .{col 67}{space 3}        .
+{txt}{space 4}children {c |}{col 14}{res}{space 2} 42.30075{col 26}{space 2}        .{col 37}{space 1}       .{col 46}{space 3}    .{col 54}{space 4}        .{col 67}{space 3}        .
+{txt}{space 6}income {c |}{col 14}{res}{space 2} -.231264{col 26}{space 2}        .{col 37}{space 1}       .{col 46}{space 3}    .{col 54}{space 4}        .{col 67}{space 3}        .
+{txt}{space 8}year {c |}{col 14}{res}{space 2} 3.373191{col 26}{space 2}        .{col 37}{space 1}       .{col 46}{space 3}    .{col 54}{space 4}        .{col 67}{space 3}        .
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2}-612.6062{col 26}{space 2}        .{col 37}{space 1}       .{col 46}{space 3}    .{col 54}{space 4}        .{col 67}{space 3}        .
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{p 0 6 2}Note: 14 failures and 136 successes completely determined.{p_end}
+{err}convergence not achieved
+{txt}{search r(430), local:r(430);}
+
+{com}. logit route time flow signals passengers i.gender i.marital children income i.origin
+
+{res}{txt}Iteration 0:{space 3}log likelihood = {res:-48.867438}  
+Iteration 1:{space 3}log likelihood = {res:-28.706149}  
+Iteration 2:{space 3}log likelihood = {res:-6.5950988}  
+Iteration 3:{space 3}log likelihood = {res:-6.2887252}  
+Iteration 4:{space 3}log likelihood = {res:-1.3828876}  
+Iteration 5:{space 3}log likelihood = {res:-.25987778}  
+Iteration 6:{space 3}log likelihood = {res:-.04261994}  
+Iteration 7:{space 3}log likelihood = {res:         0}  
+Iteration 8:{space 3}log likelihood = {res:         0}  
+{res}
+{txt}Logistic regression{col 49}Number of obs{col 67}= {res}       151
+{txt}{col 49}LR chi2({res}-1{txt}){col 67}= {res}     97.73
+{txt}{col 49}Prob > chi2{col 67}= {res}         .
+{txt}Log likelihood = {res}         0{txt}{col 49}Pseudo R2{col 67}= {res}    1.0000
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}       route{col 14}{c |}      Coef.{col 26}   Std. Err.{col 38}      z{col 46}   P>|z|{col 54}     [95% Con{col 67}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 8}time {c |}{col 14}{res}{space 2}-18.60219{col 26}{space 2}        .{col 37}{space 1}       .{col 46}{space 3}    .{col 54}{space 4}        .{col 67}{space 3}        .
+{txt}{space 8}flow {c |}{col 14}{res}{space 2} 1.399335{col 26}{space 2}        .{col 37}{space 1}       .{col 46}{space 3}    .{col 54}{space 4}        .{col 67}{space 3}        .
+{txt}{space 5}signals {c |}{col 14}{res}{space 2} 30.92774{col 26}{space 2}        .{col 37}{space 1}       .{col 46}{space 3}    .{col 54}{space 4}        .{col 67}{space 3}        .
+{txt}{space 2}passengers {c |}{col 14}{res}{space 2}-82.72796{col 26}{space 2}        .{col 37}{space 1}       .{col 46}{space 3}    .{col 54}{space 4}        .{col 67}{space 3}        .
+{txt}{space 4}1.gender {c |}{col 14}{res}{space 2} 57.37443{col 26}{space 2}        .{col 37}{space 1}       .{col 46}{space 3}    .{col 54}{space 4}        .{col 67}{space 3}        .
+{txt}{space 3}1.marital {c |}{col 14}{res}{space 2}-20.08113{col 26}{space 2}        .{col 37}{space 1}       .{col 46}{space 3}    .{col 54}{space 4}        .{col 67}{space 3}        .
+{txt}{space 4}children {c |}{col 14}{res}{space 2}-5.111256{col 26}{space 2}        .{col 37}{space 1}       .{col 46}{space 3}    .{col 54}{space 4}        .{col 67}{space 3}        .
+{txt}{space 6}income {c |}{col 14}{res}{space 2} 9.942348{col 26}{space 2}        .{col 37}{space 1}       .{col 46}{space 3}    .{col 54}{space 4}        .{col 67}{space 3}        .
+{txt}{space 4}1.origin {c |}{col 14}{res}{space 2}-127.5911{col 26}{space 2}        .{col 37}{space 1}       .{col 46}{space 3}    .{col 54}{space 4}        .{col 67}{space 3}        .
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2}-366.8224{col 26}{space 2}        .{col 37}{space 1}       .{col 46}{space 3}    .{col 54}{space 4}        .{col 67}{space 3}        .
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{p 0 6 2}Note: 15 failures and 136 successes completely determined.{p_end}
+
+{com}. logit route time flow signals passengers i.gender i.marital children income origin
+
+{res}{txt}Iteration 0:{space 3}log likelihood = {res:-48.867438}  
+Iteration 1:{space 3}log likelihood = {res:-28.706149}  
+Iteration 2:{space 3}log likelihood = {res:-6.5950988}  
+Iteration 3:{space 3}log likelihood = {res:-6.2887252}  
+Iteration 4:{space 3}log likelihood = {res:-1.3828876}  
+Iteration 5:{space 3}log likelihood = {res:-.25987778}  
+Iteration 6:{space 3}log likelihood = {res:-.04261994}  
+Iteration 7:{space 3}log likelihood = {res:         0}  
+Iteration 8:{space 3}log likelihood = {res:         0}  
+{res}
+{txt}Logistic regression{col 49}Number of obs{col 67}= {res}       151
+{txt}{col 49}LR chi2({res}-1{txt}){col 67}= {res}     97.73
+{txt}{col 49}Prob > chi2{col 67}= {res}         .
+{txt}Log likelihood = {res}         0{txt}{col 49}Pseudo R2{col 67}= {res}    1.0000
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}       route{col 14}{c |}      Coef.{col 26}   Std. Err.{col 38}      z{col 46}   P>|z|{col 54}     [95% Con{col 67}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 8}time {c |}{col 14}{res}{space 2}-18.60219{col 26}{space 2}        .{col 37}{space 1}       .{col 46}{space 3}    .{col 54}{space 4}        .{col 67}{space 3}        .
+{txt}{space 8}flow {c |}{col 14}{res}{space 2} 1.399335{col 26}{space 2}        .{col 37}{space 1}       .{col 46}{space 3}    .{col 54}{space 4}        .{col 67}{space 3}        .
+{txt}{space 5}signals {c |}{col 14}{res}{space 2} 30.92774{col 26}{space 2}        .{col 37}{space 1}       .{col 46}{space 3}    .{col 54}{space 4}        .{col 67}{space 3}        .
+{txt}{space 2}passengers {c |}{col 14}{res}{space 2}-82.72796{col 26}{space 2}        .{col 37}{space 1}       .{col 46}{space 3}    .{col 54}{space 4}        .{col 67}{space 3}        .
+{txt}{space 4}1.gender {c |}{col 14}{res}{space 2} 57.37443{col 26}{space 2}        .{col 37}{space 1}       .{col 46}{space 3}    .{col 54}{space 4}        .{col 67}{space 3}        .
+{txt}{space 3}1.marital {c |}{col 14}{res}{space 2}-20.08113{col 26}{space 2}        .{col 37}{space 1}       .{col 46}{space 3}    .{col 54}{space 4}        .{col 67}{space 3}        .
+{txt}{space 4}children {c |}{col 14}{res}{space 2}-5.111256{col 26}{space 2}        .{col 37}{space 1}       .{col 46}{space 3}    .{col 54}{space 4}        .{col 67}{space 3}        .
+{txt}{space 6}income {c |}{col 14}{res}{space 2} 9.942348{col 26}{space 2}        .{col 37}{space 1}       .{col 46}{space 3}    .{col 54}{space 4}        .{col 67}{space 3}        .
+{txt}{space 6}origin {c |}{col 14}{res}{space 2}-127.5911{col 26}{space 2}        .{col 37}{space 1}       .{col 46}{space 3}    .{col 54}{space 4}        .{col 67}{space 3}        .
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2}-366.8224{col 26}{space 2}        .{col 37}{space 1}       .{col 46}{space 3}    .{col 54}{space 4}        .{col 67}{space 3}        .
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{p 0 6 2}Note: 15 failures and 136 successes completely determined.{p_end}
+
+{com}. logit route time flow signals passengers i.gender i.marital children income
+
+{res}{txt}Iteration 0:{space 3}log likelihood = {res:-48.867438}  
+Iteration 1:{space 3}log likelihood = {res:-28.891885}  
+Iteration 2:{space 3}log likelihood = {res:-7.6916816}  
+Iteration 3:{space 3}log likelihood = {res:-4.9611179}  
+Iteration 4:{space 3}log likelihood = {res:-4.2628508}  
+Iteration 5:{space 3}log likelihood = {res:-4.2162973}  
+Iteration 6:{space 3}log likelihood = {res:-4.2149064}  
+Iteration 7:{space 3}log likelihood = {res:-4.2149005}  
+Iteration 8:{space 3}log likelihood = {res:-4.2149005}  
+{res}
+{txt}Logistic regression{col 49}Number of obs{col 67}= {res}       151
+{txt}{col 49}LR chi2({res}8{txt}){col 67}= {res}     89.31
+{txt}{col 49}Prob > chi2{col 67}= {res}    0.0000
+{txt}Log likelihood = {res}-4.2149005{txt}{col 49}Pseudo R2{col 67}= {res}    0.9137
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}       route{col 14}{c |}      Coef.{col 26}   Std. Err.{col 38}      z{col 46}   P>|z|{col 54}     [95% Con{col 67}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 8}time {c |}{col 14}{res}{space 2}-.5583822{col 26}{space 2} .3811426{col 37}{space 1}   -1.47{col 46}{space 3}0.143{col 54}{space 4}-1.305408{col 67}{space 3} .1886436
+{txt}{space 8}flow {c |}{col 14}{res}{space 2} .0610483{col 26}{space 2} .0300643{col 37}{space 1}    2.03{col 46}{space 3}0.042{col 54}{space 4} .0021234{col 67}{space 3} .1199732
+{txt}{space 5}signals {c |}{col 14}{res}{space 2}  3.05003{col 26}{space 2} 1.694326{col 37}{space 1}    1.80{col 46}{space 3}0.072{col 54}{space 4}-.2707881{col 67}{space 3} 6.370847
+{txt}{space 2}passengers {c |}{col 14}{res}{space 2}-1.608229{col 26}{space 2} 6.441543{col 37}{space 1}   -0.25{col 46}{space 3}0.803{col 54}{space 4}-14.23342{col 67}{space 3} 11.01696
+{txt}{space 4}1.gender {c |}{col 14}{res}{space 2} 1.308856{col 26}{space 2} 2.710426{col 37}{space 1}    0.48{col 46}{space 3}0.629{col 54}{space 4}-4.003481{col 67}{space 3} 6.621194
+{txt}{space 3}1.marital {c |}{col 14}{res}{space 2}-2.817294{col 26}{space 2} 3.630845{col 37}{space 1}   -0.78{col 46}{space 3}0.438{col 54}{space 4}-9.933619{col 67}{space 3} 4.299032
+{txt}{space 4}children {c |}{col 14}{res}{space 2} 1.241401{col 26}{space 2}  19.3798{col 37}{space 1}    0.06{col 46}{space 3}0.949{col 54}{space 4}-36.74232{col 67}{space 3} 39.22512
+{txt}{space 6}income {c |}{col 14}{res}{space 2} .3664817{col 26}{space 2} 1.684526{col 37}{space 1}    0.22{col 46}{space 3}0.828{col 54}{space 4}-2.935129{col 67}{space 3} 3.668092
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2}-31.60328{col 26}{space 2} 21.22399{col 37}{space 1}   -1.49{col 46}{space 3}0.136{col 54}{space 4}-73.20155{col 67}{space 3} 9.994982
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{p 0 6 2}Note: 1 failure and 63 successes completely determined.{p_end}
+
+{com}. logit , or
+
+{txt}Logistic regression{col 49}Number of obs{col 67}= {res}       151
+{txt}{col 49}LR chi2({res}8{txt}){col 67}= {res}     89.31
+{txt}{col 49}Prob > chi2{col 67}= {res}    0.0000
+{txt}Log likelihood = {res}-4.2149005{txt}{col 49}Pseudo R2{col 67}= {res}    0.9137
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}       route{col 14}{c |} Odds Ratio{col 26}   Std. Err.{col 38}      z{col 46}   P>|z|{col 54}     [95% Con{col 67}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 8}time {c |}{col 14}{res}{space 2} .5721339{col 26}{space 2} .2180646{col 37}{space 1}   -1.47{col 46}{space 3}0.143{col 54}{space 4} .2710619{col 67}{space 3}  1.20761
+{txt}{space 8}flow {c |}{col 14}{res}{space 2}  1.06295{col 26}{space 2} .0319568{col 37}{space 1}    2.03{col 46}{space 3}0.042{col 54}{space 4} 1.002126{col 67}{space 3} 1.127467
+{txt}{space 5}signals {c |}{col 14}{res}{space 2} 21.11597{col 26}{space 2} 35.77733{col 37}{space 1}    1.80{col 46}{space 3}0.072{col 54}{space 4} .7627781{col 67}{space 3} 584.5528
+{txt}{space 2}passengers {c |}{col 14}{res}{space 2}  .200242{col 26}{space 2} 1.289867{col 37}{space 1}   -0.25{col 46}{space 3}0.803{col 54}{space 4} 6.58e-07{col 67}{space 3} 60898.43
+{txt}{space 4}1.gender {c |}{col 14}{res}{space 2} 3.701938{col 26}{space 2} 10.03383{col 37}{space 1}    0.48{col 46}{space 3}0.629{col 54}{space 4}  .018252{col 67}{space 3} 750.8408
+{txt}{space 3}1.marital {c |}{col 14}{res}{space 2} .0597675{col 26}{space 2} .2170064{col 37}{space 1}   -0.78{col 46}{space 3}0.438{col 54}{space 4} .0000485{col 67}{space 3} 73.62847
+{txt}{space 4}children {c |}{col 14}{res}{space 2} 3.460458{col 26}{space 2} 67.06299{col 37}{space 1}    0.06{col 46}{space 3}0.949{col 54}{space 4} 1.10e-16{col 67}{space 3} 1.08e+17
+{txt}{space 6}income {c |}{col 14}{res}{space 2}  1.44265{col 26}{space 2} 2.430182{col 37}{space 1}    0.22{col 46}{space 3}0.828{col 54}{space 4} .0531239{col 67}{space 3} 39.17709
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2} 1.88e-14{col 26}{space 2} 4.00e-13{col 37}{space 1}   -1.49{col 46}{space 3}0.136{col 54}{space 4} 1.62e-32{col 67}{space 3} 21916.21
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{p 0 6 2}Note: {res:_cons} estimates baseline odds{txt}.{p_end}
+{p 0 6 2}Note: 1 failure and 63 successes completely determined.{p_end}
+
+{com}. logit i.route time
+{err}depvar may not be a factor variable
+{txt}{search r(198), local:r(198);}
+
+{com}. logit route time flow signals i.marital
+
+{res}{txt}Iteration 0:{space 3}log likelihood = {res:-48.867438}  
+Iteration 1:{space 3}log likelihood = {res: -28.79634}  
+Iteration 2:{space 3}log likelihood = {res:-7.2409154}  
+Iteration 3:{space 3}log likelihood = {res:-5.2232611}  
+Iteration 4:{space 3}log likelihood = {res:-4.4054352}  
+Iteration 5:{space 3}log likelihood = {res:-4.3937827}  
+Iteration 6:{space 3}log likelihood = {res:-4.3936631}  
+Iteration 7:{space 3}log likelihood = {res:-4.3936631}  
+{res}
+{txt}Logistic regression{col 49}Number of obs{col 67}= {res}       151
+{txt}{col 49}LR chi2({res}4{txt}){col 67}= {res}     88.95
+{txt}{col 49}Prob > chi2{col 67}= {res}    0.0000
+{txt}Log likelihood = {res}-4.3936631{txt}{col 49}Pseudo R2{col 67}= {res}    0.9101
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}       route{col 14}{c |}      Coef.{col 26}   Std. Err.{col 38}      z{col 46}   P>|z|{col 54}     [95% Con{col 67}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 8}time {c |}{col 14}{res}{space 2}-.6163413{col 26}{space 2} .3624747{col 37}{space 1}   -1.70{col 46}{space 3}0.089{col 54}{space 4}-1.326779{col 67}{space 3} .0940961
+{txt}{space 8}flow {c |}{col 14}{res}{space 2} .0545603{col 26}{space 2}  .022353{col 37}{space 1}    2.44{col 46}{space 3}0.015{col 54}{space 4} .0107492{col 67}{space 3} .0983713
+{txt}{space 5}signals {c |}{col 14}{res}{space 2} 2.802077{col 26}{space 2} 1.470643{col 37}{space 1}    1.91{col 46}{space 3}0.057{col 54}{space 4}-.0803298{col 67}{space 3} 5.684483
+{txt}{space 3}1.marital {c |}{col 14}{res}{space 2}-2.674866{col 26}{space 2} 3.408196{col 37}{space 1}   -0.78{col 46}{space 3}0.433{col 54}{space 4}-9.354808{col 67}{space 3} 4.005076
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2}-26.38113{col 26}{space 2} 13.12648{col 37}{space 1}   -2.01{col 46}{space 3}0.044{col 54}{space 4}-52.10856{col 67}{space 3}-.6536943
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{p 0 6 2}Note: 1 failure and 53 successes completely determined.{p_end}
+
+{com}. logit route time flow signals
+
+{res}{txt}Iteration 0:{space 3}log likelihood = {res:-48.867438}  
+Iteration 1:{space 3}log likelihood = {res:-28.771817}  
+Iteration 2:{space 3}log likelihood = {res:-7.9529691}  
+Iteration 3:{space 3}log likelihood = {res:-5.3362108}  
+Iteration 4:{space 3}log likelihood = {res:-4.8830366}  
+Iteration 5:{space 3}log likelihood = {res:-4.8708346}  
+Iteration 6:{space 3}log likelihood = {res:-4.8708175}  
+Iteration 7:{space 3}log likelihood = {res:-4.8708175}  
+{res}
+{txt}Logistic regression{col 49}Number of obs{col 67}= {res}       151
+{txt}{col 49}LR chi2({res}3{txt}){col 67}= {res}     87.99
+{txt}{col 49}Prob > chi2{col 67}= {res}    0.0000
+{txt}Log likelihood = {res}-4.8708175{txt}{col 49}Pseudo R2{col 67}= {res}    0.9003
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}       route{col 14}{c |}      Coef.{col 26}   Std. Err.{col 38}      z{col 46}   P>|z|{col 54}     [95% Con{col 67}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 8}time {c |}{col 14}{res}{space 2}-.5349713{col 26}{space 2} .3196359{col 37}{space 1}   -1.67{col 46}{space 3}0.094{col 54}{space 4}-1.161446{col 67}{space 3} .0915035
+{txt}{space 8}flow {c |}{col 14}{res}{space 2} .0521703{col 26}{space 2} .0219512{col 37}{space 1}    2.38{col 46}{space 3}0.017{col 54}{space 4} .0091467{col 67}{space 3} .0951939
+{txt}{space 5}signals {c |}{col 14}{res}{space 2} 2.770252{col 26}{space 2} 1.392625{col 37}{space 1}    1.99{col 46}{space 3}0.047{col 54}{space 4}  .040757{col 67}{space 3} 5.499748
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2}-28.51541{col 26}{space 2} 13.96574{col 37}{space 1}   -2.04{col 46}{space 3}0.041{col 54}{space 4}-55.88777{col 67}{space 3}-1.143059
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{p 0 6 2}Note: 1 failure and 51 successes completely determined.{p_end}
+
+{com}. logit route flow signals
+
+{res}{txt}Iteration 0:{space 3}log likelihood = {res:-48.867438}  
+Iteration 1:{space 3}log likelihood = {res:-29.445344}  
+Iteration 2:{space 3}log likelihood = {res:-10.089125}  
+Iteration 3:{space 3}log likelihood = {res:-6.9626947}  
+Iteration 4:{space 3}log likelihood = {res:-6.3489367}  
+Iteration 5:{space 3}log likelihood = {res:-6.3387635}  
+Iteration 6:{space 3}log likelihood = {res:-6.3387136}  
+Iteration 7:{space 3}log likelihood = {res:-6.3387136}  
+{res}
+{txt}Logistic regression{col 49}Number of obs{col 67}= {res}       151
+{txt}{col 49}LR chi2({res}2{txt}){col 67}= {res}     85.06
+{txt}{col 49}Prob > chi2{col 67}= {res}    0.0000
+{txt}Log likelihood = {res}-6.3387136{txt}{col 49}Pseudo R2{col 67}= {res}    0.8703
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}       route{col 14}{c |}      Coef.{col 26}   Std. Err.{col 38}      z{col 46}   P>|z|{col 54}     [95% Con{col 67}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 8}flow {c |}{col 14}{res}{space 2} .0463908{col 26}{space 2} .0176995{col 37}{space 1}    2.62{col 46}{space 3}0.009{col 54}{space 4} .0117005{col 67}{space 3} .0810811
+{txt}{space 5}signals {c |}{col 14}{res}{space 2} 2.440057{col 26}{space 2} .9797151{col 37}{space 1}    2.49{col 46}{space 3}0.013{col 54}{space 4} .5198512{col 67}{space 3} 4.360264
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2}-30.36408{col 26}{space 2} 11.70953{col 37}{space 1}   -2.59{col 46}{space 3}0.010{col 54}{space 4}-53.31434{col 67}{space 3} -7.41382
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{p 0 6 2}Note: 1 failure and 49 successes completely determined.{p_end}
+
+{com}. logit , or
+
+{txt}Logistic regression{col 49}Number of obs{col 67}= {res}       151
+{txt}{col 49}LR chi2({res}2{txt}){col 67}= {res}     85.06
+{txt}{col 49}Prob > chi2{col 67}= {res}    0.0000
+{txt}Log likelihood = {res}-6.3387136{txt}{col 49}Pseudo R2{col 67}= {res}    0.8703
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}       route{col 14}{c |} Odds Ratio{col 26}   Std. Err.{col 38}      z{col 46}   P>|z|{col 54}     [95% Con{col 67}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 8}flow {c |}{col 14}{res}{space 2} 1.047484{col 26}{space 2} .0185399{col 37}{space 1}    2.62{col 46}{space 3}0.009{col 54}{space 4} 1.011769{col 67}{space 3} 1.084459
+{txt}{space 5}signals {c |}{col 14}{res}{space 2}  11.4737{col 26}{space 2} 11.24096{col 37}{space 1}    2.49{col 46}{space 3}0.013{col 54}{space 4} 1.681777{col 67}{space 3} 78.27777
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2} 6.50e-14{col 26}{space 2} 7.61e-13{col 37}{space 1}   -2.59{col 46}{space 3}0.010{col 54}{space 4} 7.01e-24{col 67}{space 3} .0006029
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{p 0 6 2}Note: {res:_cons} estimates baseline odds{txt}.{p_end}
+{p 0 6 2}Note: 1 failure and 49 successes completely determined.{p_end}
+
+{com}. logit route flow i.signals
+
+{txt}note: 2.signals != 0 predicts failure perfectly
+      2.signals dropped and 1 obs not used
+
+note: 4.signals != 0 predicts failure perfectly
+      4.signals dropped and 2 obs not used
+
+note: 5.signals != 0 predicts failure perfectly
+      5.signals dropped and 5 obs not used
+
+note: 6.signals != 0 predicts failure perfectly
+      6.signals dropped and 1 obs not used
+
+note: 8.signals != 0 predicts success perfectly
+      8.signals dropped and 17 obs not used
+
+note: 10.signals != 0 predicts success perfectly
+      10.signals dropped and 10 obs not used
+
+note: 11.signals != 0 predicts success perfectly
+      11.signals dropped and 2 obs not used
+
+note: 13.signals != 0 predicts success perfectly
+      13.signals dropped and 14 obs not used
+
+note: 14.signals != 0 predicts success perfectly
+      14.signals dropped and 8 obs not used
+
+note: 16.signals != 0 predicts success perfectly
+      16.signals dropped and 4 obs not used
+
+note: 17.signals != 0 predicts success perfectly
+      17.signals dropped and 7 obs not used
+
+note: 23.signals != 0 predicts success perfectly
+      23.signals dropped and 1 obs not used
+
+note: 7.signals omitted because of collinearity
+{res}{txt}Iteration 0:{space 3}log likelihood = {res:-21.232284}  
+Iteration 1:{space 3}log likelihood = {res:-14.985733}  
+Iteration 2:{space 3}log likelihood = {res:-11.383269}  
+Iteration 3:{space 3}log likelihood = {res:-7.1631436}  
+Iteration 4:{space 3}log likelihood = {res:-5.9451968}  
+Iteration 5:{space 3}log likelihood = {res:  -5.93232}  
+Iteration 6:{space 3}log likelihood = {res:-5.9322238}  
+Iteration 7:{space 3}log likelihood = {res:-5.9322238}  
+{res}
+{txt}Logistic regression{col 49}Number of obs{col 67}= {res}        79
+{txt}{col 49}LR chi2({res}2{txt}){col 67}= {res}     30.60
+{txt}{col 49}Prob > chi2{col 67}= {res}    0.0000
+{txt}Log likelihood = {res}-5.9322238{txt}{col 49}Pseudo R2{col 67}= {res}    0.7206
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}       route{col 14}{c |}      Coef.{col 26}   Std. Err.{col 38}      z{col 46}   P>|z|{col 54}     [95% Con{col 67}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 8}flow {c |}{col 14}{res}{space 2} .0416101{col 26}{space 2} .0156831{col 37}{space 1}    2.65{col 46}{space 3}0.008{col 54}{space 4} .0108718{col 67}{space 3} .0723485
+{txt}{space 12} {c |}
+{space 5}signals {c |}
+{space 10}2  {c |}{col 14}{res}{space 2}        0{col 26}{txt}  (empty)
+{space 10}3  {c |}{col 14}{res}{space 2} -7.24382{col 26}{space 2} 4.925928{col 37}{space 1}   -1.47{col 46}{space 3}0.141{col 54}{space 4}-16.89846{col 67}{space 3} 2.410822
+{txt}{space 10}4  {c |}{col 14}{res}{space 2}        0{col 26}{txt}  (empty)
+{space 10}5  {c |}{col 14}{res}{space 2}        0{col 26}{txt}  (empty)
+{space 10}6  {c |}{col 14}{res}{space 2}        0{col 26}{txt}  (empty)
+{space 10}7  {c |}{col 14}{res}{space 2}        0{col 26}{txt}  (omitted)
+{space 10}8  {c |}{col 14}{res}{space 2}        0{col 26}{txt}  (empty)
+{space 9}10  {c |}{col 14}{res}{space 2}        0{col 26}{txt}  (empty)
+{space 9}11  {c |}{col 14}{res}{space 2}        0{col 26}{txt}  (empty)
+{space 9}13  {c |}{col 14}{res}{space 2}        0{col 26}{txt}  (empty)
+{space 9}14  {c |}{col 14}{res}{space 2}        0{col 26}{txt}  (empty)
+{space 9}16  {c |}{col 14}{res}{space 2}        0{col 26}{txt}  (empty)
+{space 9}17  {c |}{col 14}{res}{space 2}        0{col 26}{txt}  (empty)
+{space 9}23  {c |}{col 14}{res}{space 2}        0{col 26}{txt}  (empty)
+{space 12} {c |}
+{space 7}_cons {c |}{col 14}{res}{space 2}-11.58476{col 26}{space 2} 5.317087{col 37}{space 1}   -2.18{col 46}{space 3}0.029{col 54}{space 4}-22.00606{col 67}{space 3}-1.163462
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{p 0 6 2}Note: 0 failures and 8 successes completely determined.{p_end}
+
+{com}. exit, clear
